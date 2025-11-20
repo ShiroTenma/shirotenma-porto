@@ -1,3 +1,25 @@
+<script setup>
+import { reactive, ref } from 'vue'
+
+const form = reactive({
+  email: '',
+  mobile: '',
+  message: '',
+})
+
+const isSubmitted = ref(false)
+
+const handleSubmit = () => {
+  // simulasi kirim
+  isSubmitted.value = true
+
+  // reset form
+  form.email = ''
+  form.mobile = ''
+  form.message = ''
+}
+</script>
+
 <template>
   <div class="page">
     <section class="section section-dark">
@@ -7,6 +29,10 @@
           <p class="page-subtitle">
             Kirim detail projekmu di sini. Jelasin kebutuhan, deadline, dan budget kira-kira, biar
             bisa kukasih estimasi.
+          </p>
+
+          <p v-if="isSubmitted" class="page-subtitle">
+            ✅ Thanks! Pesanmu sudah tercatat (simulasi).
           </p>
         </div>
 
@@ -42,21 +68,3 @@
     </section>
   </div>
 </template>
-
-<script setup>
-import { reactive } from 'vue'
-
-const form = reactive({
-  email: '',
-  mobile: '',
-  message: '',
-})
-
-const handleSubmit = () => {
-  // Di sini nanti bisa diganti call ke backend / email service
-  alert('Terima kasih! Pesanmu sudah terkirim (simulasi).')
-  form.email = ''
-  form.mobile = ''
-  form.message = ''
-}
-</script>
