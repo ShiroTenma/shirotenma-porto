@@ -1,54 +1,37 @@
-<template>
-  <div class="page">
-    <section class="section section-dark">
-      <div class="container">
-        <h1 class="page-title">Commission!</h1>
-        <p class="page-subtitle">
-          Tertarik buat pesen desain atau editing? Pilih kebutuhanmu di bawah.
-        </p>
-
-        <div class="section-grid-3">
-          <article class="service-card" v-for="item in items" :key="item.title">
-            <h2 class="service-title">{{ item.title }}</h2>
-            <p class="service-text">{{ item.text }}</p>
-            <p class="service-tag">Mulai dari {{ item.price }}</p>
-            <router-link to="/contact" class="btn btn-primary btn-sm"> Know more </router-link>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">Testimony</h2>
-        <div class="testimony-grid">
-          <article class="testimony-card" v-for="t in testimonies" :key="t.name">
-            <p class="testimony-text">“{{ t.text }}”</p>
-            <p class="testimony-name">{{ t.name }}</p>
-            <p class="testimony-role">{{ t.role }}</p>
-          </article>
-        </div>
-      </div>
-    </section>
-  </div>
-</template>
-
 <script setup>
-const items = [
+const packages = [
   {
-    title: 'Custom Edits',
-    text: 'Editing satuan untuk poster, banner, thumbnail, atau overlay.',
-    price: '$',
+    id: 'custom',
+    name: 'Custom Edits',
+    badge: 'POSTER • BANNER • THUMBNAIL',
+    price: 'Mulai dari $',
+    points: [
+      'Editing satuan untuk poster, banner, thumbnail, atau overlay.',
+      'Cocok buat sekali pakai / event kecil.',
+      'Revisi ringan disesuaikan kebutuhan.',
+    ],
   },
   {
-    title: 'Graphics Design',
-    text: 'Paket branding kecil: logo sederhana, palet warna, dan banner.',
-    price: '$$',
+    id: 'graphics',
+    name: 'Graphics Design',
+    badge: 'BRANDING • BANNER • OVERLAY',
+    price: 'Mulai dari $$',
+    points: [
+      'Paket branding kecil: logo sederhana, palet warna, dan banner.',
+      'Satu paket visual supaya feed / channel lebih konsisten.',
+      'Rekomendasi style sesuai karakter / brand kamu.',
+    ],
   },
   {
-    title: 'Video Editing',
-    text: 'Paket highlight / MV pendek untuk channel dan media sosial.',
-    price: '$$',
+    id: 'video',
+    name: 'Video Editing',
+    badge: 'HIGHLIGHT • MV • CLIPS',
+    price: 'Mulai dari $$',
+    points: [
+      'Paket highlight / MV pendek untuk channel dan media sosial.',
+      'Beat-synced cuts, teks dinamis, dan basic motion.',
+      'Export siap pakai untuk platform yang kamu mau.',
+    ],
   },
 ]
 
@@ -70,3 +53,68 @@ const testimonies = [
   },
 ]
 </script>
+
+<template>
+  <div class="page">
+    <!-- HERO + PLAN CARDS -->
+    <section class="section section-dark commission-hero">
+      <div class="container">
+        <div class="commission-header">
+          <h1 class="page-title">Commission!</h1>
+          <p class="page-subtitle commission-subtitle">
+            Tertarik buat pesen desain atau editing? Pilih paket yang paling pas di bawah ini.
+            Detail bisa fleksibel, yang penting kita ngobrol dulu soal kebutuhanmu.
+          </p>
+
+          <p class="commission-helper">
+            Slot terbatas. Kalau ragu soal budget, boleh banget tanya dulu lewat form atau DM 😊
+          </p>
+        </div>
+
+        <div class="portfolio-plan-row commission-plan-row">
+          <article
+            v-for="pkg in packages"
+            :key="pkg.id"
+            class="portfolio-plan-card portfolio-plan-card--light commission-plan-card"
+          >
+            <p class="portfolio-plan-badge">
+              {{ pkg.badge }}
+            </p>
+
+            <h2 class="portfolio-plan-title">
+              {{ pkg.name }}
+            </h2>
+
+            <p class="portfolio-plan-price">
+              {{ pkg.price }}
+            </p>
+
+            <ul class="portfolio-plan-list">
+              <li v-for="point in pkg.points" :key="point">
+                {{ point }}
+              </li>
+            </ul>
+
+            <router-link to="/contact" class="btn btn-primary btn-sm portfolio-plan-cta">
+              Know more
+            </router-link>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONY (tetap seperti konsep sebelumnya) -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Testimony</h2>
+        <div class="testimony-grid">
+          <article v-for="t in testimonies" :key="t.name" class="testimony-card">
+            <p class="testimony-text">“{{ t.text }}”</p>
+            <p class="testimony-name">{{ t.name }}</p>
+            <p class="testimony-role">{{ t.role }}</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </div>
+</template>

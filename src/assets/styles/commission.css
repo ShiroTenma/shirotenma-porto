@@ -1,0 +1,79 @@
+/* COMMISSION HERO */
+
+.commission-hero {
+  background: var(--bg-dark);
+  color: #fff;
+}
+
+.commission-hero .page-title {
+  color: #fff;
+}
+
+.commission-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 2.2rem;
+}
+
+.commission-subtitle {
+  max-width: 36rem;
+  color: #d2d2d2;
+}
+
+.commission-helper {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #d2d2d2;
+}
+
+/* sedikit tweak supaya cards commission nggak terlalu miring */
+.commission-plan-row .portfolio-plan-card--middle {
+  transform: translateY(-6px);
+}
+
+.commission-plan-card {
+  /* kalau mau tinggi minimum yang sama: */
+  min-height: 260px;
+}
+
+/* responsive commission hero */
+@media (max-width: 900px) {
+  .commission-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* TESTIMONY (dipakai di halaman commission) */
+
+.testimony-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.testimony-card {
+  background: #fff;
+  border-radius: var(--radius-md);
+  padding: 1.3rem 1.5rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.testimony-text {
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+}
+
+.testimony-name {
+  margin: 0;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.testimony-role {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}

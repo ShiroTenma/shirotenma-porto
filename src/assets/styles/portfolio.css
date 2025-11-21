@@ -1,0 +1,512 @@
+/* === PORTFOLIO PLAN STYLE (3 kartu kategori) === */
+
+.portfolio-hero {
+  background: #ff5a2a; /* oranye ala contoh, bisa kamu tweak */
+  color: #fff;
+}
+
+.portfolio-hero .page-title {
+  color: #fff;
+}
+
+.portfolio-hero .page-subtitle {
+  color: #ffe6db;
+}
+
+.portfolio-plan-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+.portfolio-plan-card {
+  position: relative;
+  border-radius: 18px;
+  padding: 1.6rem 1.5rem 1.7rem;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.28);
+  cursor: pointer;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease,
+    color 0.18s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.portfolio-plan-card--light {
+  background: #fff;
+  color: #111;
+}
+
+.portfolio-plan-card--dark {
+  background: #101010;
+  color: #f8f8f8;
+}
+
+.portfolio-plan-card--middle {
+  transform: translateY(-10px) rotate(-2deg);
+}
+
+.portfolio-plan-card--active {
+  transform: translateY(-14px) scale(1.02);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+.portfolio-plan-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.32);
+}
+
+.portfolio-plan-badge {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  margin: 0;
+}
+
+.portfolio-plan-title {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.portfolio-plan-price {
+  margin: 0;
+  font-size: 0.92rem;
+  opacity: 0.9;
+}
+
+.portfolio-plan-list {
+  margin: 0.4rem 0 0;
+  padding-left: 1.1rem;
+  font-size: 0.88rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.portfolio-plan-list li {
+  line-height: 1.35;
+}
+
+.portfolio-plan-cta {
+  margin-top: 0.9rem;
+  align-self: flex-start;
+}
+
+/* === PORTFOLIO GALLERY: WIDE SELECTION + SLIDER === */
+
+.portfolio-gallery-section {
+  background: #fafafa;
+}
+
+.portfolio-gallery-header {
+  margin-bottom: 0.8rem;
+}
+
+.portfolio-wide-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin: 0 0 0.6rem;
+}
+
+.portfolio-wide-text {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+/* === CTA BANNER DI BAWAH CAROUSEL === */
+
+.portfolio-cta-banner {
+  margin-top: 2.5rem;
+  border-radius: 26px;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(120deg, #f97316, #ea580c, #111827);
+  color: #ffffff;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: stretch;
+}
+
+/* kolom kiri: teks + button */
+.portfolio-cta-inner {
+  padding: 2.4rem 2.8rem;
+  flex: 1 0 52%;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.portfolio-cta-title {
+  margin: 0;
+  font-size: 1.7rem;
+  line-height: 1.25;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.portfolio-cta-text {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #ffe6d0;
+}
+
+/* CTA button, dikecilkan */
+.portfolio-cta-button {
+  margin-top: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 0.45rem;
+  padding: 0.45rem 1.2rem;
+  border-radius: 999px;
+  background: #fff7ed;
+  color: #111827;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  box-shadow: var(--shadow-soft);
+  transition:
+    transform 0.16s ease,
+    box-shadow 0.16s ease,
+    background 0.16s ease;
+}
+
+.portfolio-cta-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+  background: #fff1e0;
+}
+
+.portfolio-cta-button-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: #111827;
+  color: #f9fafb;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+}
+
+/* kolom kanan: mini gallery karya */
+.portfolio-cta-gallery {
+  flex: 1 0 48%;
+  padding: 1.8rem 2.1rem 1.8rem 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+  align-content: center;
+}
+
+.portfolio-cta-thumb-card {
+  background: rgba(15, 23, 42, 0.4);
+  border-radius: 18px;
+  padding: 0.4rem 0.4rem 0.65rem;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+}
+
+.portfolio-cta-thumb {
+  border-radius: 14px;
+  height: 90px;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 0.4rem;
+}
+
+/* placeholder gradient per kategori – nanti bisa diganti image asli */
+.portfolio-cta-thumb--graphics {
+  background-image: linear-gradient(135deg, #3b82f6, #ec4899);
+}
+
+.portfolio-cta-thumb--editing {
+  background-image: linear-gradient(135deg, #0f172a, #facc15);
+}
+
+.portfolio-cta-thumb--photo {
+  background-image: linear-gradient(135deg, #7c3aed, #22c55e);
+}
+
+.portfolio-cta-thumb-title {
+  margin: 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* responsive CTA */
+@media (max-width: 768px) {
+  .portfolio-cta-banner {
+    flex-direction: column;
+  }
+
+  .portfolio-cta-inner {
+    flex: none;
+    max-width: none;
+    padding: 1.9rem 1.8rem 1.4rem;
+  }
+
+  .portfolio-cta-gallery {
+    flex: none;
+    padding: 0 1.6rem 1.6rem;
+  }
+
+  .portfolio-cta-title {
+    font-size: 1.4rem;
+  }
+}
+
+/* CAROUSEL – manual + auto step */
+
+.portfolio-carousel {
+  position: relative;
+  padding: 0 3rem;
+  margin-top: 0.8rem;
+}
+
+.portfolio-carousel-controls {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.portfolio-carousel-arrow {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: #ffffff;
+  font-size: 1.2rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+  pointer-events: auto;
+}
+
+.portfolio-carousel-arrow:first-child {
+  margin-left: -0.5rem;
+}
+
+.portfolio-carousel-arrow:last-child {
+  margin-right: -0.5rem;
+}
+
+.portfolio-carousel-arrow:hover {
+  transform: translateY(-2px);
+}
+
+/* track + card */
+
+.portfolio-carousel-track {
+  margin-top: 0.2rem;
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 0.5rem 1rem 1.25rem; /* ruang ekstra buat shadow */
+  scroll-padding-left: 1rem;
+  scroll-padding-right: 1rem;
+}
+
+.portfolio-carousel-card {
+  min-width: 280px;
+  max-width: 280px;
+  scroll-snap-align: start;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  flex-shrink: 0;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.portfolio-carousel-card--active {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.26);
+}
+
+.portfolio-carousel-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.26);
+}
+
+/* THUMB & BODY untuk kartu slider */
+
+.portfolio-gallery-thumb {
+  height: 190px; /* lebih tinggi dikit */
+  background: #333;
+}
+
+.portfolio-gallery-thumb--graphics {
+  background: linear-gradient(135deg, #1e88e5, #e91e63);
+}
+
+.portfolio-gallery-thumb--editing {
+  background: linear-gradient(135deg, #000000, #ffca28);
+}
+
+.portfolio-gallery-thumb--photo {
+  background: linear-gradient(135deg, #5e35b1, #26c6da);
+}
+
+.portfolio-gallery-body {
+  padding: 1rem 1.1rem 1.1rem;
+}
+
+.portfolio-gallery-tag {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  background: rgba(0, 0, 0, 0.06);
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-gallery-title {
+  margin: 0 0 0.35rem;
+  font-size: 0.98rem;
+}
+
+.portfolio-gallery-text {
+  margin: 0;
+  font-size: 0.86rem;
+  color: var(--text-muted);
+}
+
+/* Responsive tweaks untuk portfolio */
+
+@media (max-width: 900px) {
+  .portfolio-plan-card--middle {
+    transform: none;
+  }
+
+  .portfolio-plan-card--active {
+    transform: translateY(-6px);
+  }
+
+  .portfolio-gallery-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .portfolio-carousel-controls {
+    position: static;
+    margin-bottom: 0.5rem;
+    justify-content: flex-end;
+  }
+}
+
+/* === GALLERY DETAIL DI BAWAH SLIDER (per work) === */
+
+.portfolio-work-gallery {
+  margin-top: 1.8rem;
+}
+
+.portfolio-work-gallery-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 0.9rem;
+}
+
+.portfolio-work-gallery-kicker {
+  margin: 0 0 0.25rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.portfolio-work-gallery-title {
+  margin: 0;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.portfolio-work-gallery-close {
+  white-space: nowrap;
+}
+
+/* grid mirip gallery 2/3: satu item besar + beberapa kecil */
+.portfolio-work-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
+}
+
+.portfolio-work-gallery-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #ddd;
+  box-shadow: var(--shadow-soft);
+}
+
+/* item pertama dibuat lebih lebar di layar besar */
+.portfolio-work-gallery-card--featured {
+  grid-column: span 2;
+}
+
+@media (max-width: 768px) {
+  .portfolio-work-gallery-card--featured {
+    grid-column: span 1;
+  }
+}
+
+.portfolio-work-gallery-thumb {
+  width: 100%;
+  height: 0;
+  padding-bottom: 75%; /* rasio 4:3 */
+}
+
+/* label di atas thumbnail */
+.portfolio-work-gallery-label {
+  position: absolute;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: 0.65rem;
+  font-size: 0.78rem;
+  color: #f9fafb;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+}
+
+/* animasi fade in/out waktu gallery muncul/hilang */
+.fade-enter-active,
+.fade-leave-active {
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(8px);
+}

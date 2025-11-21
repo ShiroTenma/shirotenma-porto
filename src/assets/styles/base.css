@@ -236,7 +236,7 @@ a {
   font-size: 0.85rem;
 }
 
-/* HERO */
+/* HERO (Home) */
 
 .hero {
   padding: 3.5rem 0 3rem;
@@ -316,86 +316,6 @@ a {
   color: #d0d0d0;
 }
 
-/* CARDS / PORTFOLIO */
-
-.service-card {
-  background: var(--bg-card);
-  color: var(--text-main);
-  border-radius: var(--radius-md);
-  padding: 1.3rem 1.4rem;
-  box-shadow: var(--shadow-soft);
-}
-
-.section-dark .service-card {
-  background: #3b3d3f;
-  color: #fff;
-}
-
-.service-title {
-  margin: 0 0 0.5rem;
-  font-size: 1.1rem;
-}
-
-.service-text {
-  margin: 0 0 0.75rem;
-  font-size: 0.92rem;
-  color: var(--text-muted);
-}
-
-.section-dark .service-text {
-  color: #e0e0e0;
-}
-
-.service-tag {
-  font-size: 0.85rem;
-  margin: 0 0 0.75rem;
-  opacity: 0.9;
-}
-
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2.5rem;
-}
-
-.portfolio-card {
-  background: #fff;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-soft);
-  overflow: hidden;
-}
-
-.portfolio-thumb {
-  height: 140px;
-  background: linear-gradient(135deg, #7b1fa2, #f06292);
-}
-
-.portfolio-thumb-tall {
-  height: 220px;
-}
-
-.portfolio-thumb-photo {
-  background: linear-gradient(135deg, #3949ab, #26c6da);
-}
-
-.portfolio-thumb-video {
-  background: linear-gradient(135deg, #ff7043, #ffca28);
-}
-
-.portfolio-card-title {
-  margin: 0.8rem 0 0.2rem;
-  padding: 0 0.9rem;
-  font-size: 0.98rem;
-}
-
-.portfolio-card-text {
-  margin: 0 0 0.9rem;
-  padding: 0 0.9rem;
-  font-size: 0.85rem;
-  color: var(--text-muted);
-}
-
 /* CONTACT */
 
 .contact-layout {
@@ -461,39 +381,7 @@ textarea::placeholder {
   box-shadow: var(--shadow-soft);
 }
 
-/* TESTIMONY */
-
-.testimony-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
-}
-
-.testimony-card {
-  background: #fff;
-  border-radius: var(--radius-md);
-  padding: 1.3rem 1.5rem;
-  box-shadow: var(--shadow-soft);
-}
-
-.testimony-text {
-  margin: 0 0 1rem;
-  font-size: 0.9rem;
-}
-
-.testimony-name {
-  margin: 0;
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-
-.testimony-role {
-  margin: 0;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-
-/* RESPONSIVE */
+/* RESPONSIVE GLOBAL */
 
 @media (max-width: 900px) {
   .hero-inner,
