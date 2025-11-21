@@ -44,41 +44,94 @@
 }
 
 .home-portfolio-text {
-  margin: 0;
+  margin: 0 0 0.7rem;
   font-size: 0.95rem;
   color: var(--text-muted);
 }
 
-.home-portfolio-actions {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
+/* tombol commission di bawah teks */
+.home-portfolio-cta {
+  margin-top: 0.4rem;
 }
 
+/* container loop card */
 .home-portfolio-loop {
   position: relative;
   overflow: hidden;
-  border-radius: 18px;
+  border-radius: 24px;
   background: #f3f4f6;
-  padding: 0.75rem 0;
+  padding: 1.1rem 0;
 }
 
+/* deretan card geser */
 .home-portfolio-loop-inner {
-  display: inline-flex;
-  gap: 1rem;
-  padding-left: 1rem;
-  animation: home-portfolio-marquee 18s linear infinite;
+  display: flex;
+  gap: 1.25rem;
+  padding: 0 1.5rem;
+  animation: home-portfolio-marquee 22s linear infinite;
 }
 
-.home-portfolio-chip {
-  padding: 0.35rem 0.9rem;
-  border-radius: 999px;
+/* 1 card */
+.home-portfolio-card {
+  min-width: 220px;
+  max-width: 220px;
+  border-radius: 20px;
   background: #ffffff;
   box-shadow: var(--shadow-soft);
-  font-size: 0.85rem;
-  white-space: nowrap;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
 }
 
+/* thumbnail gradient */
+.home-portfolio-thumb {
+  height: 120px;
+}
+
+/* placeholder gradient per kategori (sementara) */
+.home-portfolio-thumb--graphics-1 {
+  background: linear-gradient(135deg, #6366f1, #ec4899);
+}
+
+.home-portfolio-thumb--graphics-2 {
+  background: linear-gradient(135deg, #f97316, #facc15);
+}
+
+.home-portfolio-thumb--graphics-3 {
+  background: linear-gradient(135deg, #22c55e, #0ea5e9);
+}
+
+.home-portfolio-thumb--graphics-4 {
+  background: linear-gradient(135deg, #f97316, #ec4899);
+}
+
+.home-portfolio-thumb--editing-1 {
+  background: linear-gradient(135deg, #0f172a, #1d4ed8);
+}
+
+.home-portfolio-thumb--photo-1 {
+  background: linear-gradient(135deg, #7c3aed, #22c55e);
+}
+
+.home-portfolio-card-body {
+  padding: 0.9rem 1rem 1rem;
+}
+
+.home-portfolio-card-tag {
+  margin: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.home-portfolio-card-title {
+  margin: 0.35rem 0 0;
+  font-size: 0.98rem;
+}
+
+/* animasi jalan terus */
 @keyframes home-portfolio-marquee {
   0% {
     transform: translateX(0);

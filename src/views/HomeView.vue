@@ -1,21 +1,50 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 
-// teks yang diputar di section "show portfolio"
-const portfolioLoopTitlesBase = [
-  'Social Media Banner',
-  'osu!mapset background Manipulation',
-  'osu!profile overlay',
-  'Youtube Thumbnail',
-  'Instagram Post',
-  'More Designs',
+// === SELECTED WORKS DI HOME (card yang geser) ===
+const selectedWorksBase = [
+  {
+    id: 'w1',
+    title: 'Social Media Banner',
+    category: 'GRAPHICS DESIGN',
+    gradientClass: 'home-portfolio-thumb--graphics-1',
+  },
+  {
+    id: 'w2',
+    title: 'Tournament Poster',
+    category: 'GRAPHICS DESIGN',
+    gradientClass: 'home-portfolio-thumb--graphics-2',
+  },
+  {
+    id: 'w3',
+    title: 'osu!profile overlay',
+    category: 'GRAPHICS DESIGN',
+    gradientClass: 'home-portfolio-thumb--graphics-3',
+  },
+  {
+    id: 'w4',
+    title: 'Youtube Thumbnail',
+    category: 'GRAPHICS DESIGN',
+    gradientClass: 'home-portfolio-thumb--graphics-4',
+  },
+  {
+    id: 'w5',
+    title: 'Highlight Reel',
+    category: 'VIDEO EDITING',
+    gradientClass: 'home-portfolio-thumb--editing-1',
+  },
+  {
+    id: 'w6',
+    title: 'Concept Shoot',
+    category: 'PHOTOGRAPHY',
+    gradientClass: 'home-portfolio-thumb--photo-1',
+  },
 ]
 
-// digandakan biar loop marquee kelihatan nyambung
-const portfolioLoopTitles = [...portfolioLoopTitlesBase, ...portfolioLoopTitlesBase]
+// digandakan biar animasi loop halus
+const selectedWorks = [...selectedWorksBase, ...selectedWorksBase]
 
-// slide untuk Commission CTA (sementara pakai gradient,
-// nanti gampang diganti ke url('...') gambar beneran)
+// === SLIDER COMMISSION CTA ===
 const commissionSlides = [
   {
     id: 'c1',
@@ -41,13 +70,13 @@ const commissionSlides = [
 ]
 
 const currentCommissionIndex = ref(0)
-let commissionTimer
+let commissionTimer = null
 
 const startCommissionSlider = () => {
   if (commissionTimer) clearInterval(commissionTimer)
   commissionTimer = setInterval(() => {
     currentCommissionIndex.value = (currentCommissionIndex.value + 1) % commissionSlides.length
-  }, 4000) // ~3s diam + ~1s anim
+  }, 4000) // ~3s diam + ~1s animasi
 }
 
 onMounted(() => {
@@ -110,7 +139,7 @@ onUnmounted(() => {
       </div>
     </section>
 
-    <!-- ABOUT (di-home, nanti link About di nav scroll ke sini) -->
+    <!-- ABOUT (di-home, nav About scroll ke sini) -->
     <section id="about" class="section">
       <div class="container">
         <div class="about-layout">
@@ -159,7 +188,7 @@ onUnmounted(() => {
       </div>
     </section>
 
-    <!-- SHOW PORTFOLIO (text loop + tombol ke Portfolio & Commission) -->
+    <!-- SELECTED WORKS: CARD YANG GESER -->
     <section id="home-portfolio" class="section home-portfolio-section">
       <div class="container">
         <div class="home-portfolio-header">
@@ -169,27 +198,33 @@ onUnmounted(() => {
               Beberapa judul karya dari kategori graphics, editing, dan photography. Untuk list
               lengkap, kamu bisa cek halaman portfolio atau detail commission.
             </p>
-          </div>
 
-          <div class="home-portfolio-actions">
-            <router-link to="/portfolio" class="btn btn-primary btn-sm">
-              Buka portfolio
-            </router-link>
-            <router-link to="/commission" class="btn btn-outline btn-sm">
+            <!-- tombol commission di bawah teks -->
+            <router-link to="/commission" class="btn btn-primary btn-sm home-portfolio-cta">
               Lihat commission
             </router-link>
           </div>
         </div>
 
+        <!-- deretan card yang auto-geser -->
         <div class="home-portfolio-loop">
           <div class="home-portfolio-loop-inner">
-            <span
-              v-for="(title, index) in portfolioLoopTitles"
-              :key="`${title}-${index}`"
-              class="home-portfolio-chip"
+            <article
+              v-for="work in selectedWorks"
+              :key="work.id + '-loop'"
+              class="home-portfolio-card"
             >
-              {{ title }}
-            </span>
+              <div class="home-portfolio-thumb" :class="work.gradientClass"></div>
+
+              <div class="home-portfolio-card-body">
+                <p class="home-portfolio-card-tag">
+                  {{ work.category }}
+                </p>
+                <h3 class="home-portfolio-card-title">
+                  {{ work.title }}
+                </h3>
+              </div>
+            </article>
           </div>
         </div>
       </div>
