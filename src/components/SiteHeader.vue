@@ -4,11 +4,11 @@
       <router-link to="/" class="logo">ShiroTenma</router-link>
 
       <nav class="nav">
-        <router-link to="/" class="nav-link">home</router-link>
-        <router-link to="/about" class="nav-link">about</router-link>
-        <router-link to="/portfolio" class="nav-link">portfolio</router-link>
-        <router-link to="/commission" class="nav-link">commission</router-link>
-        <router-link to="/contact" class="nav-link">contact</router-link>
+        <router-link to="/" class="nav-link">Home</router-link>
+        <router-link :to="{ path: '/', hash: '#about' }" class="nav-link"> About </router-link>
+        <router-link to="/portfolio" class="nav-link">Portfolio</router-link>
+        <router-link to="/commission" class="nav-link">Commission</router-link>
+        <router-link to="/contact" class="nav-link">Contact</router-link>
       </nav>
     </div>
   </header>
