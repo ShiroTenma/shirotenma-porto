@@ -140,49 +140,69 @@ onUnmounted(() => {
     </section>
 
     <!-- ABOUT (di-home, nav About scroll ke sini) -->
-    <section id="about" class="section">
+    <!-- ABOUT (Hello hero) -->
+    <section id="about" class="section about-hello-section">
       <div class="container">
         <div class="about-layout">
-          <div class="about-avatar">
+          <!-- Ilustrasi / avatar -->
+          <div class="about-hello-illustration">
             <div class="avatar-circle"></div>
           </div>
 
-          <div>
-            <h2 class="section-title">Hello!</h2>
-            <p class="page-subtitle">
-              Aku ngerjain desain visual dan editing dengan fokus ke kebutuhan creator dan project
-              kecil–menengah. Mulai dari stream overlay, banner event, sampai video highlight buat
-              channel.
+          <!-- Teks hello -->
+          <div class="about-hello-body">
+            <p class="about-hello-kicker">HELLO!</p>
+            <h2 class="about-hello-title">Aku ShiroTenma.</h2>
+
+            <p class="about-hello-text">
+              Aku ngerjain desain visual dan editing buat kebutuhan creator dan project
+              kecil–menengah. Mulai dari stream overlay, banner event, thumbnail, sampai video
+              highlight buat channel.
+            </p>
+            <p class="about-hello-text">
+              Fokusku ada di mood, warna, dan style yang nyambung sama karakter kamu atau brand yang
+              lagi kamu bangun.
             </p>
 
-            <div class="home-about-columns">
-              <div class="home-about-col">
-                <h3 class="home-about-col-title">Experience</h3>
-                <ul class="home-about-list">
-                  <li>Freelance graphics &amp; video untuk streamer &amp; VTuber.</li>
-                  <li>Desain banner &amp; poster event online.</li>
-                  <li>Social media visual untuk beberapa brand kecil.</li>
-                </ul>
-              </div>
-
-              <div class="home-about-col">
-                <h3 class="home-about-col-title">Tools</h3>
-                <ul class="home-about-list">
-                  <li>Photoshop / Clip Studio Paint</li>
-                  <li>After Effects / Premiere</li>
-                  <li>OBS overlay &amp; streaming assets</li>
-                </ul>
-              </div>
-
-              <div class="home-about-col">
-                <h3 class="home-about-col-title">Hobbies</h3>
-                <ul class="home-about-list">
-                  <li>Game rhythm &amp; gacha.</li>
-                  <li>Eksperimen color grading &amp; poster fanart.</li>
-                  <li>Ngulik layout dan typography buat fun.</li>
-                </ul>
-              </div>
+            <div class="about-hello-tags">
+              <span class="about-hello-tag">Graphics design</span>
+              <span class="about-hello-tag">Video editing</span>
+              <span class="about-hello-tag">Streaming overlay</span>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT DETAILS (Experience / Tools / Hobbies) -->
+    <section class="section about-details-section">
+      <div class="container">
+        <div class="about-details-grid">
+          <div class="about-details-col">
+            <h3 class="about-details-title">Experience</h3>
+            <ul class="about-details-list">
+              <li>Freelance graphics &amp; video untuk streamer &amp; VTuber.</li>
+              <li>Desain banner &amp; poster event online.</li>
+              <li>Social media visual untuk beberapa brand kecil.</li>
+            </ul>
+          </div>
+
+          <div class="about-details-col">
+            <h3 class="about-details-title">Tools</h3>
+            <ul class="about-details-list">
+              <li>Photoshop / Clip Studio Paint</li>
+              <li>After Effects / Premiere</li>
+              <li>OBS overlay &amp; streaming assets</li>
+            </ul>
+          </div>
+
+          <div class="about-details-col">
+            <h3 class="about-details-title">Hobbies</h3>
+            <ul class="about-details-list">
+              <li>Game rhythm &amp; gacha.</li>
+              <li>Eksperimen color grading &amp; poster fanart.</li>
+              <li>Ngulik layout dan typography buat fun.</li>
+            </ul>
           </div>
         </div>
       </div>
