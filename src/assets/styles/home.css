@@ -172,6 +172,9 @@
 /* thumbnail gradient */
 .home-portfolio-thumb {
   height: 120px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* placeholder gradient per kategori (sementara) */
@@ -246,6 +249,8 @@
   inset: 0;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
+  background-color: #0b1021;
   opacity: 0;
   transform: translateX(8%);
   transition:

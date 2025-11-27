@@ -296,13 +296,17 @@ a {
   background: #272727;
   border-radius: 12px;
   padding: 0.6rem;
+  overflow: hidden;
 }
 
 .banner-thumb {
-  height: 72px;
+  height: 86px;
   border-radius: 10px;
   background: linear-gradient(135deg, #6a1b9a, #ec407a);
   margin-bottom: 0.5rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .banner-title {
@@ -379,6 +383,9 @@ textarea::placeholder {
   border-radius: 999px;
   background: linear-gradient(135deg, #6a1b9a, #ec407a);
   box-shadow: var(--shadow-soft);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* RESPONSIVE GLOBAL */

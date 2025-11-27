@@ -1,29 +1,40 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 
+import graphicsBanner from '../assets/images/works/graphics-banner.png'
+import graphicsPoster from '../assets/images/works/graphics-poster.png'
+import graphicsOverlay from '../assets/images/works/graphics-overlay.jpg'
+import graphicsThumbnail from '../assets/images/works/graphics-thumbnail.png'
+
+import editingHighlight from '../assets/images/works/editing-highlight.jpg'
+import editingMotion from '../assets/images/works/editing-motion.png'
+
+import photoPortrait from '../assets/images/works/photo-portrait.jpg'
+import photoEvents from '../assets/images/works/photo-events.jpg'
+
 const categories = [
   {
     id: 'graphics',
     name: 'Graphics Design',
-    badge: 'POSTER - BANNER - AND SUCH',
+    badge: 'POSTER / BANNER / SOCIAL',
     priceText: 'Branding kecil, banner, overlay, dan social media assets.',
-    highlight: 'Basic visual identity untuk streamer / event brand kecil.',
+    highlight: 'Basic visual identity untuk streamer atau event brand kecil.',
     tone: 'light',
   },
   {
     id: 'editing',
     name: 'Editing',
-    badge: 'VIDEO • MOTION • CLIPS',
+    badge: 'VIDEO / MOTION / CLIPS',
     priceText: 'Video pendek, highlight, dan MV untuk konten digital.',
-    highlight: 'Perfect buat channel YouTube / VTuber / content creator.',
+    highlight: 'Pas buat channel YouTube, VTuber, atau content creator.',
     tone: 'dark',
   },
   {
     id: 'photo',
     name: 'Photography',
-    badge: 'COLOR GRADING • PORTRAIT',
+    badge: 'COLOR GRADING / PORTRAIT',
     priceText: 'Fotografi dengan color grading dramatis dan stylized.',
-    highlight: 'Buat poster, cover, atau sekadar personal project.',
+    highlight: 'Untuk poster, cover, atau personal project.',
     tone: 'light',
   },
 ]
@@ -36,20 +47,23 @@ const works = [
     title: 'Social Media Banner',
     desc: 'Banner livestream dengan tema neon dan glitch.',
     tag: 'Graphics Design',
+    thumb: graphicsBanner,
   },
   {
     id: 'g-2',
     category: 'graphics',
-    title: 'osu!mapset background Manipulation',
+    title: 'osu!mapset background manipulation',
     desc: 'Poster turnamen dengan layout tipografi kuat.',
     tag: 'Graphics Design',
+    thumb: graphicsPoster,
   },
   {
     id: 'g-3',
     category: 'graphics',
     title: 'osu!profile overlay',
-    desc: 'Overlay untuk VTuber / streamer dengan style custom.',
+    desc: 'Overlay untuk VTuber atau streamer dengan style custom.',
     tag: 'Graphics Design',
+    thumb: graphicsOverlay,
   },
   {
     id: 'g-4',
@@ -57,6 +71,7 @@ const works = [
     title: 'Youtube Thumbnail',
     desc: 'Varian lain banner livestream dengan komposisi berbeda.',
     tag: 'Graphics Design',
+    thumb: graphicsThumbnail,
   },
   {
     id: 'g-5',
@@ -64,6 +79,7 @@ const works = [
     title: 'Instagram Post',
     desc: 'Versi alternatif poster turnamen dengan fokus tipografi.',
     tag: 'Graphics Design',
+    thumb: graphicsPoster,
   },
   {
     id: 'g-6',
@@ -71,6 +87,7 @@ const works = [
     title: 'More Designs',
     desc: 'Overlay tambahan untuk variasi scene dan transition.',
     tag: 'Graphics Design',
+    thumb: graphicsOverlay,
   },
   // EDITING
   {
@@ -79,13 +96,15 @@ const works = [
     title: 'Custom Edit',
     desc: 'Montage pendek dengan beat-synced cuts.',
     tag: 'Video Editing',
+    thumb: editingHighlight,
   },
   {
     id: 'e-2',
     category: 'editing',
-    title: 'Anime Movie Clip/AMV & PMV (Picture MV)',
-    desc: 'Vertical clip untuk TikTok/Shorts dengan teks dinamis.',
+    title: 'Anime Movie Clip / AMV / PMV',
+    desc: 'Vertical clip untuk TikTok atau Shorts dengan teks dinamis.',
     tag: 'Video Editing',
+    thumb: editingMotion,
   },
   {
     id: 'e-3',
@@ -93,6 +112,7 @@ const works = [
     title: 'Motion Graphics',
     desc: 'Music video lirik dengan animasi tipografi.',
     tag: 'Video Editing',
+    thumb: editingMotion,
   },
   {
     id: 'e-4',
@@ -100,13 +120,15 @@ const works = [
     title: 'Lyrics MV',
     desc: 'Music video lirik dengan animasi tipografi.',
     tag: 'Video Editing',
+    thumb: editingMotion,
   },
   {
     id: 'e-5',
     category: 'editing',
-    title: 'more Video Editing Samples',
-    desc: 'Music video lirik dengan animasi tipografi.',
+    title: 'More Video Editing Samples',
+    desc: 'Varian edit lain sesuai mood board.',
     tag: 'Video Editing',
+    thumb: editingHighlight,
   },
   // PHOTO
   {
@@ -115,20 +137,23 @@ const works = [
     title: 'Cosplay Photography',
     desc: 'Street shot dengan lighting malam dan color grading kuat.',
     tag: 'Photography',
+    thumb: photoPortrait,
   },
   {
     id: 'p-2',
     category: 'photo',
     title: 'Wedding Photography',
-    desc: 'Foto konsep dengan tema karakter / cosplay.',
+    desc: 'Foto konsep dengan tema karakter atau cosplay.',
     tag: 'Photography',
+    thumb: photoEvents,
   },
   {
     id: 'p-3',
     category: 'photo',
     title: 'Graduation Photography',
-    desc: 'Foto untuk cover playlist / album.',
+    desc: 'Foto untuk cover playlist atau album.',
     tag: 'Photography',
+    thumb: photoEvents,
   },
   {
     id: 'p-4',
@@ -136,81 +161,97 @@ const works = [
     title: 'Big Events Documentation',
     desc: 'Foto potret dengan lighting dramatis dan mood kuat.',
     tag: 'Photography',
+    thumb: photoEvents,
   },
   {
     id: 'p-5',
     category: 'photo',
     title: 'More Photography Samples',
-    desc: 'Foto potret dengan lighting dramatis dan mood kuat.',
+    desc: 'Foto potret tambahan untuk variasi style.',
     tag: 'Photography',
+    thumb: photoPortrait,
   },
 ]
 
 /**
  * Gallery detail per work (yang muncul di bawah slider waktu diklik)
- * Nanti kamu bisa ganti judul2 di sini jadi nama karya aslimu.
+ * Silakan ganti judul atau thumb di sini dengan karya asli.
  */
 const workGalleries = {
   'g-1': [
-    { id: 'g-1-1', title: 'Twitch stream banner' },
-    { id: 'g-1-2', title: 'YouTube stream banner' },
-    { id: 'g-1-3', title: 'Starting soon screen' },
-    { id: 'g-1-4', title: 'BRB screen' },
-    { id: 'g-1-5', title: 'Ending screen' },
-    { id: 'g-1-6', title: 'Panel set' },
+    { id: 'g-1-1', title: 'Twitch stream banner', thumb: graphicsBanner },
+    { id: 'g-1-2', title: 'YouTube stream banner', thumb: graphicsBanner },
+    { id: 'g-1-3', title: 'Starting soon screen', thumb: graphicsBanner },
+    { id: 'g-1-4', title: 'BRB screen', thumb: graphicsBanner },
   ],
   'g-2': [
-    { id: 'g-2-1', title: 'Warm color variant' },
-    { id: 'g-2-2', title: 'Cool color variant' },
-    { id: 'g-2-3', title: 'Texture heavy version' },
-    { id: 'g-2-4', title: 'Minimalist version' },
+    { id: 'g-2-1', title: 'Warm color variant', thumb: graphicsPoster },
+    { id: 'g-2-2', title: 'Cool color variant', thumb: graphicsPoster },
+    { id: 'g-2-3', title: 'Texture heavy version', thumb: graphicsPoster },
+    { id: 'g-2-4', title: 'Minimalist version', thumb: graphicsPoster },
   ],
   'g-3': [
-    { id: 'g-3-1', title: 'In-game overlay' },
-    { id: 'g-3-2', title: 'Chat overlay' },
-    { id: 'g-3-3', title: 'Alert banner' },
-    { id: 'g-3-4', title: 'Transition frame' },
+    { id: 'g-3-1', title: 'In-game overlay', thumb: graphicsOverlay },
+    { id: 'g-3-2', title: 'Chat overlay', thumb: graphicsOverlay },
+    { id: 'g-3-3', title: 'Alert banner', thumb: graphicsOverlay },
+    { id: 'g-3-4', title: 'Transition frame', thumb: graphicsOverlay },
   ],
   'g-4': [
-    { id: 'g-4-1', title: 'Gameplay thumbnail' },
-    { id: 'g-4-2', title: 'Podcast thumbnail' },
-    { id: 'g-4-3', title: 'Announcement thumbnail' },
+    { id: 'g-4-1', title: 'Gameplay thumbnail', thumb: graphicsThumbnail },
+    { id: 'g-4-2', title: 'Podcast thumbnail', thumb: graphicsThumbnail },
+    { id: 'g-4-3', title: 'Announcement thumbnail', thumb: graphicsThumbnail },
   ],
   'g-5': [
-    { id: 'g-5-1', title: 'Carousel post' },
-    { id: 'g-5-2', title: 'Single post' },
-    { id: 'g-5-3', title: 'Story cover' },
+    { id: 'g-5-1', title: 'Carousel post', thumb: graphicsPoster },
+    { id: 'g-5-2', title: 'Single post', thumb: graphicsPoster },
+    { id: 'g-5-3', title: 'Story cover', thumb: graphicsPoster },
   ],
   'g-6': [
-    { id: 'g-6-1', title: 'Extra overlay A' },
-    { id: 'g-6-2', title: 'Extra overlay B' },
-    { id: 'g-6-3', title: 'Pattern experiments' },
+    { id: 'g-6-1', title: 'Extra overlay A', thumb: graphicsOverlay },
+    { id: 'g-6-2', title: 'Extra overlay B', thumb: graphicsOverlay },
+    { id: 'g-6-3', title: 'Pattern experiments', thumb: graphicsOverlay },
   ],
 
-  // EDITING & PHOTO contoh saja
+  // EDITING & PHOTO
   'e-1': [
-    { id: 'e-1-1', title: 'Ranked montage' },
-    { id: 'e-1-2', title: 'Tournament highlight' },
+    { id: 'e-1-1', title: 'Ranked montage', thumb: editingHighlight },
+    { id: 'e-1-2', title: 'Tournament highlight', thumb: editingHighlight },
   ],
   'e-2': [
-    { id: 'e-2-1', title: 'TikTok clip' },
-    { id: 'e-2-2', title: 'YouTube Shorts' },
+    { id: 'e-2-1', title: 'TikTok clip', thumb: editingMotion },
+    { id: 'e-2-2', title: 'YouTube Shorts', thumb: editingMotion },
   ],
   'e-3': [
-    { id: 'e-3-1', title: 'Lyric animation A' },
-    { id: 'e-3-2', title: 'Lyric animation B' },
+    { id: 'e-3-1', title: 'Lyric animation A', thumb: editingMotion },
+    { id: 'e-3-2', title: 'Lyric animation B', thumb: editingMotion },
+  ],
+  'e-4': [
+    { id: 'e-4-1', title: 'Lyric animation C', thumb: editingMotion },
+    { id: 'e-4-2', title: 'Lyric animation D', thumb: editingMotion },
+  ],
+  'e-5': [
+    { id: 'e-5-1', title: 'Alternate cut', thumb: editingHighlight },
+    { id: 'e-5-2', title: 'Trailer cut', thumb: editingHighlight },
   ],
   'p-1': [
-    { id: 'p-1-1', title: 'Street corner' },
-    { id: 'p-1-2', title: 'Crosswalk' },
+    { id: 'p-1-1', title: 'Street corner', thumb: photoPortrait },
+    { id: 'p-1-2', title: 'Crosswalk', thumb: photoPortrait },
   ],
   'p-2': [
-    { id: 'p-2-1', title: 'Character shoot A' },
-    { id: 'p-2-2', title: 'Character shoot B' },
+    { id: 'p-2-1', title: 'Character shoot A', thumb: photoEvents },
+    { id: 'p-2-2', title: 'Character shoot B', thumb: photoEvents },
   ],
   'p-3': [
-    { id: 'p-3-1', title: 'Cover option 1' },
-    { id: 'p-3-2', title: 'Cover option 2' },
+    { id: 'p-3-1', title: 'Cover option 1', thumb: photoEvents },
+    { id: 'p-3-2', title: 'Cover option 2', thumb: photoEvents },
+  ],
+  'p-4': [
+    { id: 'p-4-1', title: 'Ceremony', thumb: photoEvents },
+    { id: 'p-4-2', title: 'Crowd shot', thumb: photoEvents },
+  ],
+  'p-5': [
+    { id: 'p-5-1', title: 'Portrait mix', thumb: photoPortrait },
+    { id: 'p-5-2', title: 'Moodboard set', thumb: photoPortrait },
   ],
 }
 
@@ -292,7 +333,10 @@ const selectedWork = computed(() => works.find((w) => w.id === selectedWorkId.va
 
 const selectedGalleryItems = computed(() => {
   if (!selectedWork.value) return []
-  return workGalleries[selectedWork.value.id] || []
+  return (workGalleries[selectedWork.value.id] || []).map((item) => ({
+    ...item,
+    thumb: item.thumb || selectedWork.value.thumb,
+  }))
 })
 
 const openGalleryForWork = (work, index) => {
@@ -306,7 +350,7 @@ const closeGallery = () => {
   resetTimer()
 }
 
-// ganti kategori → reset slider & tutup gallery
+// ganti kategori + reset slider & tutup gallery
 const setCategory = (id) => {
   activeCategory.value = id
 }
@@ -373,8 +417,8 @@ watch(filteredWorks, () => {
 
             <ul class="portfolio-plan-list">
               <li>{{ cat.highlight }}</li>
-              <li>Style dan color grading bisa disesuaikan karakter / brand kamu.</li>
-              <li>File akhir siap pakai di social media / platform streaming.</li>
+              <li>Style dan color grading bisa disesuaikan karakter atau brand kamu.</li>
+              <li>File akhir siap pakai di social media atau platform streaming.</li>
             </ul>
 
             <button class="btn btn-primary btn-sm portfolio-plan-cta" type="button">
@@ -410,7 +454,7 @@ watch(filteredWorks, () => {
               aria-label="Previous"
               @click="handlePrevClick"
             >
-              ‹
+              &lsaquo;
             </button>
             <button
               type="button"
@@ -418,7 +462,7 @@ watch(filteredWorks, () => {
               aria-label="Next"
               @click="handleNextClick"
             >
-              ›
+              &rsaquo;
             </button>
           </div>
 
@@ -438,6 +482,7 @@ watch(filteredWorks, () => {
               <div
                 class="portfolio-gallery-thumb"
                 :class="`portfolio-gallery-thumb--${work.category}`"
+                :style="{ background: `url(${work.thumb}) center / cover no-repeat` }"
               ></div>
 
               <div class="portfolio-gallery-body">
@@ -488,7 +533,7 @@ watch(filteredWorks, () => {
               >
                 <div
                   class="portfolio-work-gallery-thumb"
-                  :class="`portfolio-gallery-thumb--${selectedWork.category}`"
+                  :style="{ background: `url(${item.thumb}) center / cover no-repeat` }"
                 ></div>
                 <div class="portfolio-work-gallery-label">
                   {{ item.title }}
@@ -510,8 +555,8 @@ watch(filteredWorks, () => {
             </p>
 
             <router-link to="/contact" class="portfolio-cta-button">
-              <span class="portfolio-cta-button-label"> Let’s talk! </span>
-              <span class="portfolio-cta-button-icon"> ↗ </span>
+              <span class="portfolio-cta-button-label"> Let's talk! </span>
+              <span class="portfolio-cta-button-icon"> + </span>
             </router-link>
           </div>
 
@@ -520,6 +565,7 @@ watch(filteredWorks, () => {
               <div
                 class="portfolio-cta-thumb"
                 :class="`portfolio-cta-thumb--${item.category}`"
+                :style="{ background: `url(${item.thumb}) center / cover no-repeat` }"
               ></div>
               <p class="portfolio-cta-thumb-title">
                 {{ item.title }}

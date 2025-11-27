@@ -1,42 +1,82 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 
+import heroPhotography from '../assets/images/hero/photography.jpg'
+import heroThumbnail from '../assets/images/hero/showcase-thumbnail.png'
+import heroHighlight from '../assets/images/hero/showcase-highlight.png'
+import aboutAvatar from '../assets/images/about/avatar-main.png'
+
+import workGraphicsBanner from '../assets/images/works/graphics-banner.png'
+import workGraphicsPoster from '../assets/images/works/graphics-poster.png'
+import workGraphicsOverlay from '../assets/images/works/graphics-overlay.jpg'
+import workGraphicsThumbnail from '../assets/images/works/graphics-thumbnail.png'
+import workEditingHighlight from '../assets/images/works/editing-highlight.jpg'
+import workPhotoPortrait from '../assets/images/works/photo-portrait.jpg'
+
+import commissionOne from '../assets/images/works/commission-1.png'
+import commissionTwo from '../assets/images/works/commission-2.png'
+import commissionThree from '../assets/images/works/commission-3.png'
+
+const heroShowcaseItems = [
+  {
+    id: 'photo-portrait',
+    title: 'Photography',
+    image: heroPhotography,
+  },
+  {
+    id: 'hero-thumb',
+    title: 'Thumbnail & social post',
+    image: heroThumbnail,
+  },
+  {
+    id: 'hero-highlight',
+    title: 'Video highlight & MV',
+    image: heroHighlight,
+  },
+]
+
 // === SELECTED WORKS DI HOME (card yang geser) ===
 const selectedWorksBase = [
   {
     id: 'w1',
     title: 'Social Media Banner',
     category: 'GRAPHICS DESIGN',
+    thumb: workGraphicsBanner,
     gradientClass: 'home-portfolio-thumb--graphics-1',
   },
   {
     id: 'w2',
     title: 'Tournament Poster',
     category: 'GRAPHICS DESIGN',
+    thumb: workGraphicsPoster,
     gradientClass: 'home-portfolio-thumb--graphics-2',
   },
   {
     id: 'w3',
     title: 'osu!profile overlay',
     category: 'GRAPHICS DESIGN',
+    thumb: workGraphicsOverlay,
     gradientClass: 'home-portfolio-thumb--graphics-3',
   },
   {
     id: 'w4',
     title: 'Youtube Thumbnail',
     category: 'GRAPHICS DESIGN',
+    thumb: workGraphicsThumbnail,
     gradientClass: 'home-portfolio-thumb--graphics-4',
   },
   {
     id: 'w5',
     title: 'Highlight Reel',
     category: 'VIDEO EDITING',
+    thumb: workEditingHighlight,
     gradientClass: 'home-portfolio-thumb--editing-1',
   },
   {
     id: 'w6',
     title: 'Concept Shoot',
     category: 'PHOTOGRAPHY',
+    thumb: workPhotoPortrait,
     gradientClass: 'home-portfolio-thumb--photo-1',
   },
 ]
@@ -51,6 +91,7 @@ const commissionSlides = [
     title: 'Ready to do this?',
     subtitle:
       'Siap bantu bikin banner, overlay, dan video yang lebih niat buat stream atau channel kamu.',
+    image: commissionOne,
     background: 'linear-gradient(120deg, #111827, #1e293b, #020617)',
   },
   {
@@ -58,13 +99,15 @@ const commissionSlides = [
     title: 'Need a visual partner?',
     subtitle:
       'Buat project sekali atau jangka panjang, kita bisa ngobrol dulu dan kira-kira-in scope-nya.',
+    image: commissionTwo,
     background: 'linear-gradient(120deg, #1d3557, #457b9d, #1d3557)',
   },
   {
     id: 'c3',
-    title: 'Let’s start something.',
+    title: "Let's start something.",
     subtitle:
       'Ceritain singkat aja idemu. Detail konsep, mood, dan style bisa kita susun pelan-pelan.',
+    image: commissionThree,
     background: 'linear-gradient(120deg, #3b0764, #7e22ce, #db2777)',
   },
 ]
@@ -95,7 +138,7 @@ onUnmounted(() => {
       <div class="container">
         <div class="hero-inner">
           <div>
-            <p class="hero-kicker">PORTFOLIO • COMMISSION</p>
+            <p class="hero-kicker">PORTFOLIO / COMMISSION</p>
             <h1 class="hero-title">
               ShiroTenma<br />
               Visual &amp; Editing.
@@ -118,17 +161,12 @@ onUnmounted(() => {
           <!-- sisi kanan hero: mini showcase -->
           <aside class="hero-showcase">
             <div class="hero-banner-row">
-              <div class="banner-card">
-                <div class="banner-thumb"></div>
-                <p class="banner-title">Stream overlay &amp; banner</p>
-              </div>
-              <div class="banner-card">
-                <div class="banner-thumb"></div>
-                <p class="banner-title">Thumbnail &amp; social post</p>
-              </div>
-              <div class="banner-card">
-                <div class="banner-thumb"></div>
-                <p class="banner-title">Video highlight &amp; MV</p>
+              <div v-for="item in heroShowcaseItems" :key="item.id" class="banner-card">
+                <div
+                  class="banner-thumb"
+                  :style="{ background: `url(${item.image}) center / cover no-repeat` }"
+                ></div>
+                <p class="banner-title">{{ item.title }}</p>
               </div>
             </div>
             <p class="hero-note">
@@ -145,8 +183,11 @@ onUnmounted(() => {
       <div class="container">
         <div class="about-layout">
           <!-- Ilustrasi / avatar -->
-          <div class="about-hello-illustration">
-            <div class="avatar-circle"></div>
+          <div class="about-hello-illustration about-avatar">
+            <div
+              class="avatar-circle"
+              :style="{ background: `url(${aboutAvatar}) center / cover no-repeat` }"
+            ></div>
           </div>
 
           <!-- Teks hello -->
@@ -156,7 +197,7 @@ onUnmounted(() => {
 
             <p class="about-hello-text">
               Aku ngerjain desain visual dan editing buat kebutuhan creator dan project
-              kecil–menengah. Mulai dari stream overlay, banner event, thumbnail, sampai video
+              kecil-menengah. Mulai dari stream overlay, banner event, thumbnail, sampai video
               highlight buat channel.
             </p>
             <p class="about-hello-text">
@@ -234,7 +275,13 @@ onUnmounted(() => {
               :key="work.id + '-loop'"
               class="home-portfolio-card"
             >
-              <div class="home-portfolio-thumb" :class="work.gradientClass"></div>
+              <div
+                class="home-portfolio-thumb"
+                :class="work.gradientClass"
+                :style="
+                  work.thumb ? { background: `url(${work.thumb}) center / cover no-repeat` } : {}
+                "
+              ></div>
 
               <div class="home-portfolio-card-body">
                 <p class="home-portfolio-card-tag">
@@ -259,10 +306,14 @@ onUnmounted(() => {
             :key="slide.id"
             class="home-commission-slide"
             :class="{ 'home-commission-slide--active': index === currentCommissionIndex }"
-            :style="{ backgroundImage: slide.background }"
+            :style="{
+              background: slide.image
+                ? `url(${slide.image}) center / cover no-repeat`
+                : slide.background,
+            }"
           >
             <div class="home-commission-overlay">
-              <p class="home-commission-kicker">Let’s connect</p>
+              <p class="home-commission-kicker">Let's connect</p>
               <h2 class="home-commission-title">
                 {{ slide.title }}
               </h2>

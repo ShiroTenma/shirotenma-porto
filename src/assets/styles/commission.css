@@ -38,11 +38,277 @@
   min-height: 260px;
 }
 
+.commission-card-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 0.4rem;
+}
+
+.commission-showcase {
+  background: #0f1015;
+  color: #f8fafc;
+}
+
+.commission-showcase-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-bottom: 1.6rem;
+}
+
+.commission-showcase-kicker {
+  margin: 0 0 0.4rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+
+.commission-showcase-title {
+  margin: 0;
+  font-size: 1.9rem;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.commission-showcase-link {
+  padding: 0.55rem 1rem;
+  border: 1px solid #22d3ee;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  color: #22d3ee;
+}
+
+.commission-showcase-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.commission-showcase-card {
+  background: #14151c;
+  border-radius: 18px;
+  padding: 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.32);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition:
+    transform 0.16s ease,
+    box-shadow 0.16s ease,
+    border-color 0.16s ease;
+}
+
+.commission-showcase-card--electric {
+  background: #0b2c7d;
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.commission-showcase-card--active {
+  transform: translateY(-4px);
+  border-color: #22d3ee;
+  box-shadow: 0 20px 46px rgba(0, 0, 0, 0.38);
+}
+
+.commission-showcase-top {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 0.9rem;
+  align-items: center;
+}
+
+.commission-showcase-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.commission-showcase-subtitle {
+  margin: 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #cbd5e1;
+}
+
+.commission-showcase-card-title {
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 1.15rem;
+  line-height: 1.25;
+}
+
+.commission-showcase-body {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #d1d5db;
+}
+
+.commission-showcase-thumb {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.commission-showcase-footer {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.88rem;
+  color: #e0f2fe;
+}
+
+.commission-showcase-cta {
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(34, 211, 238, 0.12);
+  border: 1px solid rgba(34, 211, 238, 0.35);
+}
+
+.commission-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.2rem;
+  z-index: 30;
+}
+
+.commission-modal-box {
+  width: 100%;
+  max-width: 960px;
+  max-height: 90vh;
+  background: #0f1117;
+  color: #f8fafc;
+  border-radius: 18px;
+  padding: 1.4rem 1.5rem;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.commission-modal-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.commission-modal-kicker {
+  margin: 0 0 0.3rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+
+.commission-modal-title {
+  margin: 0 0 0.4rem;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+}
+
+.commission-modal-text {
+  margin: 0;
+  color: #cbd5e1;
+}
+
+.commission-modal-close {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #f8fafc;
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  cursor: pointer;
+}
+
+.commission-modal-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0.9rem;
+  padding-right: 0.2rem;
+  overflow-y: auto;
+  max-height: 420px; /* maksimal 2 item tinggi sebelum scroll */
+}
+
+.commission-modal-card {
+  background: #161922;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  min-height: 220px;
+}
+
+.commission-modal-thumb {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-size: cover;
+  background-position: center;
+}
+
+.commission-modal-body {
+  padding: 0.9rem 1rem 0.6rem;
+  flex: 1 1 auto;
+}
+
+.commission-modal-card-title {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.commission-modal-card-text {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #cbd5e1;
+}
+
+.commission-modal-meta {
+  padding: 0 1rem 0.9rem;
+}
+
+.commission-modal-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(34, 211, 238, 0.14);
+  color: #22d3ee;
+  border: 1px solid rgba(34, 211, 238, 0.35);
+}
+
 /* responsive commission hero */
 @media (max-width: 900px) {
   .commission-header {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .commission-showcase-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .commission-showcase-top {
+    grid-template-columns: 1fr;
+  }
+
+  .commission-modal-box {
+    max-height: 88vh;
   }
 }
 
