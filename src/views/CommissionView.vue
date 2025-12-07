@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, onUnmounted } from 'vue'
 
 import graphicsPoster from '../assets/images/works/graphics-poster.png'
 import graphicsOverlay from '../assets/images/works/graphics-overlay.jpg'
@@ -146,6 +146,13 @@ watch(isModalOpen, (open) => {
     body.style.overflow = ''
     html.style.overflow = ''
   }
+})
+
+onUnmounted(() => {
+  const body = document.body
+  const html = document.documentElement
+  if (body) body.style.overflow = ''
+  if (html) html.style.overflow = ''
 })
 </script>
 

@@ -169,6 +169,10 @@ a {
   color: #fff;
 }
 
+.main {
+  background: var(--bg-body);
+}
+
 .section-title {
   font-size: 1.4rem;
   margin: 0 0 1.5rem;
