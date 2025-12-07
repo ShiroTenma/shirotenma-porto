@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 
 import graphicsPoster from '../assets/images/works/graphics-poster.png'
 import graphicsOverlay from '../assets/images/works/graphics-overlay.jpg'
@@ -12,8 +12,9 @@ const packages = [
   {
     id: 'custom',
     name: 'Custom Edits',
-    badge: 'POSTER �?� BANNER �?� THUMBNAIL',
+    badge: 'POSTER / BANNER / THUMBNAIL',
     price: 'Mulai dari $',
+    image: graphicsThumbnail,
     points: [
       'Editing satuan untuk poster, banner, thumbnail, atau overlay.',
       'Cocok buat sekali pakai / event kecil.',
@@ -23,8 +24,9 @@ const packages = [
   {
     id: 'graphics',
     name: 'Graphics Design',
-    badge: 'BRANDING �?� BANNER �?� OVERLAY',
+    badge: 'BRANDING / BANNER / OVERLAY',
     price: 'Mulai dari $$',
+    image: graphicsPoster,
     points: [
       'Paket branding kecil: logo sederhana, palet warna, dan banner.',
       'Satu paket visual supaya feed / channel lebih konsisten.',
@@ -34,8 +36,9 @@ const packages = [
   {
     id: 'video',
     name: 'Video Editing',
-    badge: 'HIGHLIGHT �?� MV �?� CLIPS',
+    badge: 'HIGHLIGHT / MV / CLIPS',
     price: 'Mulai dari $$',
+    image: editingHighlight,
     points: [
       'Paket highlight / MV pendek untuk channel dan media sosial.',
       'Beat-synced cuts, teks dinamis, dan basic motion.',
@@ -131,6 +134,16 @@ const openPackage = (id) => {
 const closeModal = () => {
   activePackageId.value = null
 }
+
+watch(isModalOpen, (open) => {
+  const body = document.body
+  if (!body) return
+  if (open) {
+    body.style.overflow = 'hidden'
+  } else {
+    body.style.overflow = ''
+  }
+})
 </script>
 
 <template>
@@ -160,6 +173,7 @@ const closeModal = () => {
             @click="openPackage(pkg.id)"
             @keydown.enter.prevent="openPackage(pkg.id)"
           >
+            <div v-if="pkg.image" class="commission-card-thumb" :style="{ backgroundImage: `url(${pkg.image})` }"></div>
             <p class="portfolio-plan-badge">
               {{ pkg.badge }}
             </p>
@@ -178,12 +192,9 @@ const closeModal = () => {
               </li>
             </ul>
 
-            <div class="commission-card-actions">
-              <button type="button" class="btn btn-primary btn-sm portfolio-plan-cta">
-                Lihat detail
-              </button>
-              <router-link to="/contact" class="btn btn-outline btn-sm">Contact</router-link>
-            </div>
+            <button type="button" class="btn btn-primary commission-card-fullbtn" @click="openPackage(pkg.id)">
+              Lihat detail
+            </button>
           </article>
         </div>
       </div>
@@ -195,7 +206,7 @@ const closeModal = () => {
         <h2 class="section-title">Testimony</h2>
         <div class="testimony-grid">
           <article v-for="t in testimonies" :key="t.name" class="testimony-card">
-            <p class="testimony-text">�?o{{ t.text }}�??</p>
+            <p class="testimony-text">"{{ t.text }}"</p>
             <p class="testimony-name">{{ t.name }}</p>
             <p class="testimony-role">{{ t.role }}</p>
           </article>
@@ -204,9 +215,9 @@ const closeModal = () => {
     </section>
 
     <!-- MODAL DETAIL OPSI -->
-    <transition name="fade">
+    <transition name="modal-fade">
       <div v-if="isModalOpen" class="commission-modal" @click.self="closeModal">
-        <div class="commission-modal-box">
+        <div class="commission-modal-box" role="dialog" aria-modal="true">
           <header class="commission-modal-head">
             <div>
               <p class="commission-modal-kicker">{{ activePackage?.badge }}</p>

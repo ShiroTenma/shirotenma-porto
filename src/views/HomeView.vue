@@ -4,7 +4,6 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import heroPhotography from '../assets/images/hero/photography.jpg'
 import heroThumbnail from '../assets/images/hero/showcase-thumbnail.png'
 import heroHighlight from '../assets/images/hero/showcase-highlight.png'
-import aboutAvatar from '../assets/images/about/avatar-main.png'
 
 import workGraphicsBanner from '../assets/images/works/graphics-banner.png'
 import workGraphicsPoster from '../assets/images/works/graphics-poster.png'
@@ -17,20 +16,23 @@ import commissionOne from '../assets/images/works/commission-1.png'
 import commissionTwo from '../assets/images/works/commission-2.png'
 import commissionThree from '../assets/images/works/commission-3.png'
 
-const heroShowcaseItems = [
+const heroSlides = [
   {
-    id: 'photo-portrait',
-    title: 'Photography',
+    id: 'hero-photo',
+    title: 'Portrait & event photography',
+    tag: 'Photography',
     image: heroPhotography,
   },
   {
-    id: 'hero-thumb',
-    title: 'Thumbnail & social post',
+    id: 'hero-graphics',
+    title: 'Overlay & graphics design',
+    tag: 'Graphics design',
     image: heroThumbnail,
   },
   {
-    id: 'hero-highlight',
-    title: 'Video highlight & MV',
+    id: 'hero-video',
+    title: 'Highlight & motion edit',
+    tag: 'Video editing',
     image: heroHighlight,
   },
 ]
@@ -114,6 +116,15 @@ const commissionSlides = [
 
 const currentCommissionIndex = ref(0)
 let commissionTimer = null
+const currentHeroIndex = ref(0)
+let heroTimer = null
+
+const startHeroSlider = () => {
+  if (heroTimer) clearInterval(heroTimer)
+  heroTimer = setInterval(() => {
+    currentHeroIndex.value = (currentHeroIndex.value + 1) % heroSlides.length
+  }, 4200)
+}
 
 const startCommissionSlider = () => {
   if (commissionTimer) clearInterval(commissionTimer)
@@ -123,10 +134,12 @@ const startCommissionSlider = () => {
 }
 
 onMounted(() => {
+  startHeroSlider()
   startCommissionSlider()
 })
 
 onUnmounted(() => {
+  if (heroTimer) clearInterval(heroTimer)
   if (commissionTimer) clearInterval(commissionTimer)
 })
 </script>
@@ -152,99 +165,36 @@ onUnmounted(() => {
               <router-link to="/portfolio" class="btn btn-primary btn-sm">
                 Lihat portfolio
               </router-link>
-              <router-link :to="{ path: '/', hash: '#about' }" class="btn btn-outline btn-sm">
-                Tentang saya
-              </router-link>
+              <router-link to="/about" class="btn btn-outline btn-sm"> Tentang saya </router-link>
             </div>
           </div>
 
           <!-- sisi kanan hero: mini showcase -->
           <aside class="hero-showcase">
-            <div class="hero-banner-row">
-              <div v-for="item in heroShowcaseItems" :key="item.id" class="banner-card">
-                <div
-                  class="banner-thumb"
-                  :style="{ background: `url(${item.image}) center / cover no-repeat` }"
-                ></div>
-                <p class="banner-title">{{ item.title }}</p>
+            <div
+              v-for="(slide, index) in heroSlides"
+              :key="slide.id"
+              class="hero-showcase-panel"
+              :class="{ 'hero-showcase-panel--active': index === currentHeroIndex }"
+            >
+              <div class="hero-showcase-visual" :style="{ backgroundImage: `url(${slide.image})` }"></div>
+              <div class="hero-showcase-meta">
+                <p class="hero-showcase-tag">{{ slide.tag }}</p>
+                <h3 class="hero-showcase-title">{{ slide.title }}</h3>
               </div>
             </div>
-            <p class="hero-note">
-              Fokus di warna, mood, dan style yang nyambung sama karakter kamu atau brand-mu.
-            </p>
-          </aside>
-        </div>
-      </div>
-    </section>
 
-    <!-- ABOUT (di-home, nav About scroll ke sini) -->
-    <!-- ABOUT (Hello hero) -->
-    <section id="about" class="section about-hello-section">
-      <div class="container">
-        <div class="about-layout">
-          <!-- Ilustrasi / avatar -->
-          <div class="about-hello-illustration about-avatar">
-            <div
-              class="avatar-circle"
-              :style="{ background: `url(${aboutAvatar}) center / cover no-repeat` }"
-            ></div>
-          </div>
-
-          <!-- Teks hello -->
-          <div class="about-hello-body">
-            <p class="about-hello-kicker">HELLO!</p>
-            <h2 class="about-hello-title">Aku ShiroTenma.</h2>
-
-            <p class="about-hello-text">
-              Aku ngerjain desain visual dan editing buat kebutuhan creator dan project
-              kecil-menengah. Mulai dari stream overlay, banner event, thumbnail, sampai video
-              highlight buat channel.
-            </p>
-            <p class="about-hello-text">
-              Fokusku ada di mood, warna, dan style yang nyambung sama karakter kamu atau brand yang
-              lagi kamu bangun.
-            </p>
-
-            <div class="about-hello-tags">
-              <span class="about-hello-tag">Graphics design</span>
-              <span class="about-hello-tag">Video editing</span>
-              <span class="about-hello-tag">Streaming overlay</span>
+            <div class="hero-showcase-dots">
+              <button
+                v-for="(slide, index) in heroSlides"
+                :key="slide.id + '-dot'"
+                type="button"
+                class="hero-showcase-dot"
+                :class="{ 'hero-showcase-dot--active': index === currentHeroIndex }"
+                @click="currentHeroIndex = index"
+              ></button>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT DETAILS (Experience / Tools / Hobbies) -->
-    <section class="section about-details-section">
-      <div class="container">
-        <div class="about-details-grid">
-          <div class="about-details-col">
-            <h3 class="about-details-title">Experience</h3>
-            <ul class="about-details-list">
-              <li>Freelance graphics &amp; video untuk streamer &amp; VTuber.</li>
-              <li>Desain banner &amp; poster event online.</li>
-              <li>Social media visual untuk beberapa brand kecil.</li>
-            </ul>
-          </div>
-
-          <div class="about-details-col">
-            <h3 class="about-details-title">Tools</h3>
-            <ul class="about-details-list">
-              <li>Photoshop / Clip Studio Paint</li>
-              <li>After Effects / Premiere</li>
-              <li>OBS overlay &amp; streaming assets</li>
-            </ul>
-          </div>
-
-          <div class="about-details-col">
-            <h3 class="about-details-title">Hobbies</h3>
-            <ul class="about-details-list">
-              <li>Game rhythm &amp; gacha.</li>
-              <li>Eksperimen color grading &amp; poster fanart.</li>
-              <li>Ngulik layout dan typography buat fun.</li>
-            </ul>
-          </div>
+          </aside>
         </div>
       </div>
     </section>

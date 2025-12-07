@@ -7,6 +7,7 @@ import './assets/styles/base.css'
 import './assets/styles/portfolio.css'
 import './assets/styles/commission.css'
 import './assets/styles/home.css'
+import './assets/styles/about.css'
 
 const app = createApp(App)
 
