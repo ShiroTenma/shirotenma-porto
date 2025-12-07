@@ -212,15 +212,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 3vh 1.6rem;
+  padding: 2vh 0.9rem;
   z-index: 30;
-  overflow-y: auto;
+  overflow: hidden;
+  overscroll-behavior: contain;
 }
 
 .commission-modal-box {
   width: 100%;
-  max-width: 960px;
-  max-height: 80vh;
+  max-width: 920px;
+  width: min(920px, 100% - 1.1rem);
+  max-height: 88vh;
   background: #0f1117;
   color: #f8fafc;
   border-radius: 18px;
@@ -274,10 +276,12 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.1rem;
-  padding-right: 0.2rem;
+  padding-right: 0.4rem;
   padding-bottom: 0.2rem;
   overflow-y: auto;
-  max-height: 60vh; /* lebih lega dan menjaga tidak melebihi viewport */
+  max-height: none;
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
 .commission-modal-card {
@@ -330,9 +334,10 @@
 
 .commission-modal-thumb {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 .commission-modal-body {
@@ -384,11 +389,54 @@
   }
 
   .commission-modal-box {
-    max-height: 88vh;
+    max-height: 86vh;
+    padding: 1rem 1.1rem;
   }
 
   .commission-modal-options {
-    max-height: 420px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .commission-hero {
+    padding: 2.8rem 0 2.6rem;
+  }
+
+  .commission-plan-row {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .commission-plan-card {
+    min-height: auto;
+    padding: 1.6rem 1.4rem 1.7rem;
+  }
+
+  .commission-card-fullbtn {
+    padding: 0.55rem 1rem;
+  }
+
+  .commission-modal {
+    align-items: center;
+    padding: 2.4rem 0.8rem;
+  }
+
+  .commission-modal-box {
+    max-height: 82vh;
+    margin: 0 auto;
+    width: calc(100% - 1.2rem);
+    padding: 0.9rem 1rem;
+  }
+
+  .commission-modal-options {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .commission-testimony {
+    padding-top: 1.6rem;
+    padding-bottom: 2rem;
   }
 }
 
@@ -398,6 +446,10 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
+}
+
+.commission-testimony {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.08));
 }
 
 .testimony-card {

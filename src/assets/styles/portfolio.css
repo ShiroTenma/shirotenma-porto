@@ -282,6 +282,20 @@
   .portfolio-cta-title {
     font-size: 1.4rem;
   }
+
+  .portfolio-carousel {
+    padding: 0 1rem;
+  }
+
+  .portfolio-carousel-track {
+    gap: 0.9rem;
+    padding: 0.4rem 0.5rem 1rem;
+  }
+
+  .portfolio-carousel-card {
+    min-width: 240px;
+    max-width: 240px;
+  }
 }
 
 /* CAROUSEL – manual + auto step */
@@ -525,6 +539,39 @@
 @media (max-width: 768px) {
   .portfolio-work-gallery-card--featured {
     grid-column: span 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .portfolio-hero {
+    padding: 2.6rem 0 2.1rem;
+  }
+
+  .portfolio-plan-row {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+    margin-top: 1.6rem;
+  }
+
+  .portfolio-carousel {
+    padding: 0 0.6rem;
+    margin-top: 0.6rem;
+  }
+
+  .portfolio-carousel-track {
+    gap: 0.7rem;
+    padding: 0.3rem 0.4rem 0.8rem;
+    scroll-padding-left: 0.4rem;
+  }
+
+  .portfolio-carousel-card {
+    min-width: 210px;
+    max-width: 210px;
+  }
+
+  .portfolio-gallery-thumb {
+    aspect-ratio: 4 / 3;
+    height: auto;
   }
 }
 

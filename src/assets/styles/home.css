@@ -341,4 +341,18 @@
   .home-commission-title {
     font-size: 1.5rem;
   }
+
+  .home-portfolio-loop {
+    padding: 0.8rem 0;
+  }
+
+  .home-portfolio-loop-inner {
+    padding: 0 1rem;
+    gap: 0.9rem;
+  }
+
+  .home-portfolio-card {
+    min-width: 180px;
+    max-width: 180px;
+  }
 }

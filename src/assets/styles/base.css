@@ -63,6 +63,7 @@ a {
   position: sticky;
   top: 0;
   z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .header-inner {
@@ -99,6 +100,7 @@ a {
   background: #111;
   color: #f9f9f9;
   margin-top: 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .footer-grid {
@@ -484,5 +486,28 @@ textarea::placeholder {
 
   .footer-grid {
     grid-template-columns: 1fr;
+  }
+
+  .hero-showcase {
+    min-height: 220px;
+    padding: 0.8rem;
+  }
+
+  .hero-showcase-panel {
+    gap: 0.7rem;
+  }
+
+  .container {
+    padding: 0 1.1rem;
+  }
+
+  .section {
+    padding: 2.2rem 0;
+  }
+
+  .site-header {
+    position: sticky;
+    top: 0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
   }
 }

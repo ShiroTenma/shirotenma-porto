@@ -137,11 +137,14 @@ const closeModal = () => {
 
 watch(isModalOpen, (open) => {
   const body = document.body
-  if (!body) return
+  const html = document.documentElement
+  if (!body || !html) return
   if (open) {
     body.style.overflow = 'hidden'
+    html.style.overflow = 'hidden'
   } else {
     body.style.overflow = ''
+    html.style.overflow = ''
   }
 })
 </script>
@@ -201,7 +204,7 @@ watch(isModalOpen, (open) => {
     </section>
 
     <!-- TESTIMONY -->
-    <section class="section">
+    <section class="section commission-testimony">
       <div class="container">
         <h2 class="section-title">Testimony</h2>
         <div class="testimony-grid">
