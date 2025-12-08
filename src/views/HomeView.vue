@@ -205,46 +205,49 @@ onUnmounted(() => {
     <!-- SELECTED WORKS: CARD YANG GESER -->
     <section id="home-portfolio" class="section home-portfolio-section">
       <div class="container">
-        <div v-inview class="home-portfolio-header">
-          <div>
-            <h2 class="home-portfolio-title">Selected Works</h2>
-            <p class="home-portfolio-text">
-              Beberapa judul karya dari kategori graphics, editing, dan photography. Untuk list
-              lengkap, kamu bisa cek halaman portfolio atau detail commission.
-            </p>
-
-            <!-- tombol commission di bawah teks -->
-            <router-link to="/commission" class="btn btn-primary btn-sm home-portfolio-cta">
-              Lihat commission
-            </router-link>
+        <div v-inview class="home-portfolio-block">
+          <div class="home-portfolio-hero">
+            <div class="home-portfolio-hero-left">
+              <h2 class="home-portfolio-title">Selected Works</h2>
+              <p class="home-portfolio-text"></p>
+              <router-link to="/commission" class="btn btn-primary btn-sm home-portfolio-cta">
+                Lihat commission
+              </router-link>
+            </div>
+            <div class="home-portfolio-hero-right">
+              <p class="home-portfolio-hero-desc">
+                Beberapa judul karya dari kategori graphics, editing, dan photography. Untuk list
+                lengkap, kamu bisa cek halaman portfolio atau detail commission.
+              </p>
+            </div>
           </div>
-        </div>
 
-        <!-- deretan card yang auto-geser -->
-        <div v-inview class="home-portfolio-loop">
-          <div class="home-portfolio-loop-inner">
-            <article
-              v-for="work in selectedWorks"
-              :key="work.id + '-loop'"
-              class="home-portfolio-card"
-            >
-              <div
-                class="home-portfolio-thumb"
-                :class="work.gradientClass"
-                :style="
-                  work.thumb ? { background: `url(${work.thumb}) center / cover no-repeat` } : {}
-                "
-              ></div>
+          <!-- deretan card yang auto-geser -->
+          <div class="home-portfolio-loop">
+            <div class="home-portfolio-loop-inner">
+              <article
+                v-for="work in selectedWorks"
+                :key="work.id + '-loop'"
+                class="home-portfolio-card"
+              >
+                <div
+                  class="home-portfolio-thumb"
+                  :class="work.gradientClass"
+                  :style="
+                    work.thumb ? { background: `url(${work.thumb}) center / cover no-repeat` } : {}
+                  "
+                ></div>
 
-              <div class="home-portfolio-card-body">
-                <p class="home-portfolio-card-tag">
-                  {{ work.category }}
-                </p>
-                <h3 class="home-portfolio-card-title">
-                  {{ work.title }}
-                </h3>
-              </div>
-            </article>
+                <div class="home-portfolio-card-body">
+                  <p class="home-portfolio-card-tag">
+                    {{ work.category }}
+                  </p>
+                  <h3 class="home-portfolio-card-title">
+                    {{ work.title }}
+                  </h3>
+                </div>
+              </article>
+            </div>
           </div>
         </div>
       </div>

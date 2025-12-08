@@ -115,23 +115,44 @@
   background: #ffffff;
 }
 
-.home-portfolio-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 1.5rem;
-  margin-bottom: 1.4rem;
+.home-portfolio-block {
+  background: linear-gradient(135deg, #e5e8eb, #e2ecf0);
+  border-radius: 22px;
+  box-shadow: var(--shadow-soft);
+  padding: 1.8rem 1.9rem 1.4rem;
 }
 
 .home-portfolio-title {
-  margin: 0 0 0.4rem;
-  font-size: 1.4rem;
+  margin: 0 0 0.2rem;
+  font-size: 2.8rem;
 }
 
 .home-portfolio-text {
   margin: 0 0 0.7rem;
-  font-size: 0.95rem;
+  font-size: 1.25rem;
   color: var(--text-muted);
+}
+
+.home-portfolio-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 1.5rem;
+  padding: 0.1rem 0 0.4rem;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+.home-portfolio-hero-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.home-portfolio-hero-desc {
+  margin: 0;
+  max-width: 22rem;
+  color: #4b5563;
+  line-height: 1.5;
+  font-size: 0.95rem;
 }
 
 /* tombol commission di bawah teks */
@@ -143,9 +164,10 @@
 .home-portfolio-loop {
   position: relative;
   overflow: hidden;
-  border-radius: 24px;
-  background: #f3f4f6;
-  padding: 1.1rem 0;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.65);
+  padding: 1.1rem 0.25rem;
+  margin-top: 0.35rem;
 }
 
 /* deretan card geser */
@@ -167,7 +189,9 @@
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
 }
 
 .home-portfolio-card:hover {
@@ -238,7 +262,8 @@
 /* === HOME: COMMISSION CTA SLIDER === */
 
 .home-commission-section {
-  padding-top: 0;
+  padding-top: 1.4rem;
+  padding-bottom: 1.6rem;
 }
 
 .home-commission-inner {
@@ -273,7 +298,7 @@
 .home-commission-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2));
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.3));
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -320,9 +345,16 @@
     grid-template-columns: 1fr;
   }
 
-  .home-portfolio-header {
-    flex-direction: column;
-    align-items: flex-start;
+  .home-portfolio-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .home-portfolio-hero-right {
+    justify-content: flex-start;
+  }
+
+  .home-portfolio-hero-desc {
+    max-width: none;
   }
 }
 
@@ -336,7 +368,7 @@
   }
 
   .home-portfolio-loop {
-    padding: 0.8rem 0;
+    padding: 0.8rem 0.2rem;
   }
 
   .home-portfolio-loop-inner {

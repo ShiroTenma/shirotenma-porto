@@ -117,6 +117,12 @@ const tools = [
   'Lightroom',
   'Canva',
 ]
+
+const ctaBackgroundStyle = {
+  backgroundImage: `linear-gradient(120deg, rgba(15,17,23,0.88), rgba(15,17,23,0.55)), url(${commissionOne})`,
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+}
 </script>
 
 <template>
@@ -254,18 +260,20 @@ const tools = [
 
     <!-- CTA -->
     <section class="section about-cta">
-      <div v-inview class="container about-cta-box">
-        <div>
-          <p class="about-kicker">Let’s collaborate</p>
+      <div v-inview class="container about-cta-box" :style="ctaBackgroundStyle">
+        <div class="about-cta-left">
           <h2 class="about-section-title">Punya ide untuk poster, atau video?</h2>
-          <p class="about-section-text">
+          <p class="about-kicker">Let’s collaborate</p>
+          <div class="about-cta-actions about-cta-actions--stack">
+            <router-link to="/commission" class="btn btn-primary btn-sm">Lihat paket</router-link>
+            <router-link to="/contact" class="btn btn-outline btn-sm">Hubungi</router-link>
+          </div>
+        </div>
+        <div class="about-cta-right">
+          <p class="about-section-text about-cta-desc">
             Ceritakan saja secara singkat, nanti kita susun moodboard bareng sampe cocok! baru
             sisanya aku kerjakan.
           </p>
-        </div>
-        <div class="about-cta-actions">
-          <router-link to="/commission" class="btn btn-primary btn-sm">Lihat paket</router-link>
-          <router-link to="/contact" class="btn btn-outline btn-sm">Hubungi</router-link>
         </div>
       </div>
     </section>

@@ -125,7 +125,9 @@
   box-shadow: var(--shadow-soft);
   display: flex;
   flex-direction: column;
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
 }
 
 .about-card:hover {
@@ -267,24 +269,53 @@
 }
 
 .about-cta {
-  background: #0f1015;
+  background: transparent;
   color: #f8fafc;
+  padding-bottom: 0.8rem;
+}
+
+.about-page .section:last-of-type {
+  padding-bottom: 0.4rem;
+  margin-bottom: 0;
 }
 
 .about-cta-box {
-  border-radius: 18px;
-  padding: 1.6rem 1.8rem;
-  background: linear-gradient(120deg, #1e293b, #111827);
-  display: flex;
+  border-radius: 22px;
+  padding: 1.8rem 2rem;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.514);
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  gap: 1.4rem;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .about-cta-actions {
   display: flex;
   gap: 0.6rem;
   flex-wrap: wrap;
+}
+
+.about-cta-actions--stack {
+  margin: 1rem 0;
+}
+
+.about-cta-left h2 {
+  margin: 0.2rem 0 0.2rem;
+}
+
+.about-cta-desc {
+  margin: 0;
+  color: #e5e7eb;
+  line-height: 1.6;
+}
+
+.about-cta-right {
+  display: flex;
+  justify-content: flex-end;
 }
 
 @media (max-width: 900px) {
@@ -297,7 +328,7 @@
   }
 
   .about-cta-box {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     align-items: flex-start;
   }
 }

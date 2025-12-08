@@ -7,12 +7,13 @@
       </div>
 
       <div>
-        <h4 class="footer-heading">Features</h4>
+        <h4 class="footer-heading">The Web</h4>
         <ul class="footer-list">
-          <li>Core features</li>
-          <li>Pro experience</li>
-          <li>Integrations</li>
-          <li>Learn more</li>
+          <li>Home</li>
+          <li>About</li>
+          <li>Portfolio</li>
+          <li>Commission</li>
+          <li>Contact</li>
         </ul>
       </div>
 
