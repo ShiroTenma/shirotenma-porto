@@ -1,16 +1,16 @@
 /* === PORTFOLIO PLAN STYLE (3 kartu kategori) === */
 
 .portfolio-hero {
-  background: #ff5a2a; /* oranye ala contoh, bisa kamu tweak */
-  color: #fff;
+  background: linear-gradient(135deg, #1f6f73, #0f2930);
+  color: #e9f6f7;
 }
 
 .portfolio-hero .page-title {
-  color: #fff;
+  color: #e9f6f7;
 }
 
 .portfolio-hero .page-subtitle {
-  color: #ffe6db;
+  color: #c6e6e8;
 }
 
 .portfolio-plan-row {
@@ -128,7 +128,7 @@
   border-radius: 26px;
   overflow: hidden;
   position: relative;
-  background: linear-gradient(120deg, #f97316, #ea580c, #111827);
+  background: linear-gradient(120deg, #1f6f73, #23a3a6, #0f172a);
   color: #ffffff;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
   display: flex;

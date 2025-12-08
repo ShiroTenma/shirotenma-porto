@@ -23,7 +23,7 @@ const handleSubmit = () => {
 <template>
   <div class="page">
     <section class="section section-dark">
-      <div class="container contact-layout">
+      <div v-inview class="container contact-layout">
         <div>
           <h1 class="page-title">Interested with these?</h1>
           <p class="page-subtitle">
