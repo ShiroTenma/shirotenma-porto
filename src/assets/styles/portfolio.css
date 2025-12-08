@@ -114,6 +114,20 @@
   gap: 1.2rem;
 }
 
+@media (max-width: 900px) {
+  .portfolio-head-grid {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+}
+
+.portfolio-head-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: 1.2rem;
+}
+
 .portfolio-wide-title {
   font-size: 2.2rem;
   font-weight: 800;
@@ -567,15 +581,20 @@
 }
 
 /* animasi fade in/out waktu gallery muncul/hilang */
+/* shared fade/swap transitions */
 .fade-enter-active,
-.fade-leave-active {
+.fade-leave-active,
+.swap-enter-active,
+.swap-leave-active {
   transition:
-    opacity 0.2s ease,
-    transform 0.2s ease;
+    opacity 0.35s ease,
+    transform 0.35s ease;
 }
 
 .fade-enter-from,
-.fade-leave-to {
+.fade-leave-to,
+.swap-enter-from,
+.swap-leave-to {
   opacity: 0;
-  transform: translateY(8px);
+  transform: translateY(10px);
 }

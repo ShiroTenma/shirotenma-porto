@@ -448,62 +448,64 @@ watch(filteredWorks, () => {
         </div>
 
         <!-- SLIDER -->
-        <div v-inview class="portfolio-carousel">
-          <div class="portfolio-carousel-controls">
-            <button
-              type="button"
-              class="portfolio-carousel-arrow"
-              aria-label="Previous"
-              @click="handlePrevClick"
-            >
-              &lsaquo;
-            </button>
-            <button
-              type="button"
-              class="portfolio-carousel-arrow"
-              aria-label="Next"
-              @click="handleNextClick"
-            >
-              &rsaquo;
-            </button>
-          </div>
+        <transition name="swap">
+          <div v-inview :key="activeCategory" class="portfolio-carousel">
+            <div class="portfolio-carousel-controls">
+              <button
+                type="button"
+                class="portfolio-carousel-arrow"
+                aria-label="Previous"
+                @click="handlePrevClick"
+              >
+                &lsaquo;
+              </button>
+              <button
+                type="button"
+                class="portfolio-carousel-arrow"
+                aria-label="Next"
+                @click="handleNextClick"
+              >
+                &rsaquo;
+              </button>
+            </div>
 
-          <div ref="carouselRef" class="portfolio-carousel-track">
-            <article
-              v-for="(work, index) in filteredWorks"
-              :key="work.id"
-              class="portfolio-carousel-card"
-              :class="{
-                'portfolio-carousel-card--active': index === activeIndex,
-              }"
-              role="button"
-              tabindex="0"
-              @click="openGalleryForWork(work, index)"
-              @keydown.enter.prevent="openGalleryForWork(work, index)"
-            >
-              <div
-                class="portfolio-gallery-thumb"
-                :class="`portfolio-gallery-thumb--${work.category}`"
-                :style="{ background: `url(${work.thumb}) center / cover no-repeat` }"
-              ></div>
+            <div ref="carouselRef" class="portfolio-carousel-track">
+              <article
+                v-for="(work, index) in filteredWorks"
+                :key="work.id"
+                class="portfolio-carousel-card"
+                :class="{
+                  'portfolio-carousel-card--active': index === activeIndex,
+                }"
+                role="button"
+                tabindex="0"
+                @click="openGalleryForWork(work, index)"
+                @keydown.enter.prevent="openGalleryForWork(work, index)"
+              >
+                <div
+                  class="portfolio-gallery-thumb"
+                  :class="`portfolio-gallery-thumb--${work.category}`"
+                  :style="{ background: `url(${work.thumb}) center / cover no-repeat` }"
+                ></div>
 
-              <div class="portfolio-gallery-body">
-                <span class="portfolio-gallery-tag">
-                  {{ work.tag }}
-                </span>
-                <h3 class="portfolio-gallery-title">
-                  {{ work.title }}
-                </h3>
-                <p class="portfolio-gallery-text">
-                  {{ work.desc }}
-                </p>
-              </div>
-            </article>
+                <div class="portfolio-gallery-body">
+                  <span class="portfolio-gallery-tag">
+                    {{ work.tag }}
+                  </span>
+                  <h3 class="portfolio-gallery-title">
+                    {{ work.title }}
+                  </h3>
+                  <p class="portfolio-gallery-text">
+                    {{ work.desc }}
+                  </p>
+                </div>
+              </article>
+            </div>
           </div>
-        </div>
+        </transition>
 
         <!-- GALLERY DETAIL DI BAWAH SLIDER (kayak Works of Artists) -->
-        <transition name="fade">
+        <transition name="swap">
           <section v-if="selectedWork" v-inview class="portfolio-work-gallery">
             <div class="portfolio-work-gallery-header">
               <div>

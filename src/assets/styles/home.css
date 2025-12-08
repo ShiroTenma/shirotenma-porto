@@ -325,6 +325,11 @@
   color: #e5e7eb;
 }
 
+.home-commission-overlay .btn {
+  align-self: flex-start;
+  min-width: 140px;
+}
+
 /* === RESPONSIVE === */
 
 @media (max-width: 900px) {

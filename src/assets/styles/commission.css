@@ -24,6 +24,13 @@
   align-items: center;
 }
 
+.commission-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
 .commission-header-actions {
   display: flex;
   justify-content: flex-end;
