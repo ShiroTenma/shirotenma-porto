@@ -8,6 +8,8 @@ import graphicsThumbnail from '../assets/images/works/graphics-thumbnail.png'
 
 import editingHighlight from '../assets/images/works/editing-highlight.jpg'
 import editingMotion from '../assets/images/works/editing-motion.png'
+import lyricsMV from '../assets/images/hero/showcase-highlight.png'
+import editingAmv from '../assets/images/works/editing-amv.jpg'
 
 import photoPortrait from '../assets/images/works/photo-portrait.jpg'
 import photoEvents from '../assets/images/works/photo-events.jpg'
@@ -18,23 +20,24 @@ const categories = [
     name: 'Graphics Design',
     badge: 'POSTER / BANNER / SOCIAL',
     priceText: 'Branding kecil, banner, overlay, dan social media assets.',
-    highlight: 'Basic visual identity untuk streamer atau event brand kecil.',
+    highlight: 'Basic visual identity untuk kebutuhan sosial media atau event brand kecil.',
     tone: 'light',
   },
   {
     id: 'editing',
     name: 'Editing',
     badge: 'VIDEO / MOTION / CLIPS',
-    priceText: 'Video pendek, highlight, dan MV untuk konten digital.',
-    highlight: 'Pas buat channel YouTube, VTuber, atau content creator.',
+    priceText: 'Video pendek, Custom MV edits, dan Motion Graphics untuk konten digital.',
+    highlight:
+      'Pas buat channel YouTube, VTuber, atau content creator. atau sekedar hiburan pribadi.',
     tone: 'dark',
   },
   {
     id: 'photo',
     name: 'Photography',
-    badge: 'COLOR GRADING / PORTRAIT',
-    priceText: 'Fotografi dengan color grading dramatis dan stylized.',
-    highlight: 'Untuk poster, cover, atau personal project.',
+    badge: 'COSPLAY / PORTRAIT',
+    priceText: 'Fotografi dengan color grading stylized.',
+    highlight: 'Untuk poster, Sosial Media, atau personal project.',
     tone: 'light',
   },
 ]
@@ -45,7 +48,7 @@ const works = [
     id: 'g-1',
     category: 'graphics',
     title: 'Social Media Banner',
-    desc: 'Banner livestream dengan tema neon dan glitch.',
+    desc: 'Banner Sosial media dengan beragam tema menyesuaikan dengan permintaan klien.',
     tag: 'Graphics Design',
     thumb: graphicsBanner,
   },
@@ -53,7 +56,7 @@ const works = [
     id: 'g-2',
     category: 'graphics',
     title: 'osu!mapset background manipulation',
-    desc: 'Poster turnamen dengan layout tipografi kuat.',
+    desc: 'Background Map yang di manipulasi sesuai dengan vibe fanart dan lagunya agar terlihat menarik.',
     tag: 'Graphics Design',
     thumb: graphicsPoster,
   },
@@ -61,7 +64,7 @@ const works = [
     id: 'g-3',
     category: 'graphics',
     title: 'osu!profile overlay',
-    desc: 'Overlay untuk VTuber atau streamer dengan style custom.',
+    desc: 'Overlay untuk osu!profile style custom.',
     tag: 'Graphics Design',
     thumb: graphicsOverlay,
   },
@@ -69,7 +72,7 @@ const works = [
     id: 'g-4',
     category: 'graphics',
     title: 'Youtube Thumbnail',
-    desc: 'Varian lain banner livestream dengan komposisi berbeda.',
+    desc: 'Thumbnail yang bisa di sesuaikan dengan vibe dan kemauan klien.',
     tag: 'Graphics Design',
     thumb: graphicsThumbnail,
   },
@@ -77,7 +80,7 @@ const works = [
     id: 'g-5',
     category: 'graphics',
     title: 'Instagram Post',
-    desc: 'Versi alternatif poster turnamen dengan fokus tipografi.',
+    desc: 'Poster untuk kebutuhan Promosi atau Sekedar konten di Instagram.',
     tag: 'Graphics Design',
     thumb: graphicsPoster,
   },
@@ -85,7 +88,7 @@ const works = [
     id: 'g-6',
     category: 'graphics',
     title: 'More Designs',
-    desc: 'Overlay tambahan untuk variasi scene dan transition.',
+    desc: 'Semua hasil desain selain yang disebut diatas.',
     tag: 'Graphics Design',
     thumb: graphicsOverlay,
   },
@@ -94,7 +97,7 @@ const works = [
     id: 'e-1',
     category: 'editing',
     title: 'Custom Edit',
-    desc: 'Montage pendek dengan beat-synced cuts.',
+    desc: 'Montage pendek dengan beat-synced cuts, dengan effects dan lain sebagainya sesuai request klien.',
     tag: 'Video Editing',
     thumb: editingHighlight,
   },
@@ -102,15 +105,15 @@ const works = [
     id: 'e-2',
     category: 'editing',
     title: 'Anime Movie Clip / AMV / PMV',
-    desc: 'Vertical clip untuk TikTok atau Shorts dengan teks dinamis.',
+    desc: 'MV untuk Media TikTok atau Youtube atau Instagram dengan effects, teks dinamis, serta medianya sendiri.',
     tag: 'Video Editing',
-    thumb: editingMotion,
+    thumb: editingAmv,
   },
   {
     id: 'e-3',
     category: 'editing',
     title: 'Motion Graphics',
-    desc: 'Music video lirik dengan animasi tipografi.',
+    desc: 'Music video lirik dengan animasi tipografi serta Gerakan geometri yang anggun dan menarik.',
     tag: 'Video Editing',
     thumb: editingMotion,
   },
@@ -118,15 +121,15 @@ const works = [
     id: 'e-4',
     category: 'editing',
     title: 'Lyrics MV',
-    desc: 'Music video lirik dengan animasi tipografi.',
+    desc: 'Music video lirik dengan animasi tipografi disertai dengan Motion Graphics dan Art dari klien.',
     tag: 'Video Editing',
-    thumb: editingMotion,
+    thumb: lyricsMV,
   },
   {
     id: 'e-5',
     category: 'editing',
     title: 'More Video Editing Samples',
-    desc: 'Varian edit lain sesuai mood board.',
+    desc: 'Varian hasil video editing lainnya.',
     tag: 'Video Editing',
     thumb: editingHighlight,
   },
@@ -135,7 +138,7 @@ const works = [
     id: 'p-1',
     category: 'photo',
     title: 'Cosplay Photography',
-    desc: 'Street shot dengan lighting malam dan color grading kuat.',
+    desc: 'Foto konsep dengan tema karakter atau cosplay dengan Editing yang menyesuaikan vibe karakter.',
     tag: 'Photography',
     thumb: photoPortrait,
   },
@@ -143,7 +146,7 @@ const works = [
     id: 'p-2',
     category: 'photo',
     title: 'Wedding Photography',
-    desc: 'Foto konsep dengan tema karakter atau cosplay.',
+    desc: 'Foto dokumentasi acara pernikahan dengan style candid dan dramatis serta formal.',
     tag: 'Photography',
     thumb: photoEvents,
   },
@@ -151,7 +154,7 @@ const works = [
     id: 'p-3',
     category: 'photo',
     title: 'Graduation Photography',
-    desc: 'Foto untuk cover playlist atau album.',
+    desc: 'Foto dokumentasi acara wisuda dengan style candid dan dramatis serta formal.',
     tag: 'Photography',
     thumb: photoEvents,
   },
@@ -159,7 +162,7 @@ const works = [
     id: 'p-4',
     category: 'photo',
     title: 'Big Events Documentation',
-    desc: 'Foto potret dengan lighting dramatis dan mood kuat.',
+    desc: 'Foto dokumentasi acara besar seperti konser, lomba, atau acara kampus.',
     tag: 'Photography',
     thumb: photoEvents,
   },
@@ -167,7 +170,7 @@ const works = [
     id: 'p-5',
     category: 'photo',
     title: 'More Photography Samples',
-    desc: 'Foto potret tambahan untuk variasi style.',
+    desc: 'Foto dengan berbagai konsep dan tema lainnya.',
     tag: 'Photography',
     thumb: photoPortrait,
   },
@@ -448,7 +451,7 @@ watch(filteredWorks, () => {
         </div>
 
         <!-- SLIDER -->
-        <transition name="swap">
+        <transition name="swap" mode="out-in">
           <div v-inview :key="activeCategory" class="portfolio-carousel">
             <div class="portfolio-carousel-controls">
               <button
@@ -505,8 +508,13 @@ watch(filteredWorks, () => {
         </transition>
 
         <!-- GALLERY DETAIL DI BAWAH SLIDER (kayak Works of Artists) -->
-        <transition name="swap">
-          <section v-if="selectedWork" v-inview class="portfolio-work-gallery">
+        <transition name="gallery" mode="out-in">
+          <section
+            v-if="selectedWork"
+            v-inview
+            :key="selectedWork?.id || 'none'"
+            class="portfolio-work-gallery"
+          >
             <div class="portfolio-work-gallery-header">
               <div>
                 <p class="portfolio-work-gallery-kicker">
