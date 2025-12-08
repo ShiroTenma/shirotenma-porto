@@ -161,7 +161,7 @@ onUnmounted(() => {
     <!-- HERO + PLAN CARDS -->
     <section class="section section-dark commission-hero">
       <div class="container">
-        <div class="commission-header">
+        <div v-inview class="commission-header">
           <h1 class="page-title">Commission!</h1>
           <p class="page-subtitle commission-subtitle">
             Tertarik buat pesen desain atau editing? Pilih paket yang paling pas di bawah ini.
@@ -173,10 +173,11 @@ onUnmounted(() => {
           </p>
         </div>
 
-        <div class="portfolio-plan-row commission-plan-row">
+        <div v-inview class="portfolio-plan-row commission-plan-row">
           <article
             v-for="pkg in packages"
             :key="pkg.id"
+            v-inview
             class="portfolio-plan-card portfolio-plan-card--light commission-plan-card"
             role="button"
             tabindex="0"
@@ -214,7 +215,7 @@ onUnmounted(() => {
     <section class="section commission-testimony">
       <div class="container">
         <h2 class="section-title">Testimony</h2>
-        <div class="testimony-grid">
+        <div v-inview class="testimony-grid">
           <article v-for="t in testimonies" :key="t.name" class="testimony-card">
             <p class="testimony-text">"{{ t.text }}"</p>
             <p class="testimony-name">{{ t.name }}</p>

@@ -1,35 +1,36 @@
 <script setup>
 import avatarMain from '../assets/images/about/avatar-main.png'
 
-import graphicsPoster from '../assets/images/works/graphics-poster.png'
-import graphicsOverlay from '../assets/images/works/graphics-overlay.jpg'
-import editingHighlight from '../assets/images/works/editing-highlight.jpg'
-import commissionOne from '../assets/images/works/commission-1.png'
-import commissionTwo from '../assets/images/works/commission-2.png'
+import graphicsAllBanners from '../assets/images/works/graphics-all-banners.jpg'
+import graphicsOverlay from '../assets/images/works/editing-highlight.jpg'
+import commissionOne from '../assets/images/works/banner-comms.jpg'
+import commissionTwo from '../assets/images/works/editing-motion.png'
+import cosplayPhoto from '../assets/images/works/photo-cosplay1.jpg'
+import commissionThree from '../assets/images/works/cosplay-comms.jpg'
 
 const worksShowcase = [
   {
     id: 'w1',
-    title: 'Tournament poster series',
+    title: 'Social Media Banners',
     tag: 'Graphics',
-    desc: 'Poster + story + feed square untuk event daring.',
-    image: graphicsPoster,
+    desc: 'Banner yang biasa dipakai di berbagai sosial media dan juga termasuk beberapa game yang mendukung banner kustom.',
+    image: graphicsAllBanners,
     link: '/portfolio',
   },
   {
     id: 'w2',
-    title: 'Stream overlay pack',
-    tag: 'Overlay',
-    desc: 'Starting/BRB/end + alert frame sesuai moodboard.',
+    title: 'Custom Edits',
+    tag: 'Video Editing',
+    desc: 'MV editing seusai dengan Klien.',
     image: graphicsOverlay,
     link: '/portfolio',
   },
   {
     id: 'w3',
-    title: 'Highlight / recap',
-    tag: 'Video editing',
-    desc: '60-90s recap dengan beat-synced cuts dan teks dinamis.',
-    image: editingHighlight,
+    title: 'Cosplay Photography',
+    tag: 'Photography',
+    desc: 'Fotografi cosplay dengan sesi pemotretan terpisah maupun saat Coswalk Competition.',
+    image: cosplayPhoto,
     link: '/portfolio',
   },
 ]
@@ -37,47 +38,84 @@ const worksShowcase = [
 const commissionShowcase = [
   {
     id: 'c1',
-    title: 'Overlay + alert set',
+    title: 'Social Media Banner Set',
     tag: 'Graphics commission',
-    turnaround: '3-5 hari',
     image: commissionOne,
   },
   {
     id: 'c2',
-    title: 'Launch teaser + thumb',
+    title: 'Custom MV Edit',
     tag: 'Video commission',
-    turnaround: '2-4 hari',
     image: commissionTwo,
+  },
+  {
+    id: 'c3',
+    title: 'Cosplay Photoshoot',
+    tag: 'Photography commission',
+    image: commissionThree,
   },
 ]
 
 const experiences = [
   {
     year: '2021 - Sekarang',
-    title: 'Freelance Graphics & Video',
+    title: 'Freelance Graphics Design & Video Editing',
     bullets: [
-      'Overlay, banner, dan panel untuk streamer / VTuber.',
-      'Poster event online dan social media kit.',
-      'Highlight / MV pendek dengan teks dan motion ringan.',
+      'Digital Poster, social media kit, dan Kebutuhan Graphics lainnya.',
+      'Custom MV pendek dengan teks dan motion ringan serta Effects Sesuai permintaan klien.',
+      'Banner, Overlay, dan Kebutuhan Streaming lainnya.',
     ],
   },
   {
-    year: '2019 - 2021',
-    title: 'Community Design',
+    year: '2024 - Sekarang',
+    title:
+      'Ketua Divisi Creative Media - Unit Kegiatan Mahasiswa Foregin Language ITK Society (UKM FOLKS)',
     bullets: [
-      'osu! BG/manipulation dan poster fan-event.',
-      'Eksperimen color grading foto dan cover art.',
+      'Monthly feeds and Reels social media.',
+      'Brainstorming dan pembuatan konten visual untuk keperluan promosi kegiatan UKM FOLKS.',
+      'Kebutuhan dokumentasi foto dan video kegiatan UKM FOLKS.',
+      'Kebutuhan desain untuk semua kegiatan UKM FOLKS.',
+    ],
+  },
+  {
+    year: '2025 - Sekarang',
+    title: 'Freelance Photographer & Videographer - Raise Production',
+    bullets: [
+      'Wisuda Photography',
+      'Helper Wedding dan Event Photography.',
+      'Helper Videography Content Creation.',
+    ],
+  },
+  {
+    year: '2025 - Sekarang',
+    title: 'Freelance Photographer & Designer - KOGASHAPROJECT.ID',
+    bullets: [
+      'Photoshoot untuk Cosplay.',
+      'Pembuatan feeds social media.',
+      'Event Documentation (Mainly Coswalk) Photography.',
+      'Design untuk Photocard dan Feed Social Media.',
+    ],
+  },
+  {
+    year: '2023 - Sekarang',
+    title: 'osu! Kalimantan Timur Community Designer',
+    bullets: [
+      'osu! Banner free dan Commission. Thumbnail, dan BG Manipulation.',
+      'ID card untuk semua member osu! Kalimantan Timur',
+      'osu!background Map, Manipulation Fanart dari member yang buat Map.',
     ],
   },
 ]
 
 const tools = [
   'Photoshop',
-  'Clip Studio Paint',
   'After Effects',
+  'Figma',
   'Premiere',
-  'OBS Overlay',
+  'Vegas Pro',
   'Illustrator (basic)',
+  'Lightroom',
+  'Canva',
 ]
 </script>
 
@@ -85,16 +123,20 @@ const tools = [
   <div class="page about-page">
     <!-- HERO -->
     <section class="section about-hero">
-      <div class="container about-hero-grid">
+      <div v-inview class="container about-hero-grid">
         <div class="about-hero-text">
           <p class="about-kicker">About</p>
           <h1 class="about-title">ShiroTenma</h1>
           <p class="about-subtitle">
-            Desainer & editor yang fokus di overlay, poster event, thumbnail, dan highlight video.
-            Senang ngulik warna bold dan layout yang tetap readable.
+            Seorang manusia yang mempunyai passion di hampir semua bidang kreatif seperti Graphics
+            Design, Video Editing, Motion graphics, Typography, dan juga dalam Fotografi dan
+            Videografi. Biasanya dia suka banget eksplorasi style visual yang unik dan menarik
+            perhatian dan juga sesuai dengan bayangan klien itu sendiri.
           </p>
           <div class="about-actions">
-            <router-link to="/portfolio" class="btn btn-primary btn-sm">Lihat portfolio</router-link>
+            <router-link to="/portfolio" class="btn btn-primary btn-sm"
+              >Lihat portfolio</router-link
+            >
             <router-link to="/contact" class="btn btn-outline btn-sm">Hubungi</router-link>
           </div>
         </div>
@@ -113,19 +155,19 @@ const tools = [
     <!-- SELECTED WORKS -->
     <section class="section about-works">
       <div class="container">
-        <div class="about-section-head">
+        <div v-inview class="about-section-head">
           <div>
             <p class="about-kicker">Selected Works</p>
             <h2 class="about-section-title">Beberapa karya pilihan</h2>
             <p class="about-section-text">
-              Potongan karya dari graphics, overlay, dan video editing. Sisanya bisa kamu lihat
-              langsung di halaman portfolio.
+              Potongan karya dari graphics, Editing, dan Fotografi yang terbaik. Sisanya bisa kamu
+              lihat langsung di halaman portfolio.
             </p>
           </div>
           <router-link to="/portfolio" class="about-link">Lihat semua</router-link>
         </div>
 
-        <div class="about-cards-grid">
+        <div v-inview class="about-cards-grid">
           <article v-for="item in worksShowcase" :key="item.id" class="about-card">
             <div class="about-card-thumb" :style="{ backgroundImage: `url(${item.image})` }"></div>
             <div class="about-card-body">
@@ -142,7 +184,7 @@ const tools = [
     <!-- COMMISSION HIGHLIGHTS -->
     <section class="section about-commission">
       <div class="container">
-        <div class="about-section-head">
+        <div v-inview class="about-section-head">
           <div>
             <p class="about-kicker">Commission</p>
             <h2 class="about-section-title">Beberapa hasil komisi</h2>
@@ -153,14 +195,15 @@ const tools = [
           <router-link to="/commission" class="about-link">Lihat detail paket</router-link>
         </div>
 
-        <div class="about-commission-grid">
+        <div v-inview class="about-commission-grid">
           <article v-for="item in commissionShowcase" :key="item.id" class="about-commission-card">
-            <div class="about-commission-thumb" :style="{ backgroundImage: `url(${item.image})` }"></div>
+            <div
+              class="about-commission-thumb"
+              :style="{ backgroundImage: `url(${item.image})` }"
+            ></div>
             <div class="about-commission-body">
               <p class="about-card-tag">{{ item.tag }}</p>
               <h3 class="about-card-title">{{ item.title }}</h3>
-              <p class="about-card-text">Selesai dalam {{ item.turnaround }}</p>
-              <router-link to="/commission" class="about-card-link">Request</router-link>
             </div>
           </article>
         </div>
@@ -170,14 +213,14 @@ const tools = [
     <!-- EXPERIENCE -->
     <section class="section about-experience">
       <div class="container">
-        <div class="about-section-head">
+        <div v-inview class="about-section-head">
           <div>
             <p class="about-kicker">Experience</p>
             <h2 class="about-section-title">Pengalaman</h2>
           </div>
         </div>
 
-        <div class="about-timeline">
+        <div v-inview class="about-timeline">
           <article v-for="exp in experiences" :key="exp.title" class="about-timeline-item">
             <div class="about-timeline-year">{{ exp.year }}</div>
             <div class="about-timeline-body">
@@ -194,14 +237,14 @@ const tools = [
     <!-- TOOLS -->
     <section class="section about-tools">
       <div class="container">
-        <div class="about-section-head">
+        <div v-inview class="about-section-head">
           <div>
             <p class="about-kicker">Tools</p>
             <h2 class="about-section-title">Peralatan kerja</h2>
           </div>
         </div>
 
-        <div class="about-tools-grid">
+        <div v-inview class="about-tools-grid">
           <div v-for="tool in tools" :key="tool" class="about-tool-chip">
             {{ tool }}
           </div>
@@ -211,13 +254,13 @@ const tools = [
 
     <!-- CTA -->
     <section class="section about-cta">
-      <div class="container about-cta-box">
+      <div v-inview class="container about-cta-box">
         <div>
           <p class="about-kicker">Let’s collaborate</p>
-          <h2 class="about-section-title">Punya ide overlay, poster, atau video?</h2>
+          <h2 class="about-section-title">Punya ide untuk poster, atau video?</h2>
           <p class="about-section-text">
-            Ceritakan saja singkat, nanti kita susun scope, moodboard, dan timeline yang nyaman buat
-            kamu.
+            Ceritakan saja secara singkat, nanti kita susun moodboard bareng sampe cocok! baru
+            sisanya aku kerjakan.
           </p>
         </div>
         <div class="about-cta-actions">

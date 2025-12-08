@@ -92,7 +92,7 @@ const commissionSlides = [
     id: 'c1',
     title: 'Ready to do this?',
     subtitle:
-      'Siap bantu bikin banner, overlay, dan video yang lebih niat buat stream atau channel kamu.',
+      'Siap bantu bikin banner, overlay, dan video yang visually eye-catching buat stream atau channel kamu.',
     image: commissionOne,
     background: 'linear-gradient(120deg, #111827, #1e293b, #020617)',
   },
@@ -100,15 +100,15 @@ const commissionSlides = [
     id: 'c2',
     title: 'Need a visual partner?',
     subtitle:
-      'Buat project sekali atau jangka panjang, kita bisa ngobrol dulu dan kira-kira-in scope-nya.',
+      'Buat project sekali atau jangka panjang, kita bisa ngobrol bareng dulu gimana tujuannya dan moodboardnya.',
     image: commissionTwo,
     background: 'linear-gradient(120deg, #1d3557, #457b9d, #1d3557)',
   },
   {
     id: 'c3',
-    title: "Let's start something.",
+    title: "Don't be afraid, just ask!",
     subtitle:
-      'Ceritain singkat aja idemu. Detail konsep, mood, dan style bisa kita susun pelan-pelan.',
+      'Ceritain singkat aja idemu. Detail konsep, mood, dan style bisa kita susun bareng bareng.',
     image: commissionThree,
     background: 'linear-gradient(120deg, #3b0764, #7e22ce, #db2777)',
   },
@@ -149,7 +149,7 @@ onUnmounted(() => {
     <!-- HERO (HOME) -->
     <section id="top" class="hero">
       <div class="container">
-        <div class="hero-inner">
+        <div v-inview class="hero-inner">
           <div>
             <p class="hero-kicker">PORTFOLIO / COMMISSION</p>
             <h1 class="hero-title">
@@ -177,7 +177,10 @@ onUnmounted(() => {
               class="hero-showcase-panel"
               :class="{ 'hero-showcase-panel--active': index === currentHeroIndex }"
             >
-              <div class="hero-showcase-visual" :style="{ backgroundImage: `url(${slide.image})` }"></div>
+              <div
+                class="hero-showcase-visual"
+                :style="{ backgroundImage: `url(${slide.image})` }"
+              ></div>
               <div class="hero-showcase-meta">
                 <p class="hero-showcase-tag">{{ slide.tag }}</p>
                 <h3 class="hero-showcase-title">{{ slide.title }}</h3>
@@ -202,7 +205,7 @@ onUnmounted(() => {
     <!-- SELECTED WORKS: CARD YANG GESER -->
     <section id="home-portfolio" class="section home-portfolio-section">
       <div class="container">
-        <div class="home-portfolio-header">
+        <div v-inview class="home-portfolio-header">
           <div>
             <h2 class="home-portfolio-title">Selected Works</h2>
             <p class="home-portfolio-text">
@@ -218,7 +221,7 @@ onUnmounted(() => {
         </div>
 
         <!-- deretan card yang auto-geser -->
-        <div class="home-portfolio-loop">
+        <div v-inview class="home-portfolio-loop">
           <div class="home-portfolio-loop-inner">
             <article
               v-for="work in selectedWorks"
@@ -250,7 +253,7 @@ onUnmounted(() => {
     <!-- COMMISSION CTA DENGAN SLIDER -->
     <section id="home-commission" class="section home-commission-section">
       <div class="container">
-        <div class="home-commission-inner">
+        <div v-inview class="home-commission-inner">
           <div
             v-for="(slide, index) in commissionSlides"
             :key="slide.id"

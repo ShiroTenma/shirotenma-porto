@@ -388,7 +388,7 @@ watch(filteredWorks, () => {
           bawah ini buat lihat contoh-contohnya.
         </p>
 
-        <div class="portfolio-plan-row">
+        <div v-inview class="portfolio-plan-row">
           <article
             v-for="(cat, index) in categories"
             :key="cat.id"
@@ -433,7 +433,7 @@ watch(filteredWorks, () => {
     <section class="section portfolio-gallery-section">
       <div class="container">
         <!-- JUDUL -->
-        <div class="portfolio-gallery-header">
+        <div v-inview class="portfolio-gallery-header">
           <h2 class="portfolio-wide-title">
             <strong>{{ activeCategoryData?.name }}</strong>
           </h2>
@@ -446,7 +446,7 @@ watch(filteredWorks, () => {
         </div>
 
         <!-- SLIDER -->
-        <div class="portfolio-carousel">
+        <div v-inview class="portfolio-carousel">
           <div class="portfolio-carousel-controls">
             <button
               type="button"
@@ -502,7 +502,7 @@ watch(filteredWorks, () => {
 
         <!-- GALLERY DETAIL DI BAWAH SLIDER (kayak Works of Artists) -->
         <transition name="fade">
-          <section v-if="selectedWork" class="portfolio-work-gallery">
+          <section v-if="selectedWork" v-inview class="portfolio-work-gallery">
             <div class="portfolio-work-gallery-header">
               <div>
                 <p class="portfolio-work-gallery-kicker">
@@ -544,7 +544,7 @@ watch(filteredWorks, () => {
         </transition>
 
         <!-- CTA BANNER -->
-        <div class="portfolio-cta-banner">
+        <div v-inview class="portfolio-cta-banner">
           <div class="portfolio-cta-inner">
             <h3 class="portfolio-cta-title">
               Siap bikin visual baru buat brand atau project kamu?

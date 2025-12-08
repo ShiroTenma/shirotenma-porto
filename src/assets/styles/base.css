@@ -2,8 +2,8 @@
   --bg-body: #f4f4f4;
   --bg-dark: #2f3133;
   --bg-card: #ffffff;
-  --accent: #7a735b; /* mirip navbar di figma */
-  --accent-strong: #2aa84a; /* mirip tombol hijau */
+  --accent: #1f6f73; /* deep teal for navbar/links */
+  --accent-strong: #23a3a6; /* brighter teal for buttons */
   --text-main: #222222;
   --text-muted: #777777;
   --radius-lg: 18px;
@@ -42,10 +42,6 @@ a {
 
 .main {
   flex: 1 0 auto;
-}
-
-.page {
-  animation: fadeUp 0.5s ease 0.02s both;
 }
 
 .container {
@@ -176,6 +172,15 @@ a {
   background: var(--bg-body);
 }
 
+.inview-base {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.inview-show {
+  animation: fadeUp 0.5s ease forwards;
+}
+
 .section-title {
   font-size: 1.4rem;
   margin: 0 0 1.5rem;
@@ -261,7 +266,6 @@ a {
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
   gap: 2.5rem;
   align-items: center;
-  animation: fadeUp 0.65s ease 0.05s both;
 }
 
 .hero-kicker {
@@ -288,7 +292,6 @@ a {
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
-  animation: fadeUp 0.55s ease 0.12s both;
 }
 
 .hero-showcase {
@@ -298,7 +301,6 @@ a {
   padding: 1rem;
   color: #fff;
   box-shadow: var(--shadow-soft);
-  animation: fadeUp 0.7s ease 0.18s both;
   overflow: hidden;
   min-height: 280px;
 }
