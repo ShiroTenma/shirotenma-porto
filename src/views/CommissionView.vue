@@ -161,16 +161,22 @@ onUnmounted(() => {
     <!-- HERO + PLAN CARDS -->
     <section class="section section-dark commission-hero">
       <div class="container">
-        <div v-inview class="commission-header">
-          <h1 class="page-title">Commission!</h1>
-          <p class="page-subtitle commission-subtitle">
-            Tertarik buat pesen desain atau editing? Pilih paket yang paling pas di bawah ini.
-            Detail bisa fleksibel, yang penting kita ngobrol dulu soal kebutuhanmu.
-          </p>
-
-          <p class="commission-helper">
-            Slot terbatas. Kalau ragu soal budget, boleh banget tanya dulu lewat form atau DM dY~S
-          </p>
+        <div v-inview class="commission-header commission-header-grid">
+          <div class="commission-header-left">
+            <h1 class="page-title">Commission!</h1>
+            <p class="commission-helper">
+              Slot terbatas. Kalau ragu soal budget, boleh banget tanya dulu lewat form atau DM dY~S
+            </p>
+            <div class="commission-header-actions">
+              <router-link to="/contact" class="btn btn-outline btn-sm">Hubungi dulu</router-link>
+            </div>
+          </div>
+          <div class="commission-header-right">
+            <p class="page-subtitle commission-subtitle">
+              Tertarik buat pesen desain atau editing? Pilih paket yang paling pas di bawah ini.
+              Detail bisa fleksibel, yang penting kita ngobrol dulu soal kebutuhanmu.
+            </p>
+          </div>
         </div>
 
         <div v-inview class="portfolio-plan-row commission-plan-row">

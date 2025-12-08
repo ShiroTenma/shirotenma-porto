@@ -107,6 +107,13 @@
   margin-bottom: 0.8rem;
 }
 
+.portfolio-head-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: 1.2rem;
+}
+
 .portfolio-wide-title {
   font-size: 2.2rem;
   font-weight: 800;

@@ -433,10 +433,12 @@ watch(filteredWorks, () => {
     <section class="section portfolio-gallery-section">
       <div class="container">
         <!-- JUDUL -->
-        <div v-inview class="portfolio-gallery-header">
-          <h2 class="portfolio-wide-title">
-            <strong>{{ activeCategoryData?.name }}</strong>
-          </h2>
+        <div v-inview class="portfolio-gallery-header portfolio-head-grid">
+          <div>
+            <h2 class="portfolio-wide-title">
+              <strong>{{ activeCategoryData?.name }}</strong>
+            </h2>
+          </div>
           <p class="portfolio-wide-text">
             Koleksi beberapa karya pilihan di kategori
             <strong>{{ activeCategoryData?.name }}</strong

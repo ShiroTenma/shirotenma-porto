@@ -161,16 +161,16 @@ const ctaBackgroundStyle = {
     <!-- SELECTED WORKS -->
     <section class="section about-works">
       <div class="container">
-        <div v-inview class="about-section-head">
-          <div>
+        <div v-inview class="about-section-head about-head-grid">
+          <div class="about-head-left">
             <p class="about-kicker">Selected Works</p>
             <h2 class="about-section-title">Beberapa karya pilihan</h2>
-            <p class="about-section-text">
-              Potongan karya dari graphics, Editing, dan Fotografi yang terbaik. Sisanya bisa kamu
-              lihat langsung di halaman portfolio.
-            </p>
+            <router-link to="/portfolio" class="about-link about-head-link">Lihat semua</router-link>
           </div>
-          <router-link to="/portfolio" class="about-link">Lihat semua</router-link>
+          <p class="about-section-text about-head-desc">
+            Potongan karya dari graphics, Editing, dan Fotografi yang terbaik. Sisanya bisa kamu
+            lihat langsung di halaman portfolio.
+          </p>
         </div>
 
         <div v-inview class="about-cards-grid">
@@ -190,15 +190,15 @@ const ctaBackgroundStyle = {
     <!-- COMMISSION HIGHLIGHTS -->
     <section class="section about-commission">
       <div class="container">
-        <div v-inview class="about-section-head">
-          <div>
+        <div v-inview class="about-section-head about-head-grid">
+          <div class="about-head-left">
             <p class="about-kicker">Commission</p>
             <h2 class="about-section-title">Beberapa hasil komisi</h2>
-            <p class="about-section-text">
-              Contoh paket overlay dan video yang sudah selesai. Bisa diadaptasi sesuai kebutuhanmu.
-            </p>
+            <router-link to="/commission" class="about-link about-head-link">Lihat detail paket</router-link>
           </div>
-          <router-link to="/commission" class="about-link">Lihat detail paket</router-link>
+          <p class="about-section-text about-head-desc">
+            Contoh paket overlay dan video yang sudah selesai. Bisa diadaptasi sesuai kebutuhanmu.
+          </p>
         </div>
 
         <div v-inview class="about-commission-grid">
