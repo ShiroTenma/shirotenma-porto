@@ -141,6 +141,7 @@ const packageOptions = {
 }
 
 const activePackageId = ref(null)
+const contactModalOpen = ref(false)
 const isModalOpen = computed(() => !!activePackageId.value)
 const activePackage = computed(() => packages.find((p) => p.id === activePackageId.value))
 const activeOptions = computed(() => packageOptions[activePackageId.value] || [])
@@ -151,6 +152,15 @@ const openPackage = (id) => {
 
 const closeModal = () => {
   activePackageId.value = null
+  contactModalOpen.value = false
+}
+
+const openContactOptions = () => {
+  contactModalOpen.value = true
+}
+
+const closeContactOptions = () => {
+  contactModalOpen.value = false
 }
 
 watch(isModalOpen, (open) => {
@@ -286,9 +296,45 @@ onUnmounted(() => {
                 <ul class="commission-modal-list">
                   <li v-for="point in activePackage?.points || []" :key="point">{{ point }}</li>
                 </ul>
-                <router-link to="/contact" class="commission-modal-link">tanya</router-link>
+                <button
+                  type="button"
+                  class="commission-modal-link"
+                  @click.stop="openContactOptions"
+                >
+                  Tekan untuk Kontak
+                </button>
               </div>
             </article>
+          </div>
+        </div>
+      </div>
+    </transition>
+    <transition name="contact-pop">
+      <div v-if="contactModalOpen" class="contact-popup" @click.self="closeContactOptions">
+        <div class="contact-popup-box" role="dialog" aria-modal="true">
+          <header class="contact-popup-head">
+            <h4>Hubungi via</h4>
+            <button type="button" class="contact-popup-close" @click="closeContactOptions">
+              Tutup
+            </button>
+          </header>
+          <div class="contact-popup-body">
+            <a
+              class="contact-btn contact-btn--wa"
+              href="https://wa.me/6285183335473"
+              target="_blank"
+              rel="noreferrer"
+            >
+              WhatsApp Business
+            </a>
+            <a
+              class="contact-btn contact-btn--discord"
+              href="https://discord.com/users/348379630941765645"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Discord
+            </a>
           </div>
         </div>
       </div>

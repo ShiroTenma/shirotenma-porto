@@ -414,6 +414,94 @@
   min-height: 44px;
 }
 
+/* contact popup */
+.contact-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: 1.2rem;
+}
+
+.contact-popup-box {
+  width: min(360px, 90vw);
+  background: #0f1117;
+  color: #f8fafc;
+  border-radius: 14px;
+  padding: 1rem 1.1rem 1.2rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+.contact-popup-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.contact-popup-head h4 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.contact-popup-close {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #f8fafc;
+  border-radius: 10px;
+  padding: 0.3rem 0.75rem;
+  cursor: pointer;
+}
+
+.contact-popup-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 0.8rem;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.contact-btn--wa {
+  background: #16a34a;
+  color: #eafff1;
+  box-shadow: 0 12px 28px rgba(22, 163, 74, 0.35);
+}
+
+.contact-btn--discord {
+  background: #5865f2;
+  color: #f5f6ff;
+  box-shadow: 0 12px 28px rgba(88, 101, 242, 0.35);
+}
+
+.contact-btn:hover {
+  transform: translateY(-1px);
+}
+
+.contact-pop-enter-from,
+.contact-pop-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.contact-pop-enter-active,
+.contact-pop-leave-active {
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
 .commission-modal-price {
   margin: 0;
   font-weight: 600;
