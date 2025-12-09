@@ -15,6 +15,7 @@ import posterUkm from '../assets/images/works/poster-ukm.jpg'
 import posterMerchandise from '../assets/images/works/poster-ukm-merchandise.jpg'
 import flyerClient from '../assets/images/works/flyer-promotion.jpg'
 import bannerUkm from '../assets/images/works/standing-banner-ukm.jpg'
+import graphicsMore from '../assets/images/works/graphics-more-samples.jpg'
 
 import editingHighlight from '../assets/images/works/editing-highlight.jpg'
 import editingMotion from '../assets/images/works/editing-motion.png'
@@ -79,7 +80,7 @@ const works = [
     title: 'More Designs',
     desc: 'Semua hasil desain selain yang disebut diatas.',
     tag: 'Graphics Design',
-    thumb: graphicsOverlay,
+    thumb: graphicsMore,
   },
 
   // EDITING
@@ -179,8 +180,18 @@ const workGalleries = {
   'g-3': [
     { id: 'g-3-1', title: 'Background osu!map Manipulation', thumb: graphicsManipulation },
     { id: 'g-3-2', title: 'Thumbnail Youtube', thumb: graphicsThumbnail },
-    { id: 'g-3-3', title: 'Alert banner', thumb: graphicsOverlay },
-    { id: 'g-3-4', title: 'Transition frame', thumb: graphicsOverlay },
+    { id: 'g-3-3', title: 'osu!overlay', thumb: graphicsOverlay },
+    { id: 'g-3-4', title: 'Instagram feed design', thumb: graphicsOverlay },
+    { id: 'g-3-6', title: 'Instagram feed design 3x1', thumb: graphicsMore },
+    { id: 'g-3-7', title: 'Venue 2D Design', thumb: graphicsMore },
+    { id: 'g-3-8', title: 'Sticker Merchandise Design', thumb: graphicsMore },
+    { id: 'g-3-9', title: 'UKM Sticker Invitation Design', thumb: graphicsMore },
+    { id: 'g-3-10', title: 'Ticket Design', thumb: graphicsMore },
+    { id: 'g-3-11', title: 'ID Card Design', thumb: graphicsMore },
+    { id: 'g-3-12', title: 'Digital CV Design', thumb: graphicsMore },
+    { id: 'g-3-13', title: 'Instagram Story Template Design', thumb: graphicsMore },
+    { id: 'g-3-14', title: 'Custom Mousepad Design', thumb: graphicsMore },
+    { id: 'g-3-15', title: 'Creative Instagram Story Design', thumb: graphicsMore },
   ],
 
   // EDITING & PHOTO
@@ -332,6 +343,9 @@ const activeGalleryItem = ref(null)
 const modalZoomed = ref(false)
 const modalZoomLevel = ref(1.25)
 const zoomLevels = [1, 1.25, 1.5, 1.75, 2]
+const isPanning = ref(false)
+const pan = ref({ x: 0, y: 0 })
+let panStart = { x: 0, y: 0 }
 const bodyScrollStack = ref(0)
 
 const openGalleryForWork = (work, index) => {
@@ -349,6 +363,7 @@ const openGalleryModal = (item) => {
   activeGalleryItem.value = item
   modalZoomed.value = false
   modalZoomLevel.value = 1.25
+  pan.value = { x: 0, y: 0 }
   lockBodyScroll()
 }
 
@@ -356,17 +371,24 @@ const closeGalleryModal = () => {
   activeGalleryItem.value = null
   modalZoomed.value = false
   modalZoomLevel.value = 1.25
+  pan.value = { x: 0, y: 0 }
   unlockBodyScroll()
 }
 
 const toggleZoom = () => {
   modalZoomed.value = !modalZoomed.value
   modalZoomLevel.value = modalZoomed.value ? 1.5 : 1.25
+  if (!modalZoomed.value) {
+    pan.value = { x: 0, y: 0 }
+  }
 }
 
 const setZoom = (level) => {
   modalZoomLevel.value = level
   modalZoomed.value = level > 1
+  if (level === 1) {
+    pan.value = { x: 0, y: 0 }
+  }
 }
 
 const lockBodyScroll = () => {
@@ -381,6 +403,41 @@ const unlockBodyScroll = () => {
     document.body.style.overflow = ''
     document.documentElement.style.overflow = ''
   }
+}
+
+const getPoint = (e) => {
+  if (e.touches && e.touches.length) {
+    return { x: e.touches[0].clientX, y: e.touches[0].clientY }
+  }
+  return { x: e.clientX, y: e.clientY }
+}
+
+const onPanStart = (e) => {
+  if (!modalZoomed.value) return
+  isPanning.value = true
+  panStart = getPoint(e)
+  window.addEventListener('mousemove', onPanMove)
+  window.addEventListener('mouseup', onPanEnd)
+  window.addEventListener('touchmove', onPanMove, { passive: false })
+  window.addEventListener('touchend', onPanEnd)
+}
+
+const onPanMove = (e) => {
+  if (!isPanning.value || !modalZoomed.value) return
+  if (e.cancelable) e.preventDefault()
+  const point = getPoint(e)
+  const dx = point.x - panStart.x
+  const dy = point.y - panStart.y
+  pan.value = { x: pan.value.x + dx, y: pan.value.y + dy }
+  panStart = point
+}
+
+const onPanEnd = () => {
+  isPanning.value = false
+  window.removeEventListener('mousemove', onPanMove)
+  window.removeEventListener('mouseup', onPanEnd)
+  window.removeEventListener('touchmove', onPanMove)
+  window.removeEventListener('touchend', onPanEnd)
 }
 
 // ganti kategori + reset slider & tutup gallery
@@ -670,15 +727,23 @@ watch(filteredWorks, () => {
             <div
               v-else
               class="portfolio-gallery-modal-image"
-              :class="{ 'portfolio-gallery-modal-image--zoom': modalZoomed }"
+              :class="{
+                'portfolio-gallery-modal-image--zoom': modalZoomed,
+                'portfolio-gallery-modal-image--dragging': isPanning,
+              }"
               :style="{
                 backgroundImage: `url(${activeGalleryItem.thumb || ''})`,
                 '--modal-zoom-level': modalZoomLevel,
+                transform: modalZoomed
+                  ? `translate(${pan.x}px, ${pan.y}px) scale(${modalZoomLevel})`
+                  : 'translate(0, 0) scale(1)',
               }"
               role="button"
               tabindex="0"
               @click="toggleZoom"
               @keydown.enter.prevent="toggleZoom"
+              @mousedown.prevent="onPanStart"
+              @touchstart.prevent="onPanStart"
             ></div>
           </div>
 

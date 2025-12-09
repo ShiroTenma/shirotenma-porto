@@ -695,16 +695,13 @@
   border-radius: 12px;
   background-color: #0b0c10;
   cursor: zoom-in;
-  transition: transform 0.25s ease;
+  transition: transform 0.1s ease;
+  will-change: transform;
 }
 
 .portfolio-gallery-modal-image--zoom {
   transform: scale(var(--modal-zoom-level, 1.25));
-  cursor: zoom-out;
-}
-
-.portfolio-gallery-modal-image--zoom:hover {
-  transform: scale(var(--modal-zoom-level, 1.25)) translateY(-6px);
+  cursor: grab;
 }
 
 .portfolio-gallery-modal-image--dragging {
