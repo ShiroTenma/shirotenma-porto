@@ -250,9 +250,9 @@
   width: 1080px;
   min-width: 1080px;
   max-width: 1080px;
-  height: 552px;
-  min-height: 600px;
-  max-height: 600px;
+  height: auto;
+  min-height: 0;
+  max-height: 90vh;
   background: #0f1117;
   color: #f8fafc;
   border-radius: 18px;
@@ -303,37 +303,32 @@
 }
 
 .commission-modal-options {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
   padding-right: 0.4rem;
   padding-bottom: 0.4rem;
   overflow-y: auto;
-  max-height: none;
   flex: 1 1 auto;
   min-height: 0;
 }
 
-@media (min-width: 641px) {
-  .commission-modal-options {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
 .commission-modal-card {
-  background: #161922;
-  border-radius: 14px;
+  background: #0f141f;
+  border-radius: 18px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  display: flex;
-  flex-direction: column;
-  width: 504.8px;
-  min-width: 504.8px;
-  max-width: 504.8px;
-  height: 405.6px;
-  min-height: 405.6px;
-  max-height: 405.6px;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  align-items: stretch;
+  width: 100%;
+  min-width: 0;
+  min-height: 305px;
+  height: 305px;
+  max-height: 305px;
+  gap: 0;
   opacity: 0;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
   animation: fadeUp 0.45s ease forwards;
 }
 
@@ -375,31 +370,35 @@
 
 .commission-modal-thumb {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  min-height: 240px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 .commission-modal-body {
-  padding: 0.9rem 1rem 0.6rem;
-  flex: 1 1 auto;
+  padding: 1.35rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.6rem;
 }
 
 .commission-modal-card-title {
-  margin: 0 0 0.35rem;
-  font-size: 1rem;
-  text-transform: uppercase;
+  margin: 0;
+  font-size: 1.5rem;
+  text-transform: none;
 }
 
 .commission-modal-card-text {
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: #cbd5e1;
+  line-height: 1.5;
 }
 
 .commission-modal-meta {
-  padding: 0 1rem 0.9rem;
+  padding: 0;
 }
 
 .commission-modal-link {
@@ -407,10 +406,27 @@
   align-items: center;
   gap: 0.35rem;
   padding: 0.4rem 0.85rem;
+  justify-content: center;
   border-radius: 999px;
   background: rgba(34, 211, 238, 0.14);
   color: #22d3ee;
   border: 1px solid rgba(34, 211, 238, 0.35);
+  min-height: 44px;
+}
+
+.commission-modal-price {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #e5e7eb;
+}
+
+.commission-modal-list {
+  margin: 0 0 0.6rem;
+  padding-left: 1.1rem;
+  color: #d4d4d8;
+  line-height: 1.6;
+  font-size: 0.95rem;
 }
 
 /* responsive commission hero */
@@ -473,36 +489,37 @@
     padding: 0.55rem 1rem;
   }
 
-  .commission-modal {
-    align-items: center;
-    padding: 1.8rem 0.4rem;
-  }
+.commission-modal {
+  align-items: center;
+  padding: 1.8rem 0.4rem;
+}
 
-  .commission-modal-box {
-    width: calc(100% - 0.6rem);
-    min-width: 0;
-    max-width: none;
-    height: auto;
-    min-height: 0;
-    max-height: 90vh;
-    margin: 0 auto;
-    padding: 1rem 1rem;
-  }
+.commission-modal-box {
+  width: calc(100% - 0.6rem);
+  min-width: 0;
+  max-width: 1120px;
+  height: auto;
+  min-height: 0;
+  max-height: 90vh;
+  margin: 0 auto;
+  padding: 1rem 1rem;
+}
 
-  .commission-modal-options {
-    grid-template-columns: 1fr;
-    gap: 0.85rem;
-    max-height: none;
-  }
+.commission-modal-options {
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+  max-height: none;
+}
 
-  .commission-modal-card {
-    width: 100%;
-    min-width: 0;
-    max-width: none;
-    height: auto;
-    min-height: 240px;
-    max-height: none;
-  }
+.commission-modal-card {
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  height: auto;
+  min-height: 240px;
+  max-height: none;
+  grid-template-columns: 1fr;
+}
 
   .commission-testimony {
     padding-top: 1.6rem;

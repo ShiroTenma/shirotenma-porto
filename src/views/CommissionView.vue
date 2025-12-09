@@ -12,8 +12,8 @@ const packages = [
   {
     id: 'custom',
     name: 'Custom Edits',
-    badge: 'POSTER / BANNER / THUMBNAIL',
-    price: 'Mulai dari $',
+    badge: 'HIGHLIGHT / MV / CLIPS',
+    price: 'Mulai dari Rp. 30.000',
     image: graphicsThumbnail,
     points: [
       'Editing satuan untuk poster, banner, thumbnail, atau overlay.',
@@ -24,8 +24,8 @@ const packages = [
   {
     id: 'graphics',
     name: 'Graphics Design',
-    badge: 'BRANDING / BANNER / OVERLAY',
-    price: 'Mulai dari $$',
+    badge: 'POSTER / BANNER / BRANDING',
+    price: 'Mulai dari Rp. 40.000',
     image: graphicsPoster,
     points: [
       'Paket branding kecil: logo sederhana, palet warna, dan banner.',
@@ -35,9 +35,9 @@ const packages = [
   },
   {
     id: 'video',
-    name: 'Video Editing',
+    name: 'Photography',
     badge: 'HIGHLIGHT / MV / CLIPS',
-    price: 'Mulai dari $$',
+    price: 'Mulai dari Rp. 60.0000',
     image: editingHighlight,
     points: [
       'Paket highlight / MV pendek untuk channel dan media sosial.',
@@ -70,13 +70,13 @@ const packageOptions = {
     {
       id: 'c-1',
       title: 'Custom Edit',
-      desc: '3-5 thumbnail atau banner untuk seri konten yang sama.',
+      desc: 'MV dengan teks dinamis, beat-synced dan basic motion, serta effects sesuai permintaanmu.',
       image: graphicsThumbnail,
     },
     {
       id: 'c-2',
-      title: 'Motion Graphics',
-      desc: 'Overlay single scene dengan alert + panel sederhana.',
+      title: 'Motion Graphics or Typography',
+      desc: 'Editing Motion Graphics atau Typography pendek untuk konten kamu (diskusikan dahulu karena keterbatasan perangkat).',
       image: graphicsOverlay,
     },
   ],
@@ -183,7 +183,8 @@ onUnmounted(() => {
           <div class="commission-header-left">
             <h1 class="page-title">Commission!</h1>
             <p class="commission-helper">
-              Slot terbatas. Kalau ragu soal budget, boleh banget tanya dulu lewat form atau DM dY~S
+              Slot terbatas. Kalau ragu soal budget, boleh banget tanya dulu lewat form atau DM aja
+              aku!
             </p>
             <div class="commission-header-actions">
               <router-link to="/contact" class="btn btn-outline btn-sm">Hubungi dulu</router-link>
@@ -280,10 +281,12 @@ onUnmounted(() => {
               ></div>
               <div class="commission-modal-body">
                 <h4 class="commission-modal-card-title">{{ option.title }}</h4>
+                <p class="commission-modal-price">{{ activePackage?.price }}</p>
                 <p class="commission-modal-card-text">{{ option.desc }}</p>
-              </div>
-              <div class="commission-modal-meta">
-                <router-link to="/contact" class="commission-modal-link">Tanya dulu</router-link>
+                <ul class="commission-modal-list">
+                  <li v-for="point in activePackage?.points || []" :key="point">{{ point }}</li>
+                </ul>
+                <router-link to="/contact" class="commission-modal-link">tanya</router-link>
               </div>
             </article>
           </div>
