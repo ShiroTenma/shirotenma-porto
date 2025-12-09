@@ -239,19 +239,19 @@ const workGalleries = {
   'e-2': [
     {
       id: 'e-2-embed-1',
-      title: 'Instagram Reel 1',
+      title: 'Ollie Rev Remake',
       embedUrl: 'https://www.instagram.com/reel/DEfZRHhxUAV',
       thumb: editingMotion,
     },
     {
       id: 'e-2-embed-2',
-      title: 'Instagram Reel 2',
+      title: 'Miku edit, Loopvember',
       embedUrl: 'https://www.instagram.com/reel/DCowmxIxZls',
       thumb: editingMotion,
     },
     {
       id: 'e-2-embed-3',
-      title: 'Instagram Reel 1',
+      title: 'y6richowo remake',
       embedUrl: 'https://www.instagram.com/reel/C-QKnl0KIYs',
       thumb: editingMotion,
     },
@@ -1052,7 +1052,11 @@ watch(filteredWorks, () => {
 
             <router-link to="/contact" class="portfolio-cta-button">
               <span class="portfolio-cta-button-label"> Let's talk! </span>
-              <span class="portfolio-cta-button-icon"> + </span>
+              <span class="portfolio-cta-button-icon"> > </span>
+            </router-link>
+            <router-link to="/commission" class="portfolio-cta-button">
+              <span class="portfolio-cta-button-label"> Lihat Commission </span>
+              <span class="portfolio-cta-button-icon"> > </span>
             </router-link>
           </div>
 
