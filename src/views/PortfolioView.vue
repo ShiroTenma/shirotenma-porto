@@ -200,8 +200,6 @@ const workGalleries = {
     { id: 'e-1-2', title: 'Tournament highlight', thumb: editingHighlight },
   ],
   'e-2': [
-    { id: 'e-2-1', title: 'TikTok clip', thumb: editingMotion },
-    { id: 'e-2-2', title: 'YouTube Shorts', thumb: editingMotion },
     {
       id: 'e-2-embed-1',
       title: 'Instagram Reel 1',
@@ -216,8 +214,6 @@ const workGalleries = {
     },
   ],
   'e-3': [
-    { id: 'e-3-1', title: 'Lyric animation A', thumb: editingMotion },
-    { id: 'e-3-2', title: 'Lyric animation B', thumb: editingMotion },
     {
       id: 'e-3-embed-1',
       title: 'Instagram Reel 3',
