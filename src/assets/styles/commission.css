@@ -570,6 +570,13 @@
     grid-template-columns: 1fr;
     gap: 1rem;
   }
+
+  /* modal card auto-height + min height on tablet/mobile so isi nggak kepotong */
+  .commission-modal-card {
+    height: auto;
+    min-height: 640px;
+    max-height: none;
+  }
   .commission-testimony {
     padding-top: 2rem;
     padding-bottom: 2.2rem;
@@ -622,7 +629,7 @@
   min-width: 0;
   max-width: none;
   height: auto;
-  min-height: 240px;
+  min-height: 640px;
   max-height: none;
   grid-template-columns: 1fr;
 }
