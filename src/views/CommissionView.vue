@@ -69,13 +69,13 @@ const packageOptions = {
   custom: [
     {
       id: 'c-1',
-      title: 'Thumbnail / banner set',
+      title: 'Custom Edit',
       desc: '3-5 thumbnail atau banner untuk seri konten yang sama.',
       image: graphicsThumbnail,
     },
     {
       id: 'c-2',
-      title: 'Overlay one-off',
+      title: 'Motion Graphics',
       desc: 'Overlay single scene dengan alert + panel sederhana.',
       image: graphicsOverlay,
     },
@@ -83,20 +83,38 @@ const packageOptions = {
   graphics: [
     {
       id: 'g-1',
-      title: 'Overlay pack',
+      title: 'osu! or Social Media Banner',
       desc: 'Starting/BRB/end + alerts + panels dengan moodboard custom.',
       image: graphicsOverlay,
     },
     {
       id: 'g-2',
-      title: 'Event poster set',
+      title: 'osu!banner and Header set',
       desc: 'Poster utama + story + feed square, siap publish multi platform.',
       image: graphicsPoster,
     },
     {
       id: 'g-3',
-      title: 'Thumbnail series',
+      title: 'osu!profile lite set',
       desc: '3-5 thumbnail dengan layout konsisten untuk satu campaign.',
+      image: graphicsThumbnail,
+    },
+    {
+      id: 'g-4',
+      title: 'General Design Small Size',
+      desc: 'any Digital or small media such as Poster, Flyer, ID Card.',
+      image: graphicsThumbnail,
+    },
+    {
+      id: 'g-5',
+      title: 'General Design Large Size',
+      desc: 'Spanduk, Backdrop, Billboard, Deskmat, or even Gate or 2D Venue Graphics Design.',
+      image: graphicsThumbnail,
+    },
+    {
+      id: 'g-6',
+      title: 'Digital Media Set',
+      desc: 'Design untuk Thumbnail, Social Media set, streaming bits.',
       image: graphicsThumbnail,
     },
   ],
@@ -190,7 +208,11 @@ onUnmounted(() => {
             @click="openPackage(pkg.id)"
             @keydown.enter.prevent="openPackage(pkg.id)"
           >
-            <div v-if="pkg.image" class="commission-card-thumb" :style="{ backgroundImage: `url(${pkg.image})` }"></div>
+            <div
+              v-if="pkg.image"
+              class="commission-card-thumb"
+              :style="{ backgroundImage: `url(${pkg.image})` }"
+            ></div>
             <p class="portfolio-plan-badge">
               {{ pkg.badge }}
             </p>
@@ -209,7 +231,11 @@ onUnmounted(() => {
               </li>
             </ul>
 
-            <button type="button" class="btn btn-primary commission-card-fullbtn" @click="openPackage(pkg.id)">
+            <button
+              type="button"
+              class="btn btn-primary commission-card-fullbtn"
+              @click="openPackage(pkg.id)"
+            >
               Lihat detail
             </button>
           </article>
@@ -247,12 +273,11 @@ onUnmounted(() => {
           </header>
 
           <div class="commission-modal-options">
-            <article
-              v-for="option in activeOptions"
-              :key="option.id"
-              class="commission-modal-card"
-            >
-              <div class="commission-modal-thumb" :style="{ backgroundImage: `url(${option.image})` }"></div>
+            <article v-for="option in activeOptions" :key="option.id" class="commission-modal-card">
+              <div
+                class="commission-modal-thumb"
+                :style="{ backgroundImage: `url(${option.image})` }"
+              ></div>
               <div class="commission-modal-body">
                 <h4 class="commission-modal-card-title">{{ option.title }}</h4>
                 <p class="commission-modal-card-text">{{ option.desc }}</p>

@@ -247,14 +247,16 @@
 }
 
 .commission-modal-box {
-  width: 100%;
-  max-width: 1180px;
-  width: min(1180px, 96vw);
-  max-height: 92vh;
+  width: 1080px;
+  min-width: 1080px;
+  max-width: 1080px;
+  height: 552px;
+  min-height: 600px;
+  max-height: 600px;
   background: #0f1117;
   color: #f8fafc;
   border-radius: 18px;
-  padding: 1.6rem 1.8rem;
+  padding: 1.4rem 1.5rem;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
   display: flex;
   flex-direction: column;
@@ -302,9 +304,9 @@
 
 .commission-modal-options {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.2rem;
-  padding-right: 0.6rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  padding-right: 0.4rem;
   padding-bottom: 0.4rem;
   overflow-y: auto;
   max-height: none;
@@ -325,7 +327,12 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   flex-direction: column;
-  min-height: 240px;
+  width: 504.8px;
+  min-width: 504.8px;
+  max-width: 504.8px;
+  height: 405.6px;
+  min-height: 405.6px;
+  max-height: 405.6px;
   opacity: 0;
   animation: fadeUp 0.45s ease forwards;
 }
@@ -428,12 +435,17 @@
   }
 
   .commission-modal-box {
-    max-height: 88vh;
-    padding: 1.2rem 1.2rem;
+    width: calc(100% - 0.8rem);
+    min-width: 0;
+    max-width: none;
+    height: auto;
+    min-height: 0;
+    max-height: 86vh;
+    padding: 1rem 1.1rem;
   }
 
   .commission-modal-options {
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: 1fr;
     gap: 1rem;
   }
   .commission-testimony {
@@ -467,15 +479,28 @@
   }
 
   .commission-modal-box {
+    width: calc(100% - 0.6rem);
+    min-width: 0;
+    max-width: none;
+    height: auto;
+    min-height: 0;
     max-height: 90vh;
     margin: 0 auto;
-    width: calc(100% - 0.6rem);
     padding: 1rem 1rem;
   }
 
   .commission-modal-options {
     grid-template-columns: 1fr;
     gap: 0.85rem;
+    max-height: none;
+  }
+
+  .commission-modal-card {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    height: auto;
+    min-height: 240px;
     max-height: none;
   }
 

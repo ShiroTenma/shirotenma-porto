@@ -5,6 +5,16 @@ import graphicsBanner from '../assets/images/works/graphics-banner.png'
 import graphicsPoster from '../assets/images/works/graphics-poster.png'
 import graphicsOverlay from '../assets/images/works/graphics-overlay.jpg'
 import graphicsThumbnail from '../assets/images/works/graphics-thumbnail.png'
+import graphicsAllBanners from '../assets/images/works/graphics-all-banners.jpg'
+import graphicsManipulation from '../assets/images/works/graphics-manipulation.jpg'
+import graphicsYoutubeBanner from '../assets/images/works/graphics-youtube-banner.jpg'
+import graphicsTwitterBanner from '../assets/images/works/graphics-twitter-banner.jpg'
+import posterEvent from '../assets/images/works/poster-event.jpg'
+import posterCharacter from '../assets/images/works/poster-mock-character.jpg'
+import posterUkm from '../assets/images/works/poster-ukm.jpg'
+import posterMerchandise from '../assets/images/works/poster-ukm-merchandise.jpg'
+import flyerClient from '../assets/images/works/flyer-promotion.jpg'
+import bannerUkm from '../assets/images/works/standing-banner-ukm.jpg'
 
 import editingHighlight from '../assets/images/works/editing-highlight.jpg'
 import editingMotion from '../assets/images/works/editing-motion.png'
@@ -13,6 +23,9 @@ import editingAmv from '../assets/images/works/editing-amv.jpg'
 
 import photoPortrait from '../assets/images/works/photo-portrait.jpg'
 import photoEvents from '../assets/images/works/photo-events.jpg'
+import photoBigEvent from '../assets/images/works/photo-events-ranking1.JPG'
+import photoGraduation from '../assets/images/works/photo-graduation.jpg'
+import photoMore from '../assets/images/works/photo-more-samples.jpg'
 
 const categories = [
   {
@@ -55,49 +68,26 @@ const works = [
   {
     id: 'g-2',
     category: 'graphics',
-    title: 'osu!mapset background manipulation',
-    desc: 'Background Map yang di manipulasi sesuai dengan vibe fanart dan lagunya agar terlihat menarik.',
+    title: 'Digital Poster and Flyer',
+    desc: 'Poster untuk kebutuhan Promosi atau Sekedar konten di Instagram.',
     tag: 'Graphics Design',
     thumb: graphicsPoster,
   },
   {
     id: 'g-3',
     category: 'graphics',
-    title: 'osu!profile overlay',
-    desc: 'Overlay untuk osu!profile style custom.',
-    tag: 'Graphics Design',
-    thumb: graphicsOverlay,
-  },
-  {
-    id: 'g-4',
-    category: 'graphics',
-    title: 'Youtube Thumbnail',
-    desc: 'Thumbnail yang bisa di sesuaikan dengan vibe dan kemauan klien.',
-    tag: 'Graphics Design',
-    thumb: graphicsThumbnail,
-  },
-  {
-    id: 'g-5',
-    category: 'graphics',
-    title: 'Instagram Post',
-    desc: 'Poster untuk kebutuhan Promosi atau Sekedar konten di Instagram.',
-    tag: 'Graphics Design',
-    thumb: graphicsPoster,
-  },
-  {
-    id: 'g-6',
-    category: 'graphics',
     title: 'More Designs',
     desc: 'Semua hasil desain selain yang disebut diatas.',
     tag: 'Graphics Design',
     thumb: graphicsOverlay,
   },
+
   // EDITING
   {
     id: 'e-1',
     category: 'editing',
-    title: 'Custom Edit',
-    desc: 'Montage pendek dengan beat-synced cuts, dengan effects dan lain sebagainya sesuai request klien.',
+    title: 'Highlights Video',
+    desc: 'Highlight dari beberapa Events.',
     tag: 'Video Editing',
     thumb: editingHighlight,
   },
@@ -145,74 +135,52 @@ const works = [
   {
     id: 'p-2',
     category: 'photo',
-    title: 'Wedding Photography',
-    desc: 'Foto dokumentasi acara pernikahan dengan style candid dan dramatis serta formal.',
+    title: 'Graduation Photography',
+    desc: 'Foto dokumentasi acara wisuda dengan style candid dan dramatis serta formal.',
     tag: 'Photography',
-    thumb: photoEvents,
+    thumb: photoGraduation,
   },
   {
     id: 'p-3',
     category: 'photo',
-    title: 'Graduation Photography',
-    desc: 'Foto dokumentasi acara wisuda dengan style candid dan dramatis serta formal.',
+    title: 'Big Events Documentation',
+    desc: 'Foto dokumentasi acara besar seperti konser, lomba, atau acara kampus.',
     tag: 'Photography',
-    thumb: photoEvents,
+    thumb: photoBigEvent,
   },
   {
     id: 'p-4',
     category: 'photo',
-    title: 'Big Events Documentation',
-    desc: 'Foto dokumentasi acara besar seperti konser, lomba, atau acara kampus.',
-    tag: 'Photography',
-    thumb: photoEvents,
-  },
-  {
-    id: 'p-5',
-    category: 'photo',
     title: 'More Photography Samples',
     desc: 'Foto dengan berbagai konsep dan tema lainnya.',
     tag: 'Photography',
-    thumb: photoPortrait,
+    thumb: photoMore,
   },
 ]
 
 /**
- * Gallery detail per work (yang muncul di bawah slider waktu diklik)
+ * Zy detail per work (yang muncul di bawah slider waktu diklik)
  * Silakan ganti judul atau thumb di sini dengan karya asli.
  */
 const workGalleries = {
   'g-1': [
-    { id: 'g-1-1', title: 'Twitch stream banner', thumb: graphicsBanner },
-    { id: 'g-1-2', title: 'YouTube stream banner', thumb: graphicsBanner },
-    { id: 'g-1-3', title: 'Starting soon screen', thumb: graphicsBanner },
-    { id: 'g-1-4', title: 'BRB screen', thumb: graphicsBanner },
+    { id: 'g-1-1', title: 'osu!profile banners', thumb: graphicsAllBanners },
+    { id: 'g-1-2', title: 'YouTube banner', thumb: graphicsYoutubeBanner },
+    { id: 'g-1-3', title: 'Twitter Banner', thumb: graphicsTwitterBanner },
   ],
   'g-2': [
-    { id: 'g-2-1', title: 'Warm color variant', thumb: graphicsPoster },
-    { id: 'g-2-2', title: 'Cool color variant', thumb: graphicsPoster },
-    { id: 'g-2-3', title: 'Texture heavy version', thumb: graphicsPoster },
-    { id: 'g-2-4', title: 'Minimalist version', thumb: graphicsPoster },
+    { id: 'g-2-1', title: 'Event Poster', thumb: posterEvent },
+    { id: 'g-2-2', title: 'Mock Character Poster', thumb: posterCharacter },
+    { id: 'g-2-3', title: 'Poster Promosi untuk UKM', thumb: posterUkm },
+    { id: 'g-2-4', title: 'Poster Promosi Merchandise', thumb: posterMerchandise },
+    { id: 'g-2-4', title: 'Flyer Promosi untuk Klien', thumb: flyerClient },
+    { id: 'g-2-4', title: 'Standing Banner Promosi UKM', thumb: bannerUkm },
   ],
   'g-3': [
-    { id: 'g-3-1', title: 'In-game overlay', thumb: graphicsOverlay },
-    { id: 'g-3-2', title: 'Chat overlay', thumb: graphicsOverlay },
+    { id: 'g-3-1', title: 'Background osu!map Manipulation', thumb: graphicsManipulation },
+    { id: 'g-3-2', title: 'Thumbnail Youtube', thumb: graphicsThumbnail },
     { id: 'g-3-3', title: 'Alert banner', thumb: graphicsOverlay },
     { id: 'g-3-4', title: 'Transition frame', thumb: graphicsOverlay },
-  ],
-  'g-4': [
-    { id: 'g-4-1', title: 'Gameplay thumbnail', thumb: graphicsThumbnail },
-    { id: 'g-4-2', title: 'Podcast thumbnail', thumb: graphicsThumbnail },
-    { id: 'g-4-3', title: 'Announcement thumbnail', thumb: graphicsThumbnail },
-  ],
-  'g-5': [
-    { id: 'g-5-1', title: 'Carousel post', thumb: graphicsPoster },
-    { id: 'g-5-2', title: 'Single post', thumb: graphicsPoster },
-    { id: 'g-5-3', title: 'Story cover', thumb: graphicsPoster },
-  ],
-  'g-6': [
-    { id: 'g-6-1', title: 'Extra overlay A', thumb: graphicsOverlay },
-    { id: 'g-6-2', title: 'Extra overlay B', thumb: graphicsOverlay },
-    { id: 'g-6-3', title: 'Pattern experiments', thumb: graphicsOverlay },
   ],
 
   // EDITING & PHOTO
@@ -223,10 +191,28 @@ const workGalleries = {
   'e-2': [
     { id: 'e-2-1', title: 'TikTok clip', thumb: editingMotion },
     { id: 'e-2-2', title: 'YouTube Shorts', thumb: editingMotion },
+    {
+      id: 'e-2-embed-1',
+      title: 'Instagram Reel 1',
+      embedUrl: 'https://www.instagram.com/reel/DEfZRHhxUAV',
+      thumb: editingMotion,
+    },
+    {
+      id: 'e-2-embed-2',
+      title: 'Instagram Reel 2',
+      embedUrl: 'https://www.instagram.com/reel/DCowmxIxZls',
+      thumb: editingMotion,
+    },
   ],
   'e-3': [
     { id: 'e-3-1', title: 'Lyric animation A', thumb: editingMotion },
     { id: 'e-3-2', title: 'Lyric animation B', thumb: editingMotion },
+    {
+      id: 'e-3-embed-1',
+      title: 'Instagram Reel 3',
+      embedUrl: 'https://www.instagram.com/reel/C4aTnjTIece',
+      thumb: editingMotion,
+    },
   ],
   'e-4': [
     { id: 'e-4-1', title: 'Lyric animation C', thumb: editingMotion },
@@ -342,6 +328,12 @@ const selectedGalleryItems = computed(() => {
   }))
 })
 
+const activeGalleryItem = ref(null)
+const modalZoomed = ref(false)
+const modalZoomLevel = ref(1.25)
+const zoomLevels = [1, 1.25, 1.5, 1.75, 2]
+const bodyScrollStack = ref(0)
+
 const openGalleryForWork = (work, index) => {
   selectedWorkId.value = work.id
   scrollToIndex(index)
@@ -351,6 +343,44 @@ const openGalleryForWork = (work, index) => {
 const closeGallery = () => {
   selectedWorkId.value = null
   resetTimer()
+}
+
+const openGalleryModal = (item) => {
+  activeGalleryItem.value = item
+  modalZoomed.value = false
+  modalZoomLevel.value = 1.25
+  lockBodyScroll()
+}
+
+const closeGalleryModal = () => {
+  activeGalleryItem.value = null
+  modalZoomed.value = false
+  modalZoomLevel.value = 1.25
+  unlockBodyScroll()
+}
+
+const toggleZoom = () => {
+  modalZoomed.value = !modalZoomed.value
+  modalZoomLevel.value = modalZoomed.value ? 1.5 : 1.25
+}
+
+const setZoom = (level) => {
+  modalZoomLevel.value = level
+  modalZoomed.value = level > 1
+}
+
+const lockBodyScroll = () => {
+  bodyScrollStack.value += 1
+  document.body.style.overflow = 'hidden'
+  document.documentElement.style.overflow = 'hidden'
+}
+
+const unlockBodyScroll = () => {
+  bodyScrollStack.value = Math.max(0, bodyScrollStack.value - 1)
+  if (bodyScrollStack.value === 0) {
+    document.body.style.overflow = ''
+    document.documentElement.style.overflow = ''
+  }
 }
 
 // ganti kategori + reset slider & tutup gallery
@@ -367,6 +397,7 @@ onMounted(() => {
 
 onUnmounted(() => {
   if (slideTimer) clearInterval(slideTimer)
+  unlockBodyScroll()
 })
 
 // kalau list card-nya berubah (ganti kategori)
@@ -377,6 +408,7 @@ watch(filteredWorks, () => {
     scrollToIndex(0)
   })
   resetTimer()
+  unlockBodyScroll()
 })
 </script>
 
@@ -541,11 +573,32 @@ watch(filteredWorks, () => {
                 :class="[
                   'portfolio-work-gallery-card',
                   { 'portfolio-work-gallery-card--featured': index === 0 },
+                  { 'portfolio-work-gallery-card--reel': item.embedUrl },
                 ]"
+                role="button"
+                tabindex="0"
+                @click="openGalleryModal(item)"
+                @keydown.enter.prevent="openGalleryModal(item)"
               >
+                <div v-if="item.embedUrl" class="portfolio-work-gallery-thumb">
+                  <iframe
+                    class="portfolio-work-gallery-embed"
+                    :src="`${item.embedUrl}/embed`"
+                    allowtransparency="true"
+                    allowfullscreen
+                    scrolling="no"
+                    frameborder="0"
+                  ></iframe>
+                </div>
                 <div
+                  v-else
                   class="portfolio-work-gallery-thumb"
-                  :style="{ background: `url(${item.thumb}) center / cover no-repeat` }"
+                  :style="{
+                    backgroundImage: `url(${item.thumb || selectedWork?.thumb || ''})`,
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: 'cover',
+                  }"
                 ></div>
                 <div class="portfolio-work-gallery-label">
                   {{ item.title }}
@@ -587,5 +640,66 @@ watch(filteredWorks, () => {
         </div>
       </div>
     </section>
+
+    <!-- LIGHTBOX GALLERY MODAL -->
+    <transition name="modal-fade">
+      <div v-if="activeGalleryItem" class="portfolio-gallery-modal" @click.self="closeGalleryModal">
+        <div class="portfolio-gallery-modal-box" role="dialog" aria-modal="true">
+          <header class="portfolio-gallery-modal-head">
+            <div>
+              <p class="portfolio-work-gallery-kicker">
+                {{ activeGalleryItem.tag || activeCategoryData?.name || 'Gallery' }}
+              </p>
+              <h3 class="portfolio-work-gallery-title">{{ activeGalleryItem.title }}</h3>
+            </div>
+            <button type="button" class="portfolio-gallery-modal-close" @click="closeGalleryModal">
+              Tutup
+            </button>
+          </header>
+
+          <div class="portfolio-gallery-modal-body">
+            <iframe
+              v-if="activeGalleryItem.embedUrl"
+              class="portfolio-gallery-embed"
+              :src="`${activeGalleryItem.embedUrl}/embed`"
+              allowtransparency="true"
+              allowfullscreen
+              scrolling="no"
+              frameborder="0"
+            ></iframe>
+            <div
+              v-else
+              class="portfolio-gallery-modal-image"
+              :class="{ 'portfolio-gallery-modal-image--zoom': modalZoomed }"
+              :style="{
+                backgroundImage: `url(${activeGalleryItem.thumb || ''})`,
+                '--modal-zoom-level': modalZoomLevel,
+              }"
+              role="button"
+              tabindex="0"
+              @click="toggleZoom"
+              @keydown.enter.prevent="toggleZoom"
+            ></div>
+          </div>
+
+          <div
+            v-if="activeGalleryItem && !activeGalleryItem.embedUrl"
+            class="portfolio-gallery-modal-zoom"
+          >
+            <span>Zoom:</span>
+            <button
+              v-for="level in zoomLevels"
+              :key="level"
+              type="button"
+              class="portfolio-gallery-zoom-btn"
+              :class="{ 'portfolio-gallery-zoom-btn--active': modalZoomLevel === level }"
+              @click="setZoom(level)"
+            >
+              {{ Math.round(level * 100) }}%
+            </button>
+          </div>
+        </div>
+      </div>
+    </transition>
   </div>
 </template>
