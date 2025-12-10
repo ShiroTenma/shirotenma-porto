@@ -134,7 +134,7 @@ const packageOptions = {
         'File siap cetak (CMYK) dan file Digital (RGB) untuk kebutuhan Promosi digital.',
         'Revisi ringan supaya cepat siap publish.',
       ],
-      price: 'Mulai dari Rp. 45.000',
+      price: 'Mulai dari Rp. 40.000',
     },
     {
       id: 'g-5',
@@ -145,7 +145,7 @@ const packageOptions = {
         'File siap cetak (CMYK) dengan PPI tinggi agar HD.',
         'Layout fokus keterbacaan dan hierarki teks yang kuat serta hiearki desain yang apik.',
       ],
-      price: 'Mulai dari Rp. 90.000',
+      price: 'Mulai dari Rp. 70.000',
     },
     {
       id: 'g-6',
@@ -156,7 +156,7 @@ const packageOptions = {
         'Template warna/font diseragamkan supaya brand konsisten.',
         'Termasuk versi square, vertical, dan horizontal jika dibutuhkan.',
       ],
-      price: 'Mulai dari Rp. 120.000',
+      price: 'Mulai dari Rp. 40.000',
     },
   ],
   video: [
