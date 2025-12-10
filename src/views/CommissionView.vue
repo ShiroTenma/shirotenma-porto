@@ -50,18 +50,18 @@ const packages = [
 const testimonies = [
   {
     name: 'Gemma Nolen',
-    role: 'Google',
-    text: 'Kualitas desain konsisten dan gampang diajak diskusi ide.',
+    role: 'osu!player',
+    text: 'Gacor kang sesuai permintaan, nanti lagi aku komis ke kamu.',
   },
   {
     name: 'Client A',
     role: 'Streamer',
-    text: 'Banner dan overlay yang dibuat bener-bener cocok sama brand-ku.',
+    text: 'Banner dan overlay yang dibuat cocok banget sama brand-ku.',
   },
   {
     name: 'Client B',
     role: 'Event Organizer',
-    text: 'Respons cepat dan hasil final rapi, siap dipakai publish.',
+    text: 'Respons cepat dan hasil final rapi, siap dipublish bahkan siap dicetak.',
   },
 ]
 
