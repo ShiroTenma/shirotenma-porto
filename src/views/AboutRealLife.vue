@@ -3,56 +3,41 @@ import avatarMain from '../assets/images/about/avatar-main.png'
 
 import graphicsAllBanners from '../assets/images/works/graphics-all-banners.jpg'
 import graphicsOverlay from '../assets/images/works/editing-highlight.jpg'
-import commissionOne from '../assets/images/works/banner-comms.jpg'
-import commissionTwo from '../assets/images/works/editing-motion.png'
 import cosplayPhoto from '../assets/images/works/photo-cosplay1.jpg'
-import commissionThree from '../assets/images/works/cosplay-comms.jpg'
+import videography from '../assets/images/works/videography-card.jpg'
 
 const worksShowcase = [
   {
     id: 'w1',
-    title: 'Social Media Banners',
+    title: 'Photography',
+    tag: 'Photography',
+    desc: 'Fotografi cosplay dengan sesi pemotretan terpisah maupun saat Coswalk Competition.',
+    image: cosplayPhoto,
+    link: '/portfolio',
+  },
+  {
+    id: 'w2',
+    title: 'Graphics Design',
     tag: 'Graphics',
     desc: 'Banner yang biasa dipakai di berbagai sosial media dan juga termasuk beberapa game yang mendukung banner kustom.',
     image: graphicsAllBanners,
     link: '/portfolio',
   },
   {
-    id: 'w2',
-    title: 'Custom Edits',
+    id: 'w3',
+    title: 'After Effects Video Editor',
     tag: 'Video Editing',
     desc: 'MV editing seusai dengan Klien.',
     image: graphicsOverlay,
     link: '/portfolio',
   },
   {
-    id: 'w3',
-    title: 'Cosplay Photography',
-    tag: 'Photography',
-    desc: 'Fotografi cosplay dengan sesi pemotretan terpisah maupun saat Coswalk Competition.',
-    image: cosplayPhoto,
+    id: 'w4',
+    title: 'Videography',
+    tag: 'Videography',
+    desc: 'Videografi yang menyesuaikan dengan event ataupun permintaan klien.',
+    image: videography,
     link: '/portfolio',
-  },
-]
-
-const commissionShowcase = [
-  {
-    id: 'c1',
-    title: 'Social Media Banner Set',
-    tag: 'Graphics commission',
-    image: commissionOne,
-  },
-  {
-    id: 'c2',
-    title: 'Custom MV Edit',
-    tag: 'Video commission',
-    image: commissionTwo,
-  },
-  {
-    id: 'c3',
-    title: 'Cosplay Photoshoot',
-    tag: 'Photography commission',
-    image: commissionThree,
   },
 ]
 
@@ -106,23 +91,6 @@ const experiences = [
     ],
   },
 ]
-
-const tools = [
-  'Photoshop',
-  'After Effects',
-  'Figma',
-  'Premiere',
-  'Vegas Pro',
-  'Illustrator (basic)',
-  'Lightroom',
-  'Canva',
-]
-
-const ctaBackgroundStyle = {
-  backgroundImage: `linear-gradient(120deg, rgba(15,17,23,0.88), rgba(15,17,23,0.55)), url(${commissionOne})`,
-  backgroundSize: 'cover',
-  backgroundPosition: 'center',
-}
 </script>
 
 <template>
@@ -132,20 +100,14 @@ const ctaBackgroundStyle = {
       <div v-inview class="container about-hero-grid">
         <div class="about-hero-text">
           <p class="about-kicker">About</p>
-          <h1 class="about-title">ShiroTenma</h1>
+          <h1 class="about-title-rl">AKMAL FALAH MAULANA</h1>
+          <p class="about-header">11231006 | INFOMATIKA | INSTITUT TEKNOLOGI KALIMANTAN</p>
           <p class="about-subtitle">
             Seorang manusia yang mempunyai passion di hampir semua bidang kreatif seperti Graphics
             Design, Video Editing, Motion graphics, Typography, dan juga dalam Fotografi dan
             Videografi. Biasanya dia suka banget eksplorasi style visual yang unik dan menarik
             perhatian dan juga sesuai dengan bayangan klien itu sendiri.
           </p>
-          <div class="about-actions">
-            <router-link to="/portfolio" class="btn btn-primary btn-sm"
-              >Lihat portfolio</router-link
-            >
-            <router-link to="/contact" class="btn btn-outline btn-sm">Hubungi</router-link>
-            <router-link to="/aboutrl" class="btn btn-outline btn-sm">Behind the scene</router-link>
-          </div>
         </div>
 
         <div class="about-hero-card">
@@ -164,15 +126,15 @@ const ctaBackgroundStyle = {
       <div class="container">
         <div v-inview class="about-section-head about-head-grid">
           <div class="about-head-left">
-            <p class="about-kicker">Selected Works</p>
-            <h2 class="about-section-title">Beberapa karya pilihan</h2>
+            <p class="about-kicker">Skill issue</p>
+            <h2 class="about-section-title">Spill Skill ku nih!</h2>
             <router-link to="/portfolio" class="about-link about-head-link"
               >Lihat semua</router-link
             >
           </div>
           <p class="about-section-text about-head-desc">
-            Potongan karya dari graphics, Editing, dan Fotografi yang terbaik. Sisanya bisa kamu
-            lihat langsung di halaman portfolio.
+            Skill yang aku asah hingga bisa menguasai dan menjadi bakat dalam diriku. Beberapa skill
+            yang aku kuasain dan aku banggakan seperti
           </p>
         </div>
 
@@ -190,44 +152,13 @@ const ctaBackgroundStyle = {
       </div>
     </section>
 
-    <!-- COMMISSION HIGHLIGHTS -->
-    <section class="section about-commission">
-      <div class="container">
-        <div v-inview class="about-section-head about-head-grid">
-          <div class="about-head-left">
-            <p class="about-kicker">Commission</p>
-            <h2 class="about-section-title">Beberapa hasil komisi</h2>
-            <router-link to="/commission" class="about-link about-head-link"
-              >Lihat detail paket</router-link
-            >
-          </div>
-          <p class="about-section-text about-head-desc">
-            Contoh paket overlay dan video yang sudah selesai. Bisa diadaptasi sesuai kebutuhanmu.
-          </p>
-        </div>
-
-        <div v-inview class="about-commission-grid">
-          <article v-for="item in commissionShowcase" :key="item.id" class="about-commission-card">
-            <div
-              class="about-commission-thumb"
-              :style="{ backgroundImage: `url(${item.image})` }"
-            ></div>
-            <div class="about-commission-body">
-              <p class="about-card-tag">{{ item.tag }}</p>
-              <h3 class="about-card-title">{{ item.title }}</h3>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <!-- EXPERIENCE -->
-    <section class="section about-experience">
+    <section class="section about-experience-rl">
       <div class="container">
         <div v-inview class="about-section-head">
           <div>
             <p class="about-kicker">Experience</p>
-            <h2 class="about-section-title">Pengalaman</h2>
+            <h2 class="about-section-title-rl">Pengalaman</h2>
           </div>
         </div>
 
@@ -241,44 +172,6 @@ const ctaBackgroundStyle = {
               </ul>
             </div>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- TOOLS -->
-    <section class="section about-tools">
-      <div class="container">
-        <div v-inview class="about-section-head">
-          <div>
-            <p class="about-kicker">Tools</p>
-            <h2 class="about-section-title">Peralatan kerja</h2>
-          </div>
-        </div>
-
-        <div v-inview class="about-tools-grid">
-          <div v-for="tool in tools" :key="tool" class="about-tool-chip">
-            {{ tool }}
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="section about-cta">
-      <div v-inview class="container about-cta-box" :style="ctaBackgroundStyle">
-        <div class="about-cta-left">
-          <h2 class="about-section-title">Punya ide untuk poster, atau video?</h2>
-          <p class="about-kicker">Let’s collaborate</p>
-          <div class="about-cta-actions about-cta-actions--stack">
-            <router-link to="/commission" class="btn btn-primary btn-sm">Lihat paket</router-link>
-            <router-link to="/contact" class="btn btn-outline btn-sm">Hubungi</router-link>
-          </div>
-        </div>
-        <div class="about-cta-right">
-          <p class="about-section-text about-cta-desc">
-            Ceritakan saja secara singkat, nanti kita susun moodboard bareng sampe cocok! baru
-            sisanya aku kerjakan.
-          </p>
         </div>
       </div>
     </section>

@@ -4,6 +4,7 @@ import PortfolioView from '../views/PortfolioView.vue'
 import CommissionView from '../views/CommissionView.vue'
 import ContactView from '../views/ContactView.vue'
 import AboutView from '../views/AboutView.vue'
+import AboutRealLife from '../views/AboutRealLife.vue'
 
 const routes = [
   { path: '/', name: 'home', component: HomeView },
@@ -11,6 +12,7 @@ const routes = [
   { path: '/commission', name: 'commission', component: CommissionView },
   { path: '/contact', name: 'contact', component: ContactView },
   { path: '/about', name: 'about', component: AboutView },
+  { path: '/aboutrl', name: 'aboutrl', component: AboutRealLife },
 ]
 
 const router = createRouter({

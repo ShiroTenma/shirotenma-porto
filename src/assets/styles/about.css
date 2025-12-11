@@ -35,6 +35,18 @@
   letter-spacing: 0.02em;
 }
 
+.about-title-rl {
+  margin: 0;
+  font-size: 2.4rem;
+  letter-spacing: 0.02em;
+}
+
+.about-header {
+  margin: 0;
+  font-size: 1.4rem;
+  letter-spacing: 0.02em;
+}
+
 .about-subtitle {
   margin: 0;
   font-size: 0.98rem;
@@ -50,6 +62,17 @@
 }
 
 .about-hero-card {
+  background: #0f1117;
+  color: #f8fafc;
+  border-radius: 20px;
+  padding: 1.2rem;
+  box-shadow: 0 20px 46px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.about-hero-card-rl {
   background: #0f1117;
   color: #f8fafc;
   border-radius: 20px;
@@ -114,6 +137,19 @@
   margin: 0;
   color: var(--text-muted);
   max-width: 36rem;
+}
+
+.about-section-title-rl {
+  margin: 0.1rem 0 0.4rem;
+  font-size: 1.6rem;
+  color: #ffffff;
+}
+
+.about-section-text-rl {
+  margin: 0;
+  color: var(--text-muted);
+  max-width: 36rem;
+  color: #ffffff;
 }
 
 .about-link {
@@ -216,7 +252,10 @@
   display: flex;
   flex-direction: column;
   box-shadow: 0 18px 38px rgba(0, 0, 0, 0.32);
-  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
 }
 
 .about-commission-card:hover {
@@ -241,6 +280,10 @@
 
 .about-experience {
   background: #ffffff;
+}
+
+.about-experience-rl {
+  background: #0f1015;
 }
 
 .about-timeline {
@@ -397,6 +440,12 @@
 @media (max-width: 640px) {
   .about-hero {
     padding-top: 2.6rem;
+  }
+
+  .about-hero-card-rl {
+  }
+
+  .about-title-rl {
   }
 
   .about-section-head {
