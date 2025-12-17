@@ -1,0 +1,9 @@
+@layer components {
+  .contact-card {
+    @apply rounded-2xl bg-white shadow-2xl p-6 md:p-7 text-slate-900;
+  }
+
+  .contact-field {
+    @apply flex flex-col gap-2 text-sm font-semibold text-slate-700;
+  }
+}

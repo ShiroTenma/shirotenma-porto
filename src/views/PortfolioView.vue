@@ -1,18 +1,21 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 
+import PortfolioHero from '../components/portfolio/PortfolioHero.vue'
+import PortfolioCarousel from '../components/portfolio/PortfolioCarousel.vue'
+import PortfolioGallery from '../components/portfolio/PortfolioGallery.vue'
+import PortfolioCTA from '../components/portfolio/PortfolioCTA.vue'
+import PortfolioLightbox from '../components/portfolio/PortfolioLightbox.vue'
+
 const images = import.meta.glob('../assets/images/**/*.{png,jpg,jpeg,JPG}', {
   eager: true,
   import: 'default',
 })
 
 const img = (path) => images[`../assets/images/${path}`] ?? ''
-
-// Helper aliases for repeated thumbs (keeps existing data structure)
 const editingMotion = img('works/editing-motion.png')
-const photoPortrait = img('works/photo-portrait.jpg')
-const photoEvents = img('works/photo-events.jpg')
 
+// data (kept same as sebelumnya)
 const categories = [
   {
     id: 'graphics',
@@ -20,6 +23,7 @@ const categories = [
     badge: 'POSTER / BANNER / SOCIAL',
     priceText: 'Branding kecil, banner, overlay, dan social media assets.',
     highlight: 'Basic visual identity untuk kebutuhan sosial media atau event brand kecil.',
+    heroImage: img('works/graphics-banner.png'),
     tone: 'light',
   },
   {
@@ -29,6 +33,7 @@ const categories = [
     priceText: 'Video pendek, Custom MV edits, dan Motion Graphics untuk konten digital.',
     highlight:
       'Pas buat channel YouTube, VTuber, atau content creator. atau sekedar hiburan pribadi.',
+    heroImage: img('works/editing-highlight.jpg'),
     tone: 'dark',
   },
   {
@@ -37,6 +42,7 @@ const categories = [
     badge: 'COSPLAY / PORTRAIT',
     priceText: 'Fotografi dengan color grading stylized.',
     highlight: 'Untuk poster, Sosial Media, atau personal project.',
+    heroImage: img('works/photo-portrait.jpg'),
     tone: 'light',
   },
 ]
@@ -144,10 +150,6 @@ const works = [
   },
 ]
 
-/**
- * Zy detail per work (yang muncul di bawah slider waktu diklik)
- * Silakan ganti judul atau thumb di sini dengan karya asli.
- */
 const workGalleries = {
   'g-1': [
     { id: 'g-1-1', title: 'osu!profile banners', thumb: img('works/graphics-all-banners.jpg') },
@@ -163,9 +165,9 @@ const workGalleries = {
       title: 'Poster Promosi Merchandise',
       thumb: img('works/poster-ukm-merchandise.jpg'),
     },
-    { id: 'g-2-4', title: 'Flyer Promosi untuk Klien', thumb: img('works/flyer-promotion.jpg') },
+    { id: 'g-2-5', title: 'Flyer Promosi untuk Klien', thumb: img('works/flyer-promotion.jpg') },
     {
-      id: 'g-2-4',
+      id: 'g-2-6',
       title: 'Standing Banner Promosi UKM',
       thumb: img('works/standing-banner-ukm.jpg'),
     },
@@ -198,24 +200,8 @@ const workGalleries = {
     { id: 'g-3-10', title: 'Ticket Design', thumb: img('works/design-ticket.jpg') },
     { id: 'g-3-11', title: 'ID Card Design', thumb: img('works/id-card-design.jpg') },
     { id: 'g-3-12', title: 'Digital CV Design', thumb: img('works/cv-creative.jpg') },
-    {
-      id: 'g-3-13',
-      title: 'Instagram Story Template Design',
-      thumb: img('works/design-story.jpg'),
-    },
-    {
-      id: 'g-3-14',
-      title: 'Custom Mousepad Design',
-      thumb: img('works/mousepad-custom.jpg'),
-    },
-    {
-      id: 'g-3-15',
-      title: 'Creative Instagram Story Design',
-      thumb: img('works/custom-story.jpg'),
-    },
   ],
-
-  // EDITING & PHOTO
+  // EDITING & PHOTO (Instagram embed)
   'e-1': [
     {
       id: 'e-1-embed-1',
@@ -265,51 +251,51 @@ const workGalleries = {
     },
     {
       id: 'e-3-embed-2',
-      title: 'Furina kinda freestyle/UI themed Mograph',
+      title: 'Furina freestyle/UI themed Mograph',
       embedUrl: 'https://www.instagram.com/reel/C1UKw9TSPy1',
       thumb: editingMotion,
     },
     {
       id: 'e-3-embed-3',
-      title: 'Simple Mograph with geometric shapes and random things',
+      title: 'Simple Mograph geometric mix',
       embedUrl: 'https://www.instagram.com/reel/CP4l7NCrim3',
       thumb: editingMotion,
     },
     {
       id: 'e-3-embed-4',
-      title: 'Mograph for my friends birthday',
+      title: 'Birthday Mograph gift',
       embedUrl: 'https://www.instagram.com/reel/CMyR4EPhgBZ',
       thumb: editingMotion,
     },
     {
       id: 'e-3-embed-5',
-      title: 'Simple Mograph with geometric shapes and random things 2',
+      title: 'Mograph geometric mix 2',
       embedUrl: 'https://www.instagram.com/reel/CLqScYuBfdF',
       thumb: editingMotion,
     },
   ],
   'e-4': [
     {
-      id: 'e-3-embed-1',
-      title: 'Kali Uchis, Typography MV',
+      id: 'e-4-embed-1',
+      title: 'Kali Uchis Typography MV',
       embedUrl: 'https://www.instagram.com/reel/C4aTnjTIece',
       thumb: editingMotion,
     },
     {
-      id: 'e-3-embed-2',
-      title: 'Phony Typography MV on Alight Motion',
+      id: 'e-4-embed-2',
+      title: 'Phony Typography MV (Alight Motion)',
       embedUrl: 'https://www.instagram.com/reel/CvuLtjPMLXj',
       thumb: editingMotion,
     },
     {
-      id: 'e-3-embed-3',
-      title: 'MEP Part,  Typography MV (i forgot the song title lol)',
+      id: 'e-4-embed-3',
+      title: 'MEP Part Typography MV',
       embedUrl: 'https://www.instagram.com/reel/CMS05IRhRq5',
       thumb: editingMotion,
     },
     {
-      id: 'e-3-embed-4',
-      title: 'Banqnas Remake, Burnt Rice Typography Edit',
+      id: 'e-4-embed-4',
+      title: 'Banqnas Remake, Burnt Rice Edit',
       embedUrl: 'https://www.instagram.com/reel/CPALd8hFC6x',
       thumb: editingMotion,
     },
@@ -323,25 +309,25 @@ const workGalleries = {
     },
     {
       id: 'e-5-embed-2',
-      title: 'Freestyle MV edit for my birthday',
+      title: 'Freestyle MV edit (birthday)',
       embedUrl: 'https://www.instagram.com/reel/CN3q50phv77',
       thumb: editingMotion,
     },
     {
       id: 'e-5-embed-3',
-      title: 'Remake MV from the challenge',
+      title: 'Remake MV from challenge',
       embedUrl: 'https://www.instagram.com/reel/CQMDwLtMk9Q',
       thumb: editingMotion,
     },
     {
       id: 'e-5-embed-4',
-      title: 'personal MV',
+      title: 'Personal MV',
       embedUrl: 'https://www.instagram.com/reel/DMOv_DNyGgI',
       thumb: editingMotion,
     },
     {
       id: 'e-5-embed-5',
-      title: 'Following the trend idk',
+      title: 'Following the trend',
       embedUrl: 'https://www.instagram.com/reel/DMrOE87SnbZ',
       thumb: editingMotion,
     },
@@ -626,523 +612,232 @@ const workGalleries = {
   ],
 }
 
+const showcaseWorks = [
+  {
+    id: 's1',
+    title: 'Social Media Banner',
+    category: 'graphics',
+    thumb: img('works/graphics-banner.png'),
+  },
+  {
+    id: 's2',
+    title: 'BG Map osu!',
+    category: 'graphics',
+    thumb: img('works/graphics-more-samples.jpg'),
+  },
+  {
+    id: 's3',
+    title: 'osu!profile overlay',
+    category: 'graphics',
+    thumb: img('works/graphics-overlay.jpg'),
+  },
+  {
+    id: 's4',
+    title: 'Youtube thumbnaill',
+    category: 'graphics',
+    thumb: img('works/graphics-thumbnail.png'),
+  },
+]
+
 const activeCategory = ref('graphics')
-
-const activeCategoryData = computed(() => categories.find((c) => c.id === activeCategory.value))
-
-const filteredWorks = computed(() => works.filter((w) => w.category === activeCategory.value))
-
-// mini showcase di CTA kanan bawah
-const showcaseWorks = computed(() => works.slice(0, 4))
-
-// === SLIDER LOGIC (per kartu + loop) ===
-const carouselRef = ref(null)
 const activeIndex = ref(0)
-let slideTimer = null
-
-const scrollToIndex = (index) => {
-  const el = carouselRef.value
-  if (!el) return
-
-  const card = el.children[index]
-  if (!card) return
-
-  const cardRect = card.getBoundingClientRect()
-  const trackRect = el.getBoundingClientRect()
-  const offsetLeft = cardRect.left - trackRect.left + el.scrollLeft
-
-  el.scrollTo({
-    left: offsetLeft,
-    behavior: 'smooth',
-  })
-
-  activeIndex.value = index
-}
-
-const nextSlide = () => {
-  const total = filteredWorks.value.length
-  if (!total) return
-  const next = (activeIndex.value + 1) % total
-  scrollToIndex(next)
-}
-
-const prevSlide = () => {
-  const total = filteredWorks.value.length
-  if (!total) return
-  const prev = (activeIndex.value - 1 + total) % total
-  scrollToIndex(prev)
-}
-
-const resetTimer = () => {
-  if (slideTimer) clearInterval(slideTimer)
-  slideTimer = setInterval(() => {
-    nextSlide()
-  }, 3000)
-}
-
-const pauseSlider = () => {
-  if (slideTimer) {
-    clearInterval(slideTimer)
-    slideTimer = null
+const selectedWorkId = ref(null)
+const showGallery = ref(false)
+const activeGalleryItem = ref(null)
+const modalZoomLevel = ref(100)
+const modalZoomed = ref(false)
+const isPanning = ref(false)
+const panOffset = ref({ x: 0, y: 0 })
+const fitMode = ref('contain')
+const zoomPresets = [100, 125, 150, 175, 200, 250, 300]
+const keyHandler = (e) => {
+  if (e.key === 'Escape' && activeGalleryItem.value) {
+    closeGalleryModal()
   }
 }
+let startX = 0
+let startY = 0
 
-const handleNextClick = () => {
-  nextSlide()
-  resetTimer()
+const activeCategoryData = computed(() => categories.find((cat) => cat.id === activeCategory.value))
+const filteredWorks = computed(() => works.filter((w) => w.category === activeCategory.value))
+const selectedWork = computed(() =>
+  showGallery.value
+    ? filteredWorks.value.find((w) => w.id === selectedWorkId.value) ||
+      filteredWorks.value[activeIndex.value] ||
+      filteredWorks.value[0]
+    : null,
+)
+const selectedGallery = computed(
+  () =>
+    (selectedWork.value && workGalleries[selectedWork.value.id]) ||
+    workGalleries[filteredWorks.value[0]?.id] ||
+    [],
+)
+
+const setCategory = (id) => {
+  activeCategory.value = id
 }
 
-const handlePrevClick = () => {
-  prevSlide()
-  resetTimer()
+const selectWork = (idx) => {
+  activeIndex.value = idx
+  selectedWorkId.value = filteredWorks.value[idx]?.id || null
+  showGallery.value = true
 }
 
-// === GALLERY DETAIL YANG MUNCUL DI BAWAH SLIDER ===
-const selectedWorkId = ref(null)
-
-const selectedWork = computed(() => works.find((w) => w.id === selectedWorkId.value) || null)
-
-const selectedGalleryItems = computed(() => {
-  if (!selectedWork.value) return []
-  return (workGalleries[selectedWork.value.id] || []).map((item) => ({
-    ...item,
-    thumb: item.thumb || selectedWork.value.thumb,
-  }))
-})
-
-const activeGalleryItem = ref(null)
-const modalZoomed = ref(false)
-const modalZoomLevel = ref(1.25)
-const zoomLevels = [1, 1.25, 1.5, 1.75, 2]
-const isPanning = ref(false)
-const pan = ref({ x: 0, y: 0 })
-let panStart = { x: 0, y: 0 }
-const bodyScrollStack = ref(0)
-
-const openGalleryForWork = (work, index) => {
-  selectedWorkId.value = work.id
-  scrollToIndex(index)
-  pauseSlider()
+const openGalleryForWork = (work, idx) => {
+  selectWork(idx)
 }
 
-const closeGallery = () => {
-  selectedWorkId.value = null
-  resetTimer()
+// modal helpers
+const lockBodyScroll = () => {
+  document.documentElement.style.overflow = 'hidden'
+  document.body.style.overflow = 'hidden'
+}
+const unlockBodyScroll = () => {
+  document.documentElement.style.overflow = ''
+  document.body.style.overflow = ''
 }
 
 const openGalleryModal = (item) => {
   activeGalleryItem.value = item
+  modalZoomLevel.value = 100
   modalZoomed.value = false
-  modalZoomLevel.value = 1.25
-  pan.value = { x: 0, y: 0 }
+  panOffset.value = { x: 0, y: 0 }
   lockBodyScroll()
 }
 
 const closeGalleryModal = () => {
   activeGalleryItem.value = null
-  modalZoomed.value = false
-  modalZoomLevel.value = 1.25
-  pan.value = { x: 0, y: 0 }
+  panOffset.value = { x: 0, y: 0 }
   unlockBodyScroll()
-}
-
-const toggleZoom = () => {
-  modalZoomed.value = !modalZoomed.value
-  modalZoomLevel.value = modalZoomed.value ? 1.5 : 1.25
-  if (!modalZoomed.value) {
-    pan.value = { x: 0, y: 0 }
-  }
 }
 
 const setZoom = (level) => {
   modalZoomLevel.value = level
-  modalZoomed.value = level > 1
-  if (level === 1) {
-    pan.value = { x: 0, y: 0 }
+  modalZoomed.value = level !== 100
+  if (level === 100) {
+    panOffset.value = { x: 0, y: 0 }
   }
 }
 
-const lockBodyScroll = () => {
-  bodyScrollStack.value += 1
-  document.body.style.overflow = 'hidden'
-  document.documentElement.style.overflow = 'hidden'
+const toggleFit = (mode) => {
+  fitMode.value = mode
 }
 
-const unlockBodyScroll = () => {
-  bodyScrollStack.value = Math.max(0, bodyScrollStack.value - 1)
-  if (bodyScrollStack.value === 0) {
-    document.body.style.overflow = ''
-    document.documentElement.style.overflow = ''
-  }
+const handleDoubleZoom = () => {
+  const idx = zoomPresets.indexOf(modalZoomLevel.value)
+  const next = zoomPresets[(idx + 1) % zoomPresets.length]
+  setZoom(next)
 }
 
-const getPoint = (e) => {
-  if (e.touches && e.touches.length) {
-    return { x: e.touches[0].clientX, y: e.touches[0].clientY }
-  }
-  return { x: e.clientX, y: e.clientY }
-}
-
-const onPanStart = (e) => {
+const startPan = (event) => {
   if (!modalZoomed.value) return
   isPanning.value = true
-  panStart = getPoint(e)
-  window.addEventListener('mousemove', onPanMove)
-  window.addEventListener('mouseup', onPanEnd)
-  window.addEventListener('touchmove', onPanMove, { passive: false })
-  window.addEventListener('touchend', onPanEnd)
+  startX = event.clientX - panOffset.value.x
+  startY = event.clientY - panOffset.value.y
 }
 
-const onPanMove = (e) => {
-  if (!isPanning.value || !modalZoomed.value) return
-  if (e.cancelable) e.preventDefault()
-  const point = getPoint(e)
-  const dx = point.x - panStart.x
-  const dy = point.y - panStart.y
-  pan.value = { x: pan.value.x + dx, y: pan.value.y + dy }
-  panStart = point
+const pan = (event) => {
+  if (!isPanning.value) return
+  panOffset.value = {
+    x: event.clientX - startX,
+    y: event.clientY - startY,
+  }
 }
 
-const onPanEnd = () => {
+const stopPan = () => {
   isPanning.value = false
-  window.removeEventListener('mousemove', onPanMove)
-  window.removeEventListener('mouseup', onPanEnd)
-  window.removeEventListener('touchmove', onPanMove)
-  window.removeEventListener('touchend', onPanEnd)
-}
-
-// ganti kategori + reset slider & tutup gallery
-const setCategory = (id) => {
-  activeCategory.value = id
 }
 
 onMounted(() => {
-  requestAnimationFrame(() => {
-    scrollToIndex(0)
-  })
-  resetTimer()
-})
-
-onUnmounted(() => {
-  if (slideTimer) clearInterval(slideTimer)
+  window.addEventListener('keydown', keyHandler)
   unlockBodyScroll()
 })
 
-// kalau list card-nya berubah (ganti kategori)
+onUnmounted(() => {
+  unlockBodyScroll()
+  window.removeEventListener('keydown', keyHandler)
+})
+
 watch(filteredWorks, () => {
   activeIndex.value = 0
   selectedWorkId.value = null
-  requestAnimationFrame(() => {
-    scrollToIndex(0)
-  })
-  resetTimer()
+  showGallery.value = false
   unlockBodyScroll()
 })
 </script>
 
 <template>
   <div class="page">
-    <!-- SECTION ATAS: 3 KATEGORI -->
-    <section class="section portfolio-hero">
-      <div class="container">
-        <h1 class="page-title">Portfolio</h1>
-        <p class="page-subtitle">
-          Beberapa karya di bidang Graphics Design, Editing, dan Photography. Pilih kategori di
-          bawah ini buat lihat contoh-contohnya.
-        </p>
+    <PortfolioHero
+      :categories="categories"
+      :active-category="activeCategory"
+      :set-category="setCategory"
+    />
 
-        <div v-inview class="portfolio-plan-row">
-          <article
-            v-for="(cat, index) in categories"
-            :key="cat.id"
-            class="portfolio-plan-card"
-            :class="[
-              `portfolio-plan-card--${cat.tone}`,
-              { 'portfolio-plan-card--active': cat.id === activeCategory },
-              { 'portfolio-plan-card--middle': index === 1 },
-            ]"
-            role="button"
-            tabindex="0"
-            @click="setCategory(cat.id)"
-            @keydown.enter.prevent="setCategory(cat.id)"
-          >
-            <p class="portfolio-plan-badge">
-              {{ cat.badge }}
-            </p>
+    <PortfolioCarousel
+      :works="filteredWorks"
+      :active-category="activeCategory"
+      :active-index="activeIndex"
+      @select-work="openGalleryForWork"
+    />
 
-            <h2 class="portfolio-plan-title">
-              {{ cat.name }}
-            </h2>
-
-            <p class="portfolio-plan-price">
-              {{ cat.priceText }}
-            </p>
-
-            <ul class="portfolio-plan-list">
-              <li>{{ cat.highlight }}</li>
-              <li>Style dan color grading bisa disesuaikan karakter atau brand kamu.</li>
-              <li>File akhir siap pakai di social media atau platform streaming.</li>
-            </ul>
-
-            <button class="btn btn-primary btn-sm portfolio-plan-cta" type="button">
-              Lihat karya di kategori ini
-            </button>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION BAWAH: SLIDER + GALLERY DETAIL + CTA -->
-    <section class="section portfolio-gallery-section">
-      <div class="container">
-        <!-- JUDUL -->
-        <div v-inview class="portfolio-gallery-header portfolio-head-grid">
-          <div>
-            <h2 class="portfolio-wide-title">
-              <strong>{{ activeCategoryData?.name }}</strong>
-            </h2>
-          </div>
-          <p class="portfolio-wide-text">
-            Koleksi beberapa karya pilihan di kategori
-            <strong>{{ activeCategoryData?.name }}</strong
-            >. Mulai dari personal project sampai commission untuk klien, semua digarap dengan fokus
-            di mood, warna, dan storytelling visual.
+    <div class="section-shell bg-white">
+      <div class="section-container">
+        <div class="flex items-center justify-between gap-3 mb-4">
+          <h3 class="text-lg font-semibold text-slate-800">
+            {{
+              showGallery && selectedWork
+                ? `Galeri: ${selectedWork.title}`
+                : 'Pilih kartu untuk buka galeri'
+            }}
+          </h3>
+          <p class="text-sm text-slate-500 hidden md:block">
+            Klik kartu di carousel untuk melihat detail karyanya.
           </p>
         </div>
 
-        <!-- SLIDER -->
-        <transition name="swap" mode="out-in">
-          <div v-inview :key="activeCategory" class="portfolio-carousel">
-            <div class="portfolio-carousel-controls">
-              <button
-                type="button"
-                class="portfolio-carousel-arrow"
-                aria-label="Previous"
-                @click="handlePrevClick"
-              >
-                &lsaquo;
-              </button>
-              <button
-                type="button"
-                class="portfolio-carousel-arrow"
-                aria-label="Next"
-                @click="handleNextClick"
-              >
-                &rsaquo;
-              </button>
-            </div>
+        <PortfolioGallery
+          v-if="showGallery && selectedWork"
+          :active-category="activeCategory"
+          :active-category-data="activeCategoryData"
+          :selected-work="selectedWork"
+          :gallery="selectedGallery"
+          @open-modal="openGalleryModal"
+          @close-gallery="
+            () => {
+              selectedWorkId = null
+              showGallery = false
+            }
+          "
+          @select-work="selectWork"
+        />
 
-            <div ref="carouselRef" class="portfolio-carousel-track">
-              <article
-                v-for="(work, index) in filteredWorks"
-                :key="work.id"
-                class="portfolio-carousel-card"
-                :class="{
-                  'portfolio-carousel-card--active': index === activeIndex,
-                }"
-                role="button"
-                tabindex="0"
-                @click="openGalleryForWork(work, index)"
-                @keydown.enter.prevent="openGalleryForWork(work, index)"
-              >
-                <div
-                  class="portfolio-gallery-thumb"
-                  :class="`portfolio-gallery-thumb--${work.category}`"
-                  :style="{ background: `url(${work.thumb}) center / cover no-repeat` }"
-                ></div>
-
-                <div class="portfolio-gallery-body">
-                  <span class="portfolio-gallery-tag">
-                    {{ work.tag }}
-                  </span>
-                  <h3 class="portfolio-gallery-title">
-                    {{ work.title }}
-                  </h3>
-                  <p class="portfolio-gallery-text">
-                    {{ work.desc }}
-                  </p>
-                </div>
-              </article>
-            </div>
-          </div>
-        </transition>
-
-        <!-- GALLERY DETAIL DI BAWAH SLIDER (kayak Works of Artists) -->
-        <transition name="gallery" mode="out-in">
-          <section
-            v-if="selectedWork"
-            v-inview
-            :key="selectedWork?.id || 'none'"
-            class="portfolio-work-gallery"
-          >
-            <div class="portfolio-work-gallery-header">
-              <div>
-                <p class="portfolio-work-gallery-kicker">
-                  {{ selectedWork.tag || activeCategoryData?.name }}
-                </p>
-                <h3 class="portfolio-work-gallery-title">
-                  {{ selectedWork.title }}
-                </h3>
-              </div>
-
-              <button
-                type="button"
-                class="btn btn-outline btn-sm portfolio-work-gallery-close"
-                @click="closeGallery"
-              >
-                Tutup gallery view
-              </button>
-            </div>
-
-            <div
-              class="portfolio-work-gallery-grid"
-              :class="{ 'portfolio-work-gallery-grid--editing': activeCategory === 'editing' }"
-            >
-              <article
-                v-for="(item, index) in selectedGalleryItems"
-                :key="item.id"
-                :class="[
-                  'portfolio-work-gallery-card',
-                  { 'portfolio-work-gallery-card--featured': index === 0 },
-                  { 'portfolio-work-gallery-card--reel': item.embedUrl },
-                ]"
-                role="button"
-                tabindex="0"
-                @click="openGalleryModal(item)"
-                @keydown.enter.prevent="openGalleryModal(item)"
-              >
-                <div v-if="item.embedUrl" class="portfolio-work-gallery-thumb">
-                  <iframe
-                    class="portfolio-work-gallery-embed"
-                    :src="`${item.embedUrl}/embed`"
-                    allowtransparency="true"
-                    allowfullscreen
-                    scrolling="no"
-                    frameborder="0"
-                  ></iframe>
-                </div>
-                <div
-                  v-else
-                  class="portfolio-work-gallery-thumb"
-                  :style="{
-                    backgroundImage: `url(${item.thumb || selectedWork?.thumb || ''})`,
-                    backgroundPosition: 'center',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundSize: 'cover',
-                  }"
-                ></div>
-                <div class="portfolio-work-gallery-label">
-                  {{ item.title }}
-                </div>
-              </article>
-            </div>
-          </section>
-        </transition>
-
-        <!-- CTA BANNER -->
-        <div v-inview class="portfolio-cta-banner">
-          <div class="portfolio-cta-inner">
-            <h3 class="portfolio-cta-title">
-              Siap bikin visual baru buat brand atau project kamu?
-            </h3>
-            <p class="portfolio-cta-text">
-              Ceritain pendek aja idemu, nanti kita bisa bahas bareng konsep, mood, dan style yang
-              paling cocok. No pressure, cuma ngobrol dulu.
-            </p>
-
-            <router-link to="/contact" class="portfolio-cta-button">
-              <span class="portfolio-cta-button-label"> Let's talk! </span>
-              <span class="portfolio-cta-button-icon"> > </span>
-            </router-link>
-            <router-link to="/commission" class="portfolio-cta-button">
-              <span class="portfolio-cta-button-label"> Lihat Commission </span>
-              <span class="portfolio-cta-button-icon"> > </span>
-            </router-link>
-          </div>
-
-          <div class="portfolio-cta-gallery">
-            <article v-for="item in showcaseWorks" :key="item.id" class="portfolio-cta-thumb-card">
-              <div
-                class="portfolio-cta-thumb"
-                :class="`portfolio-cta-thumb--${item.category}`"
-                :style="{ background: `url(${item.thumb}) center / cover no-repeat` }"
-              ></div>
-              <p class="portfolio-cta-thumb-title">
-                {{ item.title }}
-              </p>
-            </article>
-          </div>
+        <div
+          v-else
+          class="rounded-2xl border border-dashed border-slate-200 bg-slate-50 text-slate-500 px-5 py-8 text-center"
+        >
+          Pilih salah satu kartu di atas untuk membuka galeri karya.
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- LIGHTBOX GALLERY MODAL -->
-    <transition name="modal-fade">
-      <div v-if="activeGalleryItem" class="portfolio-gallery-modal" @click.self="closeGalleryModal">
-        <div class="portfolio-gallery-modal-box" role="dialog" aria-modal="true">
-          <header class="portfolio-gallery-modal-head">
-            <div>
-              <p class="portfolio-work-gallery-kicker">
-                {{ activeGalleryItem.tag || activeCategoryData?.name || 'Gallery' }}
-              </p>
-              <h3 class="portfolio-work-gallery-title">{{ activeGalleryItem.title }}</h3>
-            </div>
-            <button type="button" class="portfolio-gallery-modal-close" @click="closeGalleryModal">
-              Tutup
-            </button>
-          </header>
+    <PortfolioCTA :showcase-works="showcaseWorks" />
 
-          <div class="portfolio-gallery-modal-body">
-            <iframe
-              v-if="activeGalleryItem.embedUrl"
-              class="portfolio-gallery-embed"
-              :src="`${activeGalleryItem.embedUrl}/embed`"
-              allowtransparency="true"
-              allowfullscreen
-              scrolling="no"
-              frameborder="0"
-            ></iframe>
-            <div
-              v-else
-              class="portfolio-gallery-modal-image"
-              :class="{
-                'portfolio-gallery-modal-image--zoom': modalZoomed,
-                'portfolio-gallery-modal-image--dragging': isPanning,
-              }"
-              :style="{
-                backgroundImage: `url(${activeGalleryItem.thumb || ''})`,
-                '--modal-zoom-level': modalZoomLevel,
-                transform: modalZoomed
-                  ? `translate(${pan.x}px, ${pan.y}px) scale(${modalZoomLevel})`
-                  : 'translate(0, 0) scale(1)',
-              }"
-              role="button"
-              tabindex="0"
-              @click="toggleZoom"
-              @keydown.enter.prevent="toggleZoom"
-              @mousedown.prevent="onPanStart"
-              @touchstart.prevent="onPanStart"
-            ></div>
-          </div>
-
-          <div
-            v-if="activeGalleryItem && !activeGalleryItem.embedUrl"
-            class="portfolio-gallery-modal-zoom"
-          >
-            <span>Zoom:</span>
-            <button
-              v-for="level in zoomLevels"
-              :key="level"
-              type="button"
-              class="portfolio-gallery-zoom-btn"
-              :class="{ 'portfolio-gallery-zoom-btn--active': modalZoomLevel === level }"
-              @click="setZoom(level)"
-            >
-              {{ Math.round(level * 100) }}%
-            </button>
-          </div>
-        </div>
-      </div>
-    </transition>
+    <PortfolioLightbox
+      :item="activeGalleryItem"
+      :zoom-level="modalZoomLevel"
+      :zoomed="modalZoomed"
+      :is-panning="isPanning"
+      :pan-offset="panOffset"
+      :fit-mode="fitMode"
+      @close="closeGalleryModal"
+      @set-zoom="setZoom"
+      @double-zoom="handleDoubleZoom"
+      @toggle-fit="toggleFit"
+      @start-pan="startPan"
+      @pan="pan"
+      @stop-pan="stopPan"
+    />
   </div>
 </template>

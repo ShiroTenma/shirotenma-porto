@@ -1,5 +1,10 @@
 <script setup>
-import avatarMain from '../assets/images/about/avatar-main.png'
+import AboutHero from '../components/about/AboutHero.vue'
+import AboutWorks from '../components/about/AboutWorks.vue'
+import AboutCommission from '../components/about/AboutCommission.vue'
+import AboutExperience from '../components/about/AboutExperience.vue'
+import AboutTools from '../components/about/AboutTools.vue'
+import AboutCTA from '../components/about/AboutCTA.vue'
 
 import graphicsAllBanners from '../assets/images/works/graphics-all-banners.jpg'
 import graphicsOverlay from '../assets/images/works/editing-highlight.jpg'
@@ -126,161 +131,12 @@ const ctaBackgroundStyle = {
 </script>
 
 <template>
-  <div class="page about-page">
-    <!-- HERO -->
-    <section class="section about-hero">
-      <div v-inview class="container about-hero-grid">
-        <div class="about-hero-text">
-          <p class="about-kicker">About</p>
-          <h1 class="about-title">ShiroTenma</h1>
-          <p class="about-subtitle">
-            Seorang manusia yang mempunyai passion di hampir semua bidang kreatif seperti Graphics
-            Design, Video Editing, Motion graphics, Typography, dan juga dalam Fotografi dan
-            Videografi. Biasanya dia suka banget eksplorasi style visual yang unik dan menarik
-            perhatian dan juga sesuai dengan bayangan klien itu sendiri.
-          </p>
-          <div class="about-actions">
-            <router-link to="/portfolio" class="btn btn-primary btn-sm"
-              >Lihat portfolio</router-link
-            >
-            <router-link to="/contact" class="btn btn-outline btn-sm">Hubungi</router-link>
-            <router-link to="/aboutrl" class="btn btn-outline btn-sm">Behind the scene</router-link>
-          </div>
-        </div>
-
-        <div class="about-hero-card">
-          <div class="about-avatar-frame" :style="{ backgroundImage: `url(${avatarMain})` }"></div>
-          <div class="about-hero-meta">
-            <span class="about-chip">Graphics</span>
-            <span class="about-chip">Video</span>
-            <span class="about-chip">Photo</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SELECTED WORKS -->
-    <section class="section about-works">
-      <div class="container">
-        <div v-inview class="about-section-head about-head-grid">
-          <div class="about-head-left">
-            <p class="about-kicker">Selected Works</p>
-            <h2 class="about-section-title">Beberapa karya pilihan</h2>
-            <router-link to="/portfolio" class="about-link about-head-link"
-              >Lihat semua</router-link
-            >
-          </div>
-          <p class="about-section-text about-head-desc">
-            Potongan karya dari graphics, Editing, dan Fotografi yang terbaik. Sisanya bisa kamu
-            lihat langsung di halaman portfolio.
-          </p>
-        </div>
-
-        <div v-inview class="about-cards-grid">
-          <article v-for="item in worksShowcase" :key="item.id" class="about-card">
-            <div class="about-card-thumb" :style="{ backgroundImage: `url(${item.image})` }"></div>
-            <div class="about-card-body">
-              <p class="about-card-tag">{{ item.tag }}</p>
-              <h3 class="about-card-title">{{ item.title }}</h3>
-              <p class="about-card-text">{{ item.desc }}</p>
-              <router-link :to="item.link" class="about-card-link">Lihat detail</router-link>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- COMMISSION HIGHLIGHTS -->
-    <section class="section about-commission">
-      <div class="container">
-        <div v-inview class="about-section-head about-head-grid">
-          <div class="about-head-left">
-            <p class="about-kicker">Commission</p>
-            <h2 class="about-section-title">Beberapa hasil komisi</h2>
-            <router-link to="/commission" class="about-link about-head-link"
-              >Lihat detail paket</router-link
-            >
-          </div>
-          <p class="about-section-text about-head-desc">
-            Contoh paket overlay dan video yang sudah selesai. Bisa diadaptasi sesuai kebutuhanmu.
-          </p>
-        </div>
-
-        <div v-inview class="about-commission-grid">
-          <article v-for="item in commissionShowcase" :key="item.id" class="about-commission-card">
-            <div
-              class="about-commission-thumb"
-              :style="{ backgroundImage: `url(${item.image})` }"
-            ></div>
-            <div class="about-commission-body">
-              <p class="about-card-tag">{{ item.tag }}</p>
-              <h3 class="about-card-title">{{ item.title }}</h3>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section class="section about-experience">
-      <div class="container">
-        <div v-inview class="about-section-head">
-          <div>
-            <p class="about-kicker">Experience</p>
-            <h2 class="about-section-title">Pengalaman</h2>
-          </div>
-        </div>
-
-        <div v-inview class="about-timeline">
-          <article v-for="exp in experiences" :key="exp.title" class="about-timeline-item">
-            <div class="about-timeline-year">{{ exp.year }}</div>
-            <div class="about-timeline-body">
-              <h3 class="about-timeline-title">{{ exp.title }}</h3>
-              <ul>
-                <li v-for="bullet in exp.bullets" :key="bullet">{{ bullet }}</li>
-              </ul>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- TOOLS -->
-    <section class="section about-tools">
-      <div class="container">
-        <div v-inview class="about-section-head">
-          <div>
-            <p class="about-kicker">Tools</p>
-            <h2 class="about-section-title">Peralatan kerja</h2>
-          </div>
-        </div>
-
-        <div v-inview class="about-tools-grid">
-          <div v-for="tool in tools" :key="tool" class="about-tool-chip">
-            {{ tool }}
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="section about-cta">
-      <div v-inview class="container about-cta-box" :style="ctaBackgroundStyle">
-        <div class="about-cta-left">
-          <h2 class="about-section-title">Punya ide untuk poster, atau video?</h2>
-          <p class="about-kicker">Let’s collaborate</p>
-          <div class="about-cta-actions about-cta-actions--stack">
-            <router-link to="/commission" class="btn btn-primary btn-sm">Lihat paket</router-link>
-            <router-link to="/contact" class="btn btn-outline btn-sm">Hubungi</router-link>
-          </div>
-        </div>
-        <div class="about-cta-right">
-          <p class="about-section-text about-cta-desc">
-            Ceritakan saja secara singkat, nanti kita susun moodboard bareng sampe cocok! baru
-            sisanya aku kerjakan.
-          </p>
-        </div>
-      </div>
-    </section>
+  <div class="page bg-slate-50 text-slate-900">
+    <AboutHero />
+    <AboutWorks :works="worksShowcase" />
+    <AboutCommission :items="commissionShowcase" />
+    <AboutExperience :experiences="experiences" />
+    <AboutTools :tools="tools" />
+    <AboutCTA :background-style="ctaBackgroundStyle" />
   </div>
 </template>

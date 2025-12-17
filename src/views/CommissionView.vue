@@ -1,6 +1,10 @@
 <script setup>
 import { ref, computed, watch, onUnmounted } from 'vue'
 
+import CommissionHero from '../components/commission/CommissionHero.vue'
+import CommissionTestimony from '../components/commission/CommissionTestimony.vue'
+import CommissionModal from '../components/commission/CommissionModal.vue'
+
 const images = import.meta.glob('../assets/images/**/*.{png,jpg,jpeg,JPG}', {
   eager: true,
   import: 'default',
@@ -187,9 +191,9 @@ const packageOptions = {
       title: 'Events Photo + Video Package',
       image: img('works/photo-events-rewarding.JPG'),
       points: [
-        'Foto dan Video dokumentasi acara hingga berakhir.',
-        'Semua hasil foto di edit ringan serta color grading pada video.',
-        'Video highlight berdurasi 3-5 menit.',
+        '- Foto dan Video dokumentasi acara hingga berakhir.',
+        '- Semua hasil foto di edit ringan serta color grading pada video.',
+        '- Video highlight berdurasi 3-5 menit.',
       ],
       price: '(Harga mengikuti Studio Raise Production)',
     },
@@ -242,167 +246,18 @@ onUnmounted(() => {
 
 <template>
   <div class="page">
-    <!-- HERO + PLAN CARDS -->
-    <section class="section section-dark commission-hero">
-      <div class="container">
-        <div v-inview class="commission-header commission-header-grid">
-          <div class="commission-header-left">
-            <h1 class="page-title">Commission!</h1>
-            <p class="commission-helper">
-              Slot terbatas. Kalau ragu soal budget, boleh banget tanya dulu lewat form atau DM aja
-              aku!
-            </p>
-            <div class="commission-header-actions">
-              <router-link to="/contact" class="btn btn-outline btn-sm">Hubungi dulu</router-link>
-            </div>
-          </div>
-          <div class="commission-header-right">
-            <p class="page-subtitle commission-subtitle">
-              Tertarik buat pesen desain atau editing? Pilih paket yang paling pas di bawah ini.
-              Detail bisa fleksibel, yang penting kita ngobrol dulu soal kebutuhanmu.
-            </p>
-          </div>
-        </div>
+    <CommissionHero :packages="packages" @open-package="openPackage" />
 
-        <div v-inview class="portfolio-plan-row commission-plan-row">
-          <article
-            v-for="pkg in packages"
-            :key="pkg.id"
-            v-inview
-            class="portfolio-plan-card portfolio-plan-card--light commission-plan-card"
-            role="button"
-            tabindex="0"
-            @click="openPackage(pkg.id)"
-            @keydown.enter.prevent="openPackage(pkg.id)"
-          >
-            <div
-              v-if="pkg.image"
-              class="commission-card-thumb"
-              :style="{ backgroundImage: `url(${pkg.image})` }"
-            ></div>
-            <p class="portfolio-plan-badge">
-              {{ pkg.badge }}
-            </p>
+    <CommissionTestimony :testimonies="testimonies" />
 
-            <h2 class="portfolio-plan-title">
-              {{ pkg.name }}
-            </h2>
-
-            <p class="portfolio-plan-price">
-              {{ pkg.price }}
-            </p>
-
-            <ul class="portfolio-plan-list">
-              <li v-for="point in pkg.points" :key="point">
-                {{ point }}
-              </li>
-            </ul>
-
-            <button
-              type="button"
-              class="btn btn-primary commission-card-fullbtn"
-              @click="openPackage(pkg.id)"
-            >
-              Lihat detail
-            </button>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- TESTIMONY -->
-    <section class="section commission-testimony">
-      <div class="container">
-        <h2 class="section-title">Testimony</h2>
-        <div v-inview class="testimony-grid">
-          <article v-for="t in testimonies" :key="t.name" class="testimony-card">
-            <p class="testimony-text">"{{ t.text }}"</p>
-            <p class="testimony-name">{{ t.name }}</p>
-            <p class="testimony-role">{{ t.role }}</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- MODAL DETAIL OPSI -->
-    <transition name="modal-fade">
-      <div v-if="isModalOpen" class="commission-modal" @click.self="closeModal">
-        <div class="commission-modal-box" role="dialog" aria-modal="true">
-          <header class="commission-modal-head">
-            <div>
-              <p class="commission-modal-kicker">{{ activePackage?.badge }}</p>
-              <h3 class="commission-modal-title">{{ activePackage?.name }}</h3>
-              <p class="commission-modal-text">
-                {{ activePackage?.points?.[0] }}
-              </p>
-            </div>
-            <button type="button" class="commission-modal-close" @click="closeModal">Tutup</button>
-          </header>
-
-          <div class="commission-modal-options">
-            <article v-for="option in activeOptions" :key="option.id" class="commission-modal-card">
-              <div
-                class="commission-modal-thumb"
-                :style="{ backgroundImage: `url(${option.image})` }"
-              ></div>
-              <div class="commission-modal-body">
-                <h4 class="commission-modal-card-title">{{ option.title }}</h4>
-                <p class="commission-modal-price">
-                  {{ option.price || activePackage?.price }}
-                </p>
-                <p class="commission-modal-card-text">Apa yang kamu dapatkan?</p>
-                <ul class="commission-modal-list">
-                  <li
-                    v-for="point in option.points && option.points.length
-                      ? option.points
-                      : activePackage?.points || []"
-                    :key="point"
-                  >
-                    {{ point }}
-                  </li>
-                </ul>
-                <button
-                  type="button"
-                  class="commission-modal-link"
-                  @click.stop="openContactOptions"
-                >
-                  Tekan untuk Kontak
-                </button>
-              </div>
-            </article>
-          </div>
-        </div>
-      </div>
-    </transition>
-    <transition name="contact-pop">
-      <div v-if="contactModalOpen" class="contact-popup" @click.self="closeContactOptions">
-        <div class="contact-popup-box" role="dialog" aria-modal="true">
-          <header class="contact-popup-head">
-            <h4>Hubungi via</h4>
-            <button type="button" class="contact-popup-close" @click="closeContactOptions">
-              Tutup
-            </button>
-          </header>
-          <div class="contact-popup-body">
-            <a
-              class="contact-btn contact-btn--wa"
-              href="https://wa.me/6285183335473"
-              target="_blank"
-              rel="noreferrer"
-            >
-              WhatsApp Business
-            </a>
-            <a
-              class="contact-btn contact-btn--discord"
-              href="https://discord.com/users/348379630941765645"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Discord
-            </a>
-          </div>
-        </div>
-      </div>
-    </transition>
+    <CommissionModal
+      :is-open="isModalOpen"
+      :active-package="activePackage"
+      :active-options="activeOptions"
+      :contact-open="contactModalOpen"
+      @close="closeModal"
+      @open-contact="openContactOptions"
+      @close-contact="closeContactOptions"
+    />
   </div>
 </template>

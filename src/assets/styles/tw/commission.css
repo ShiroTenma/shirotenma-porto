@@ -1,0 +1,9 @@
+@layer components {
+  .commission-card {
+    @apply rounded-2xl bg-white shadow-xl p-6 text-slate-900;
+  }
+
+  .commission-modal-shell {
+    @apply fixed inset-0 z-40 flex items-start justify-center bg-black/50 backdrop-blur-sm p-4 md:p-8;
+  }
+}

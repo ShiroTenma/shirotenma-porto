@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+/* Sectioned Tailwind layers */
+@import "./tw/home.css";
+@import "./tw/about.css";
+@import "./tw/portfolio.css";
+@import "./tw/commission.css";
+@import "./tw/contact.css";
+@import "./tw/utilities.css";
+@import "./tw/animations.css";

@@ -1,6 +1,9 @@
 <script setup>
 import { reactive, ref } from 'vue'
 
+import ContactHero from '../components/contact/ContactHero.vue'
+import ContactForm from '../components/contact/ContactForm.vue'
+
 const form = reactive({
   email: '',
   mobile: '',
@@ -10,10 +13,7 @@ const form = reactive({
 const isSubmitted = ref(false)
 
 const handleSubmit = () => {
-  // simulasi kirim
   isSubmitted.value = true
-
-  // reset form
   form.email = ''
   form.mobile = ''
   form.message = ''
@@ -22,49 +22,15 @@ const handleSubmit = () => {
 
 <template>
   <div class="page">
-    <section class="section section-dark contact-page">
-      <div v-inview class="container contact-layout">
-        <div>
-          <h1 class="page-title">Interested with these?</h1>
-          <p class="page-subtitle">
-            Kirim detail projekmu di sini. Jelasin kebutuhan, deadline, dan budget kira-kira, biar
-            bisa kukasih estimasi.
-          </p>
-
-          <p v-if="isSubmitted" class="page-subtitle">
-            ✅ Thanks! Pesanmu sudah tercatat (simulasi).
-          </p>
+    <section class="section section-shell bg-[#F9FAFB]">
+      <Transition name="fade-up" appear>
+        <div class="section-container">
+          <div class="grid gap-10 md:grid-cols-2 items-start">
+            <ContactHero :is-submitted="isSubmitted" />
+            <ContactForm :form="form" :is-submitted="isSubmitted" @submit-form="handleSubmit" />
+          </div>
         </div>
-
-        <form class="contact-form" @submit.prevent="handleSubmit">
-          <label class="field">
-            <span>Email</span>
-            <input
-              v-model="form.email"
-              type="email"
-              required
-              placeholder="Please enter your email"
-            />
-          </label>
-
-          <label class="field">
-            <span>Mobile</span>
-            <input v-model="form.mobile" type="tel" placeholder="Enter mobile" />
-          </label>
-
-          <label class="field">
-            <span>Message</span>
-            <textarea
-              v-model="form.message"
-              rows="4"
-              required
-              placeholder="Enter your message"
-            ></textarea>
-          </label>
-
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-      </div>
+      </Transition>
     </section>
   </div>
 </template>

@@ -4,7 +4,7 @@ export default {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          el.classList.add('inview-show')
+          el.classList.add('inview', 'inview-show')
           observer.unobserve(el)
         }
       },
