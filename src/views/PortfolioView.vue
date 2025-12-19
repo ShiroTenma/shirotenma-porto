@@ -768,7 +768,7 @@ watch(filteredWorks, () => {
 </script>
 
 <template>
-<div class="page bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100">
+  <div class="page bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100">
     <PortfolioHero
       :categories="categories"
       :active-category="activeCategory"
@@ -782,17 +782,17 @@ watch(filteredWorks, () => {
       @select-work="openGalleryForWork"
     />
 
-    <div class="section-shell bg-white">
+    <div class="section-shell bg-white dark:bg-slate-900">
       <div class="section-container">
         <div class="flex items-center justify-between gap-3 mb-4">
-          <h3 class="text-lg font-semibold text-slate-800">
+          <h3 class="text-lg font-semibold text-slate-800 dark:text-slate-100">
             {{
               showGallery && selectedWork
                 ? `Galeri: ${selectedWork.title}`
                 : 'Pilih kartu untuk buka galeri'
             }}
           </h3>
-          <p class="text-sm text-slate-500 hidden md:block">
+          <p class="text-sm text-slate-500 dark:text-slate-300 hidden md:block">
             Klik kartu di carousel untuk melihat detail karyanya.
           </p>
         </div>
@@ -815,7 +815,7 @@ watch(filteredWorks, () => {
 
         <div
           v-else
-          class="rounded-2xl border border-dashed border-slate-200 bg-slate-50 text-slate-500 px-5 py-8 text-center"
+          class="rounded-2xl border border-dashed border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-slate-500 dark:text-slate-300 px-5 py-8 text-center"
         >
           Pilih salah satu kartu di atas untuk membuka galeri karya.
         </div>

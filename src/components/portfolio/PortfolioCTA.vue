@@ -8,16 +8,16 @@ defineProps({
 </script>
 
 <template>
-  <section class="section section-shell bg-[#F9FAFB]">
-    <Transition name="fade-up" appear>
-      <div
-        v-inview
-        class="mt-10 grid gap-6 lg:grid-cols-[1.2fr_1fr] items-center bg-linear-to-r from-teal-500 via-teal-600 to-teal-700 text-white rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(20,184,166,0.22)] max-w-6xl mx-auto px-4 border border-teal-200/60"
-      >
-        <div class="p-8 lg:p-10 space-y-3">
-          <h3 class="text-2xl md:text-3xl font-bold">
-            Siap bikin visual baru buat brand atau project kamu?
-          </h3>
+<section class="section section-shell bg-slate-50 dark:bg-slate-900">
+  <Transition name="fade-up" appear>
+    <div
+      v-inview
+      class="mt-10 grid gap-6 lg:grid-cols-[1.2fr_1fr] items-center bg-linear-to-r from-teal-500 via-teal-600 to-teal-700 text-white rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(20,184,166,0.22)] max-w-6xl mx-auto px-4 border border-teal-200/60"
+    >
+      <div class="p-8 lg:p-10 space-y-3">
+        <h3 class="text-2xl md:text-3xl font-bold">
+          Siap bikin visual baru buat brand atau project kamu?
+        </h3>
           <p class="text-white/85 leading-7">
             Ceritain pendek aja idemu, nanti kita bisa bahas bareng konsep, mood, dan style yang
             paling cocok. No pressure, cuma ngobrol dulu.

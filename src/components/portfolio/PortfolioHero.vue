@@ -8,13 +8,13 @@ const props = defineProps({
 </script>
 
 <template>
-  <section class="section-shell bg-[#F9FAFB] pb-16 pt-10">
+  <section class="section-shell bg-slate-50 dark:bg-slate-900 pb-16 pt-10">
     <Transition name="fade-up" appear>
-      <div class="section-container text-slate-900">
+      <div class="section-container text-slate-900 dark:text-slate-100">
         <div class="mb-6 space-y-2">
           <p class="text-xs uppercase tracking-[0.3em] text-teal-600">portfolio</p>
           <h1 class="text-3xl md:text-4xl font-extrabold">Beberapa kategori utamaku</h1>
-          <p class="text-slate-600 leading-7 max-w-3xl">
+          <p class="text-slate-600 dark:text-slate-300 leading-7 max-w-3xl">
             Graphics Design, Editing, dan Photography. Pilih kategori untuk lihat contoh yang paling
             relevan dengan kebutuhanmu.
           </p>
@@ -24,11 +24,11 @@ const props = defineProps({
           <article
             v-for="(cat, index) in categories"
             :key="cat.id"
-            class="relative overflow-hidden rounded-2xl border border-slate-200/70 shadow-[0_20px_60px_rgba(0,0,0,0.08)] bg-white p-5 md:p-6 flex flex-col gap-3 transition-all duration-200 cursor-pointer"
+            class="relative overflow-hidden rounded-2xl border border-slate-200/70 dark:border-slate-700 shadow-[0_20px_60px_rgba(0,0,0,0.08)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.4)] bg-white dark:bg-slate-900 p-5 md:p-6 flex flex-col gap-3 transition-all duration-200 cursor-pointer"
             :class="[
               activeCategory === cat.id
                 ? 'ring-2 ring-teal-300/70 -translate-y-1 shadow-[0_22px_66px_rgba(20,184,166,0.18)]'
-                : 'hover:-translate-y-0.5 hover:ring-1 hover:ring-teal-100',
+                : 'hover:-translate-y-0.5 hover:ring-1 hover:ring-teal-100 dark:hover:ring-slate-700',
               index === 1 ? 'md:-translate-y-1' : '',
             ]"
             role="button"
@@ -38,7 +38,7 @@ const props = defineProps({
           >
             <div
               v-if="cat.heroImage"
-              class="w-full aspect-video rounded-xl bg-center bg-cover ring-1 ring-slate-100 mb-3 shadow-inner"
+              class="w-full aspect-video rounded-xl bg-center bg-cover ring-1 ring-slate-100 dark:ring-slate-700/60 mb-3 shadow-inner"
               :style="{ backgroundImage: `url(${cat.heroImage})` }"
             ></div>
 
@@ -48,22 +48,22 @@ const props = defineProps({
               {{ cat.badge }}
             </p>
 
-            <h2 class="text-xl font-bold leading-snug text-slate-900">
+            <h2 class="text-xl font-bold leading-snug text-slate-900 dark:text-slate-100">
               {{ cat.name }}
             </h2>
 
-            <p class="text-sm text-slate-600">
+            <p class="text-sm text-slate-600 dark:text-slate-300">
               {{ cat.priceText }}
             </p>
 
-            <ul class="space-y-1.5 text-sm leading-6 text-slate-700">
-              <li class="flex gap-2"><span class="text-teal-500">•</span>{{ cat.highlight }}</li>
+            <ul class="space-y-1.5 text-sm leading-6 text-slate-700 dark:text-slate-200">
+              <li class="flex gap-2"><span class="text-teal-500">›</span>{{ cat.highlight }}</li>
               <li class="flex gap-2">
-                <span class="text-teal-500">•</span>Style dan color grading disesuaikan karakter
+                <span class="text-teal-500">›</span>Style dan color grading disesuaikan karakter
                 atau brand kamu.
               </li>
               <li class="flex gap-2">
-                <span class="text-teal-500">•</span>File akhir siap pakai di social media atau
+                <span class="text-teal-500">›</span>File akhir siap pakai di social media atau
                 platform streaming.
               </li>
             </ul>

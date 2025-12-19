@@ -28,13 +28,13 @@ const displayed = computed(() => {
 </script>
 
 <template>
-  <section class="section-shell bg-[#F9FAFB]">
+  <section class="section-shell bg-slate-50 dark:bg-slate-900">
     <Transition name="fade-up" appear>
       <div class="section-container">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4">
           <div>
             <p class="text-xs uppercase tracking-[0.32em] text-teal-600">showcase</p>
-            <h2 class="text-2xl md:text-3xl font-bold text-slate-900">
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-slate-100">
               {{
                 activeCategory === 'graphics'
                   ? 'Graphics Design'
@@ -53,7 +53,7 @@ const displayed = computed(() => {
             >
               <button
                 type="button"
-                class="pointer-events-auto w-10 h-10 rounded-full border border-slate-200 bg-white shadow-lg flex items-center justify-center text-slate-700 hover:-translate-y-px hover:shadow-xl transition"
+                class="pointer-events-auto w-10 h-10 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-lg flex items-center justify-center text-slate-700 dark:text-slate-100 hover:-translate-y-px hover:shadow-xl transition"
                 aria-label="Previous"
                 @click="move(-1)"
               >
@@ -61,7 +61,7 @@ const displayed = computed(() => {
               </button>
               <button
                 type="button"
-                class="pointer-events-auto w-10 h-10 rounded-full border border-slate-200 bg-white shadow-lg flex items-center justify-center text-slate-700 hover:-translate-y-px hover:shadow-xl transition"
+                class="pointer-events-auto w-10 h-10 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-lg flex items-center justify-center text-slate-700 dark:text-slate-100 hover:-translate-y-px hover:shadow-xl transition"
                 aria-label="Next"
                 @click="move(1)"
               >
@@ -74,7 +74,7 @@ const displayed = computed(() => {
                 v-for="slot in displayed"
                 :key="slot.work.id"
                 :id="`work-card-${slot.idx}`"
-                class="shrink-0 rounded-[18px] bg-white flex flex-col overflow-hidden min-w-[360px] max-w-[360px] h-[380px] transition snap-start border border-slate-200 shadow-[0_14px_36px_rgba(0,0,0,0.08)]"
+                class="shrink-0 rounded-[18px] bg-white dark:bg-slate-900 flex flex-col overflow-hidden min-w-[360px] max-w-[360px] h-[380px] transition snap-start border border-slate-200 dark:border-slate-700 shadow-[0_14px_36px_rgba(0,0,0,0.08)] dark:shadow-[0_14px_36px_rgba(0,0,0,0.35)]"
                 :class="[
                   slot.active
                     ? 'scale-100 opacity-100 ring-2 ring-teal-400/60 shadow-[0_16px_42px_rgba(20,184,166,0.16)]'
@@ -92,14 +92,14 @@ const displayed = computed(() => {
 
                 <div class="p-4 flex flex-col gap-2">
                   <span
-                    class="inline-flex items-center rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.12em] bg-teal-50 text-teal-700 border border-teal-100"
+                    class="inline-flex items-center rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.12em] bg-teal-50 text-teal-700 border border-teal-100 dark:bg-teal-900/30 dark:text-teal-200 dark:border-teal-700/60"
                   >
                     {{ slot.work.tag }}
                   </span>
-                  <h3 class="text-base font-semibold text-slate-900 leading-snug">
+                  <h3 class="text-base font-semibold text-slate-900 dark:text-slate-100 leading-snug">
                     {{ slot.work.title }}
                   </h3>
-                  <p class="text-sm text-slate-600 leading-6">
+                  <p class="text-sm text-slate-600 dark:text-slate-300 leading-6">
                     {{ slot.work.desc }}
                   </p>
                 </div>

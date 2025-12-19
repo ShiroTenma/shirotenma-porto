@@ -7,7 +7,7 @@ const emit = defineEmits(['open-package'])
 </script>
 
 <template>
-  <section class="section section-shell bg-[#F9FAFB] text-slate-900">
+  <section class="section section-shell bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100">
     <Transition name="fade-up" appear>
       <div class="section-container">
         <div
@@ -16,7 +16,7 @@ const emit = defineEmits(['open-package'])
         >
           <div class="commission-header-left flex flex-col gap-2">
           <h1 class="page-title text-3xl font-bold">Commission!</h1>
-          <p class="commission-helper text-slate-600 leading-7">
+          <p class="commission-helper text-slate-600 dark:text-slate-300 leading-7">
             Slot terbatas. Kalau ragu soal budget, boleh banget tanya dulu lewat form atau DM aja
             aku!
           </p>
@@ -30,7 +30,7 @@ const emit = defineEmits(['open-package'])
           </div>
         </div>
         <div class="commission-header-right">
-          <p class="page-subtitle commission-subtitle text-slate-600 leading-7">
+          <p class="page-subtitle commission-subtitle text-slate-600 dark:text-slate-300 leading-7">
             Tertarik buat pesen desain atau editing? Pilih paket yang paling pas di bawah ini.
             Detail bisa fleksibel, yang penting kita ngobrol dulu soal kebutuhanmu.
           </p>
@@ -41,7 +41,7 @@ const emit = defineEmits(['open-package'])
         <article
           v-for="pkg in packages"
           :key="pkg.id"
-          class="portfolio-plan-card portfolio-plan-card--light commission-plan-card bg-white text-slate-900 rounded-2xl shadow-xl hover:-translate-y-1 transition duration-200 flex flex-col p-6 min-h-[420px] border border-slate-200/70"
+          class="portfolio-plan-card portfolio-plan-card--light commission-plan-card bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 rounded-2xl shadow-xl hover:-translate-y-1 transition duration-200 flex flex-col p-6 min-h-[420px] border border-slate-200/70 dark:border-slate-700"
           role="button"
           tabindex="0"
           @click="emit('open-package', pkg.id)"
@@ -49,14 +49,14 @@ const emit = defineEmits(['open-package'])
         >
           <div
             v-if="pkg.image"
-            class="commission-card-thumb rounded-xl overflow-hidden mb-3 ring-1 ring-slate-200/70"
+            class="commission-card-thumb rounded-xl overflow-hidden mb-3 ring-1 ring-slate-200/70 dark:ring-slate-700/60"
             :style="{ backgroundImage: `url(${pkg.image})` }"
           ></div>
           <p class="portfolio-plan-badge text-xs uppercase tracking-[0.2em] text-teal-600 bg-teal-50 px-3 py-1 rounded-full w-fit border border-teal-100">
             {{ pkg.badge }}
           </p>
 
-          <h2 class="portfolio-plan-title text-xl font-bold text-slate-900">
+          <h2 class="portfolio-plan-title text-xl font-bold text-slate-900 dark:text-slate-100">
             {{ pkg.name }}
           </h2>
 
@@ -64,7 +64,7 @@ const emit = defineEmits(['open-package'])
             {{ pkg.price }}
           </p>
 
-          <ul class="portfolio-plan-list space-y-2 text-sm text-slate-700">
+          <ul class="portfolio-plan-list space-y-2 text-sm text-slate-700 dark:text-slate-200">
             <li v-for="point in pkg.points" :key="point">
               {{ point }}
             </li>

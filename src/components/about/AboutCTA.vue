@@ -10,10 +10,10 @@ const props = defineProps({
 
 <template>
   <Transition name="fade-up" appear>
-    <section class="section bg-[#F9FAFB] py-12">
+    <section class="section bg-slate-50 dark:bg-slate-900 py-12">
       <div
         v-inview
-        class="max-w-6xl mx-auto px-4 rounded-3xl shadow-[0_18px_40px_rgba(20,184,166,0.18)] overflow-hidden grid md:grid-cols-[1.1fr_0.9fr] gap-6 items-center text-white border border-slate-200/70 bg-white"
+        class="max-w-6xl mx-auto px-4 rounded-3xl shadow-[0_18px_40px_rgba(20,184,166,0.18)] overflow-hidden grid md:grid-cols-[1.1fr_0.9fr] gap-6 items-center text-white border border-slate-200/70 dark:border-slate-700 bg-white/95 dark:bg-slate-900/90"
         :style="backgroundStyle"
       >
         <div class="p-8 space-y-2">
