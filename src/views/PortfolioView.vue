@@ -768,7 +768,7 @@ watch(filteredWorks, () => {
 </script>
 
 <template>
-  <div class="page">
+<div class="page bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100">
     <PortfolioHero
       :categories="categories"
       :active-category="activeCategory"

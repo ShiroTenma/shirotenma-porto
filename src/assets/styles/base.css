@@ -14,7 +14,11 @@ body {
     BlinkMacSystemFont,
     'Segoe UI',
     sans-serif;
-  background: var(--bg-body);
+  /*
+    App background is controlled by Tailwind on `#app`/`.app` (supports dark mode).
+    Keep body background transparent to avoid overriding dark theme.
+  */
+  background: transparent;
 }
 
 html {

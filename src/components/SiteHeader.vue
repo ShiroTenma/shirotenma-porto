@@ -1,8 +1,10 @@
 <script setup>
 import { ref, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
 
 const isOpen = ref(false)
 const theme = ref('light')
+const route = useRoute()
 
 const links = [
   { to: '/', label: 'Home' },
@@ -19,6 +21,8 @@ const toggleMenu = () => {
 const closeMenu = () => {
   isOpen.value = false
 }
+
+const isActiveRoute = (to) => route.path === to
 
 const applyTheme = () => {
   const root = document.documentElement
@@ -73,7 +77,12 @@ onMounted(() => {
           v-for="link in links"
           :key="link.to"
           :to="link.to"
-          class="text-slate-700 dark:text-slate-200 hover:text-teal-600 hover:dark:text-teal-300 transition"
+          class="relative px-3 py-2 rounded-full transition"
+          :class="
+            isActiveRoute(link.to)
+              ? 'bg-teal-50 text-teal-800 ring-1 ring-teal-200/70 dark:bg-slate-800 dark:text-teal-200 dark:ring-slate-700'
+              : 'text-slate-700 dark:text-slate-200 hover:text-teal-700 hover:dark:text-teal-200 hover:bg-teal-50/60 dark:hover:bg-slate-800/70'
+          "
         >
           {{ link.label }}
         </router-link>
@@ -100,7 +109,12 @@ onMounted(() => {
             v-for="link in links"
             :key="link.to + '-mobile'"
             :to="link.to"
-            class="py-2 px-3 rounded-lg hover:bg-teal-50 dark:hover:bg-slate-800 transition"
+            class="py-2 px-3 rounded-lg transition"
+            :class="
+              isActiveRoute(link.to)
+                ? 'bg-teal-50 text-teal-800 ring-1 ring-teal-200/70 dark:bg-slate-800 dark:text-teal-200 dark:ring-slate-700'
+                : 'hover:bg-teal-50 dark:hover:bg-slate-800'
+            "
             @click="closeMenu"
           >
             {{ link.label }}

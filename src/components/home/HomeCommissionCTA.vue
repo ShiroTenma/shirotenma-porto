@@ -29,11 +29,11 @@ onUnmounted(() => {
 
 <template>
   <Transition name="fade-up" appear>
-    <section id="home-commission" class="section bg-[#f1f4f7] section-shell">
+    <section id="home-commission" class="section bg-slate-50 dark:bg-slate-900 section-shell">
       <div class="section-container">
         <div
           v-inview
-          class="relative h-80 md:h-[360px] overflow-hidden rounded-3xl shadow-[0_18px_38px_rgba(20,184,166,0.18)] border border-slate-200/70 bg-white fade-up"
+          class="relative h-80 md:h-[360px] overflow-hidden rounded-3xl shadow-[0_18px_38px_rgba(20,184,166,0.18)] border border-slate-200/70 dark:border-slate-800 bg-white dark:bg-slate-900 fade-up"
         >
           <div
             v-for="(slide, index) in props.slides"

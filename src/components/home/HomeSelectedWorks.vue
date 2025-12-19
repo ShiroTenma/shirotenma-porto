@@ -46,7 +46,8 @@ const displayedSlides = computed(() => {
   if (!slides.value.length) return []
   const len = slides.value.length
   const result = []
-  for (let i = -2; i <= 1; i++) {
+  // Render a small buffer on both sides so cards can animate out smoothly.
+  for (let i = -2; i <= 2; i++) {
     const idx = (currentIndex.value + i + len) % len
     result.push({ slide: slides.value[idx], delta: i, active: i === 0 })
   }
@@ -56,13 +57,16 @@ const displayedSlides = computed(() => {
 const cardStyle = (item) => {
   const distance = window.innerWidth < 768 ? 220 : 260
   const baseTranslate = `translate(-50%, -50%) translateX(${item.delta * distance}px)`
-  const faded = Math.abs(item.delta) > 1
+  const far = Math.abs(item.delta) >= 2
+  const side = Math.abs(item.delta) === 1
   return {
-    transform: `${baseTranslate} scale(${item.active ? 1.02 : faded ? 0.92 : 0.96})`,
-    opacity: item.active ? 1 : faded ? 0 : 0.82,
-    zIndex: item.active ? 4 : faded ? 1 : 3 - Math.abs(item.delta),
+    transform: `${baseTranslate} scale(${item.active ? 1.02 : far ? 0.92 : 0.96})`,
+    opacity: item.active ? 1 : far ? 0 : side ? 0.82 : 0.7,
+    zIndex: item.active ? 6 : far ? 1 : 5 - Math.abs(item.delta),
     pointerEvents: item.active ? 'auto' : 'none',
-    transition: 'transform 0.7s ease, opacity 0.5s ease',
+    transition:
+      'transform 700ms cubic-bezier(0.22, 1, 0.36, 1), opacity 550ms cubic-bezier(0.22, 1, 0.36, 1)',
+    willChange: 'transform, opacity',
   }
 }
 
@@ -88,15 +92,15 @@ onUnmounted(() => {
 
 <template>
   <Transition name="fade-up" appear>
-    <section id="home-portfolio" class="section bg-[#f1f4f7] section-shell">
+    <section id="home-portfolio" class="section bg-slate-50 dark:bg-slate-900 section-shell">
       <div class="section-container">
         <div
           v-inview
-          class="bg-teal-50 rounded-3xl shadow-[0_16px_42px_rgba(0,0,0,0.06)] border border-teal-100/70 p-6 md:p-8 space-y-6"
+          class="bg-teal-50 dark:bg-slate-950 rounded-3xl shadow-[0_16px_42px_rgba(0,0,0,0.06)] border border-teal-100/70 dark:border-slate-800 p-6 md:p-8 space-y-6"
         >
           <div class="grid md:grid-cols-[1.2fr_1fr] gap-7 items-start">
             <div class="space-y-5">
-              <h2 class="text-4xl font-bold text-slate-900">Selected Works</h2>
+              <h2 class="text-4xl font-bold text-slate-900 dark:text-slate-100">Selected Works</h2>
               <router-link
                 to="/commission"
                 class="inline-flex items-center justify-center rounded-full bg-teal-500 text-[#F9FAFB]! font-semibold text-sm px-5 py-2.5 shadow-[0_10px_24px_rgba(20,184,166,0.22)] hover:bg-teal-700 hover:-translate-y-px active:scale-95 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-teal-200/70"
@@ -104,14 +108,14 @@ onUnmounted(() => {
                 Lihat commission
               </router-link>
             </div>
-            <div class="text-slate-600 leading-7 max-w-xl space-y-2">
+            <div class="text-slate-600 dark:text-slate-300 leading-7 max-w-xl space-y-2">
               Beberapa judul karya dari kategori graphics, editing, dan photography. Untuk list
               lengkap, kamu bisa cek halaman portfolio atau detail commission.
             </div>
           </div>
 
           <div
-            class="relative overflow-hidden rounded-3xl bg-white text-slate-900 p-6 md:p-10 shadow-[0_20px_60px_rgba(0,0,0,0.1)] border border-slate-200/80"
+            class="relative overflow-hidden rounded-3xl bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 p-6 md:p-10 shadow-[0_20px_60px_rgba(0,0,0,0.1)] border border-slate-200/80 dark:border-slate-800"
           >
             <div
               v-if="displayedSlides.length"
@@ -139,19 +143,19 @@ onUnmounted(() => {
 
             <div
               v-else
-              class="flex items-center justify-center py-12 text-slate-500 rounded-2xl border border-dashed border-slate-200 bg-slate-50"
+              class="flex items-center justify-center py-12 text-slate-500 dark:text-slate-300 rounded-2xl border border-dashed border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950"
             >
               Karya belum dimuat. Silakan refresh halaman.
             </div>
 
             <div
-              class="mt-10 pt-6 border-t border-slate-200 flex items-start justify-between gap-6 flex-col md:flex-row"
+              class="mt-10 pt-6 border-t border-slate-200 dark:border-slate-800 flex items-start justify-between gap-6 flex-col md:flex-row"
             >
               <div class="space-y-3 max-w-2xl">
                 <p class="text-xs uppercase tracking-[0.22em] text-teal-600">
                   {{ slides[currentIndex]?.category || 'WORKS' }}
                 </p>
-                <h3 class="text-2xl md:text-3xl font-semibold text-slate-900">
+                <h3 class="text-2xl md:text-3xl font-semibold text-slate-900 dark:text-slate-100">
                   {{ slides[currentIndex]?.title }}
                 </h3>
               </div>

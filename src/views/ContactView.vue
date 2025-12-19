@@ -21,8 +21,8 @@ const handleSubmit = () => {
 </script>
 
 <template>
-  <div class="page">
-    <section class="section section-shell bg-[#F9FAFB]">
+  <div class="page bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100">
+    <section class="section section-shell bg-slate-50 dark:bg-slate-900">
       <Transition name="fade-up" appear>
         <div class="section-container">
           <div class="grid gap-10 md:grid-cols-2 items-start">

@@ -62,7 +62,7 @@ const commissionSlides = [
 </script>
 
 <template>
-  <div class="page">
+  <div class="page bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100">
     <HomeHero :slides="heroSlides" />
     <HomeSelectedWorks :works="selectedWorksBase" />
     <HomeCommissionCTA :slides="commissionSlides" />

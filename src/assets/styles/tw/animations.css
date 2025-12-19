@@ -1,14 +1,30 @@
 @layer utilities {
+  /*
+    In-view reveal helpers.
+    Only hide elements that are actually observed (they get `inview-base`).
+    This avoids accidental `fade-up` usage causing permanently invisible content.
+  */
+  /* Default: never hide if not observed */
   .fade-up {
-    @apply opacity-0 translate-y-4 transition duration-500 ease-out;
-  }
-  .fade-up.inview {
     @apply opacity-100 translate-y-0;
   }
   .fade-in {
+    @apply opacity-100;
+  }
+
+  .fade-up.inview-base {
+    @apply opacity-0 translate-y-4 transition duration-500 ease-out;
+  }
+  .fade-up.inview-base.inview,
+  .fade-up.inview-base.inview-show {
+    @apply opacity-100 translate-y-0;
+  }
+
+  .fade-in.inview-base {
     @apply opacity-0 transition duration-500 ease-out;
   }
-  .fade-in.inview {
+  .fade-in.inview-base.inview,
+  .fade-in.inview-base.inview-show {
     @apply opacity-100;
   }
 }

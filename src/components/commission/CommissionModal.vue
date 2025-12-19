@@ -14,7 +14,7 @@ const emit = defineEmits(['close', 'open-contact', 'close-contact'])
   <transition name="modal-fade">
     <div v-if="isOpen" class="commission-modal-shell" @click.self="emit('close')">
       <div
-        class="commission-modal-box w-full max-w-6xl rounded-2xl bg-white text-slate-900 shadow-2xl p-4 md:p-6 border border-slate-200/80"
+        class="commission-modal-box w-full max-w-6xl rounded-2xl bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-2xl p-4 md:p-6 border border-slate-200/80 dark:border-slate-700"
         role="dialog"
         aria-modal="true"
       >
@@ -25,16 +25,16 @@ const emit = defineEmits(['close', 'open-contact', 'close-contact'])
             <p class="commission-modal-kicker text-xs uppercase tracking-[0.25em] text-teal-600">
               {{ activePackage?.badge }}
             </p>
-            <h3 class="commission-modal-title text-2xl font-bold text-slate-900">
+            <h3 class="commission-modal-title text-2xl font-bold text-slate-900 dark:text-slate-100">
               {{ activePackage?.name }}
             </h3>
-            <p class="commission-modal-text text-slate-600">
+            <p class="commission-modal-text text-slate-600 dark:text-slate-300">
               {{ activePackage?.points?.[0] }}
             </p>
           </div>
           <button
             type="button"
-            class="commission-modal-close self-start rounded-full border border-slate-200 px-3 py-2 text-sm text-slate-700 hover:bg-slate-100"
+            class="commission-modal-close self-start rounded-full border border-slate-200 dark:border-slate-700 px-3 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
             @click="emit('close')"
           >
             Tutup
@@ -47,7 +47,7 @@ const emit = defineEmits(['close', 'open-contact', 'close-contact'])
           <article
             v-for="option in activeOptions"
             :key="option.id"
-            class="commission-modal-card bg-white rounded-xl overflow-hidden shadow-lg border border-slate-200 min-h-[340px] md:grid md:grid-cols-2 md:items-stretch"
+            class="commission-modal-card bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700 min-h-[480px] sm:min-h-[420px] md:min-h-[340px] md:grid md:grid-cols-2 md:items-stretch"
           >
             <div
               class="commission-modal-thumb h-56 md:h-full bg-cover bg-center"
@@ -55,17 +55,17 @@ const emit = defineEmits(['close', 'open-contact', 'close-contact'])
             ></div>
             <div class="commission-modal-body flex flex-col gap-3 p-4 md:p-5">
               <div class="flex flex-col gap-1">
-                <h4 class="commission-modal-card-title text-xl font-semibold text-slate-900">
+                <h4 class="commission-modal-card-title text-xl font-semibold text-slate-900 dark:text-slate-100">
                   {{ option.title }}
                 </h4>
                 <p class="commission-modal-price text-teal-600 font-semibold">
                   {{ option.price || activePackage?.price }}
                 </p>
               </div>
-              <p class="commission-modal-card-text text-sm text-slate-600">
+              <p class="commission-modal-card-text text-sm text-slate-600 dark:text-slate-300">
                 Apa yang kamu dapatkan?
               </p>
-              <ul class="commission-modal-list space-y-2 text-sm text-slate-700">
+              <ul class="commission-modal-list space-y-2 text-sm text-slate-700 dark:text-slate-200">
                 <li
                   v-for="point in option.points && option.points.length
                     ? option.points
@@ -90,16 +90,16 @@ const emit = defineEmits(['close', 'open-contact', 'close-contact'])
   </transition>
 
   <transition name="contact-pop">
-    <div
-      v-if="contactOpen"
-      class="contact-popup fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
-      @click.self="emit('close-contact')"
-    >
       <div
-        class="contact-popup-box w-full max-w-sm rounded-xl bg-slate-900 text-slate-100 shadow-2xl p-5 border border-white/10"
-        role="dialog"
-        aria-modal="true"
+        v-if="contactOpen"
+        class="contact-popup fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
+        @click.self="emit('close-contact')"
       >
+        <div
+          class="contact-popup-box w-full max-w-sm rounded-xl bg-slate-900 text-slate-100 shadow-2xl p-5 border border-white/10"
+          role="dialog"
+          aria-modal="true"
+        >
         <header class="contact-popup-head flex items-center justify-between mb-3">
           <h4 class="text-lg font-semibold">Hubungi via</h4>
           <button

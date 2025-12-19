@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div class="app bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 min-h-screen">
     <SiteHeader />
 
     <main class="main">

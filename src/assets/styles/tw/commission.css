@@ -1,6 +1,6 @@
 @layer components {
   .commission-card {
-    @apply rounded-2xl bg-white shadow-xl p-6 text-slate-900;
+    @apply rounded-2xl bg-white dark:bg-slate-900 shadow-xl p-6 text-slate-900 dark:text-slate-100 border border-slate-200/70 dark:border-slate-800;
   }
 
   .commission-modal-shell {

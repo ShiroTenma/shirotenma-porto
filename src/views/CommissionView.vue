@@ -245,7 +245,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="page">
+  <div class="page bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100">
     <CommissionHero :packages="packages" @open-package="openPackage" />
 
     <CommissionTestimony :testimonies="testimonies" />
