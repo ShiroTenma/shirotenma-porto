@@ -57,3 +57,52 @@
 .fade-in-leave-from {
   opacity: 1;
 }
+
+/* Staggered card (slide + scale) */
+.stagger-card-enter-from,
+.stagger-card-leave-to {
+  opacity: 0;
+  transform: translateY(14px) scale(0.98);
+}
+.stagger-card-enter-active,
+.stagger-card-leave-active {
+  transition: opacity 0.45s ease-out, transform 0.45s ease-out;
+}
+.stagger-card-enter-to,
+.stagger-card-leave-from {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Modal fade & pop */
+.modal-fade-enter-from,
+.modal-fade-leave-to {
+  opacity: 0;
+}
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+  transition: opacity 0.25s ease;
+}
+.modal-fade-enter-from .commission-modal-box,
+.modal-fade-leave-to .commission-modal-box,
+.modal-fade-enter-from .portfolio-gallery-modal-box,
+.modal-fade-leave-to .portfolio-gallery-modal-box {
+  transform: translateY(18px);
+  opacity: 0;
+}
+.modal-fade-enter-active .commission-modal-box,
+.modal-fade-leave-active .commission-modal-box,
+.modal-fade-enter-active .portfolio-gallery-modal-box,
+.modal-fade-leave-active .portfolio-gallery-modal-box {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.contact-pop-enter-from,
+.contact-pop-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.contact-pop-enter-active,
+.contact-pop-leave-active {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}

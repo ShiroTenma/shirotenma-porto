@@ -1,0 +1,39 @@
+:root {
+  --color-canvas: #0b0d10;
+  --color-panel: #181b20;
+  --color-surface: #20242b;
+  --color-text: #f0f0eb;
+  --color-muted: #a5abb4;
+  --color-red: #ef4b42;
+  --color-amber: #e8ad57;
+  --color-border: #353a42;
+  --color-border-subtle: #242830;
+  --color-focus: #f0f0eb;
+
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+}
+
+@theme {
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+
+  --color-canvas: #0b0d10;
+  --color-panel: #181b20;
+  --color-surface: #20242b;
+  --color-text: #f0f0eb;
+  --color-muted: #a5abb4;
+  --color-red: #ef4b42;
+  --color-amber: #e8ad57;
+  --color-border: #353a42;
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+}

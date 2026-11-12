@@ -8,27 +8,31 @@ const props = defineProps({
 </script>
 
 <template>
-  <section class="section-shell bg-slate-50 dark:bg-slate-900 pb-16 pt-10">
+  <section class="border-b border-[#353A42]/60 bg-[#0B0D10] pb-14 pt-10 sm:pt-14">
     <Transition name="fade-up" appear>
-      <div class="section-container text-slate-900 dark:text-slate-100">
-        <div class="mb-6 space-y-2">
-          <p class="text-xs uppercase tracking-[0.3em] text-teal-600">portfolio</p>
-          <h1 class="text-3xl md:text-4xl font-extrabold">Beberapa kategori utamaku</h1>
-          <p class="text-slate-600 dark:text-slate-300 leading-7 max-w-3xl">
-            Graphics Design, Editing, dan Photography. Pilih kategori untuk lihat contoh yang paling
-            relevan dengan kebutuhanmu.
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 text-[#F0F0EB]">
+        <div class="mb-8 space-y-3">
+          <div class="inline-flex items-center gap-2 rounded-sm border border-[#353A42] bg-[#181B20] px-3.5 py-1 font-mono text-xs font-medium text-[#A5ABB4]">
+            <span class="inline-block h-2 w-2 rounded-full bg-[#EF4B42]"></span>
+            <span>01 // ARCHIVE CATEGORIES</span>
+          </div>
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-serif font-normal tracking-tight text-[#F0F0EB]">
+            Creative Works Archive
+          </h1>
+          <p class="text-sm sm:text-base text-[#A5ABB4] leading-relaxed max-w-2xl font-sans">
+            Curated archive across Graphic Design, Motion & Video Editing, and Event/Cosplay Photography. Filter below to inspect dedicated works.
           </p>
         </div>
 
-        <div v-inview class="grid gap-4 md:grid-cols-3">
+        <div v-inview class="grid gap-6 md:grid-cols-3">
           <article
             v-for="(cat, index) in categories"
             :key="cat.id"
-            class="relative overflow-hidden rounded-2xl border border-slate-200/70 dark:border-slate-700 shadow-[0_20px_60px_rgba(0,0,0,0.08)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.4)] bg-white dark:bg-slate-900 p-5 md:p-6 flex flex-col gap-3 transition-all duration-200 cursor-pointer"
+            class="group relative overflow-hidden rounded-sm border p-5 sm:p-6 flex flex-col justify-between transition duration-200 cursor-pointer"
             :class="[
               activeCategory === cat.id
-                ? 'ring-2 ring-teal-300/70 -translate-y-1 shadow-[0_22px_66px_rgba(20,184,166,0.18)]'
-                : 'hover:-translate-y-0.5 hover:ring-1 hover:ring-teal-100 dark:hover:ring-slate-700',
+                ? 'border-[#EF4B42] bg-[#181B20] shadow-xl shadow-[#EF4B42]/10 ring-1 ring-[#EF4B42]/50'
+                : 'border-[#353A42] bg-[#181B20]/60 hover:border-[#F0F0EB]/60 hover:bg-[#181B20]',
               index === 1 ? 'md:-translate-y-1' : '',
             ]"
             role="button"
@@ -36,44 +40,55 @@ const props = defineProps({
             @click="setCategory(cat.id)"
             @keydown.enter.prevent="setCategory(cat.id)"
           >
-            <div
-              v-if="cat.heroImage"
-              class="w-full aspect-video rounded-xl bg-center bg-cover ring-1 ring-slate-100 dark:ring-slate-700/60 mb-3 shadow-inner"
-              :style="{ backgroundImage: `url(${cat.heroImage})` }"
-            ></div>
+            <div class="space-y-4">
+              <div
+                v-if="cat.heroImage"
+                class="w-full aspect-16/10 rounded-xs bg-center bg-cover border border-[#353A42]/50 mb-2 overflow-hidden"
+                :style="{ backgroundImage: `url(${cat.heroImage})` }"
+              ></div>
 
-            <p
-              class="inline-flex items-center rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-teal-700 bg-teal-50 ring-1 ring-teal-100"
-            >
-              {{ cat.badge }}
-            </p>
+              <div class="flex items-center justify-between">
+                <span
+                  class="font-mono text-xs tracking-wider uppercase font-semibold"
+                  :class="activeCategory === cat.id ? 'text-[#EF4B42]' : 'text-[#A5ABB4]'"
+                >
+                  {{ cat.badge }}
+                </span>
+                <span class="font-mono text-xs text-[#A5ABB4]/50">0{{ index + 1 }}</span>
+              </div>
 
-            <h2 class="text-xl font-bold leading-snug text-slate-900 dark:text-slate-100">
-              {{ cat.name }}
-            </h2>
+              <h2 class="text-2xl font-normal text-[#F0F0EB] font-serif leading-snug">
+                {{ cat.name }}
+              </h2>
 
-            <p class="text-sm text-slate-600 dark:text-slate-300">
-              {{ cat.priceText }}
-            </p>
+              <p class="text-xs sm:text-sm text-[#A5ABB4] leading-relaxed font-sans">
+                {{ cat.priceText }}
+              </p>
 
-            <ul class="space-y-1.5 text-sm leading-6 text-slate-700 dark:text-slate-200">
-              <li class="flex gap-2"><span class="text-teal-500">›</span>{{ cat.highlight }}</li>
-              <li class="flex gap-2">
-                <span class="text-teal-500">›</span>Style dan color grading disesuaikan karakter
-                atau brand kamu.
-              </li>
-              <li class="flex gap-2">
-                <span class="text-teal-500">›</span>File akhir siap pakai di social media atau
-                platform streaming.
-              </li>
-            </ul>
+              <ul class="space-y-1.5 text-xs text-[#D4D8DE] font-mono border-t border-[#353A42]/50 pt-3">
+                <li class="flex items-start gap-2">
+                  <span class="text-[#EF4B42]">›</span>
+                  <span>{{ cat.highlight }}</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-[#EF4B42]">›</span>
+                  <span>Color grading & typography disesuaikan karakter.</span>
+                </li>
+              </ul>
+            </div>
 
             <button
               type="button"
-              class="mt-auto inline-flex items-center justify-center rounded-full bg-teal-500 text-white px-4 py-2 text-sm font-semibold shadow-[0_12px_30px_rgba(20,184,166,0.22)] hover:bg-teal-700 active:scale-95 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-teal-200/70"
-              @click="setCategory(cat.id)"
+              class="mt-6 inline-flex h-11 items-center justify-center rounded-sm font-mono text-xs font-semibold tracking-wider transition active:scale-95"
+              :class="
+                activeCategory === cat.id
+                  ? 'bg-[#EF4B42] text-white hover:bg-[#EF4B42]/90 shadow-md shadow-[#EF4B42]/20'
+                  : 'border border-[#353A42] bg-[#0B0D10] text-[#F0F0EB] hover:border-[#EF4B42] hover:text-[#EF4B42]'
+              "
+              @click.stop="setCategory(cat.id)"
             >
-              Lihat karya di kategori ini
+              <span>{{ activeCategory === cat.id ? 'ACTIVE ARCHIVE' : 'INSPECT CATEGORY' }}</span>
+              <span class="ml-1.5">↗</span>
             </button>
           </article>
         </div>

@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps({
+defineProps({
   packages: Array,
 })
 
@@ -7,78 +7,91 @@ const emit = defineEmits(['open-package'])
 </script>
 
 <template>
-  <section class="section section-shell bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100">
+  <section class="border-b border-[#353A42]/60 bg-[#0B0D10] pb-14 pt-10 sm:pt-14 text-[#F0F0EB]">
     <Transition name="fade-up" appear>
-      <div class="section-container">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6">
         <div
           v-inview
-          class="commission-header commission-header-grid grid grid-cols-1 gap-6 md:grid-cols-2 items-start"
+          class="grid grid-cols-1 gap-6 md:grid-cols-2 items-start pb-8 border-b border-[#353A42]/60"
         >
-          <div class="commission-header-left flex flex-col gap-2">
-          <h1 class="page-title text-3xl font-bold">Commission!</h1>
-          <p class="commission-helper text-slate-600 dark:text-slate-300 leading-7">
-            Slot terbatas. Kalau ragu soal budget, boleh banget tanya dulu lewat form atau DM aja
-            aku!
-          </p>
-          <div class="commission-header-actions">
-            <router-link
-              to="/contact"
-              class="inline-flex items-center justify-center rounded-full border border-teal-500 text-teal-600 px-4 py-2 font-semibold hover:bg-teal-50 active:scale-95 transition"
-            >
-              Hubungi dulu
-            </router-link>
+          <div class="flex flex-col gap-3">
+            <div class="inline-flex items-center gap-2 rounded-sm border border-[#353A42] bg-[#181B20] px-3.5 py-1 font-mono text-xs font-medium text-[#A5ABB4] w-fit">
+              <span class="inline-block h-2 w-2 rounded-full bg-[#EF4B42]"></span>
+              <span>03 // CREATIVE COMMISSIONS</span>
+            </div>
+            <h1 class="text-4xl sm:text-6xl font-normal text-[#F0F0EB] font-serif tracking-tight">Services & Pricing</h1>
+            <p class="text-sm sm:text-base text-[#A5ABB4] leading-relaxed font-sans max-w-lg">
+              Slot terbatas untuk kebutuhan branding, video editing, custom motion, dan visual design. Pertanyaan konsep atau penyesuaian budget bisa dikonsultasikan langsung.
+            </p>
+            <div class="pt-2">
+              <router-link
+                to="/contact"
+                class="inline-flex h-11 items-center justify-center gap-2 rounded-sm bg-[#EF4B42] px-6 font-mono text-xs font-bold tracking-wider text-white hover:bg-[#EF4B42]/90 active:scale-95 transition shadow-lg shadow-[#EF4B42]/15"
+              >
+                <span>HUBUNGI DULU</span>
+                <span>↗</span>
+              </router-link>
+            </div>
+          </div>
+          <div class="md:pt-12">
+            <p class="text-xs sm:text-sm text-[#A5ABB4] leading-relaxed font-sans border-l-2 border-[#353A42] pl-4">
+              Pilih paket layanan yang paling sesuai di bawah ini. Semua project dikerjakan dengan standar visual tinggi, color grading presisi, dan file deliverable siap pakai.
+            </p>
           </div>
         </div>
-        <div class="commission-header-right">
-          <p class="page-subtitle commission-subtitle text-slate-600 dark:text-slate-300 leading-7">
-            Tertarik buat pesen desain atau editing? Pilih paket yang paling pas di bawah ini.
-            Detail bisa fleksibel, yang penting kita ngobrol dulu soal kebutuhanmu.
-          </p>
-        </div>
-      </div>
 
-      <div v-inview class="portfolio-plan-row commission-plan-row grid gap-6 md:grid-cols-3 mt-6">
-        <article
-          v-for="pkg in packages"
-          :key="pkg.id"
-          class="portfolio-plan-card portfolio-plan-card--light commission-plan-card bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 rounded-2xl shadow-xl hover:-translate-y-1 transition duration-200 flex flex-col p-6 min-h-[420px] border border-slate-200/70 dark:border-slate-700"
-          role="button"
-          tabindex="0"
-          @click="emit('open-package', pkg.id)"
-          @keydown.enter.prevent="emit('open-package', pkg.id)"
-        >
-          <div
-            v-if="pkg.image"
-            class="commission-card-thumb rounded-xl overflow-hidden mb-3 ring-1 ring-slate-200/70 dark:ring-slate-700/60"
-            :style="{ backgroundImage: `url(${pkg.image})` }"
-          ></div>
-          <p class="portfolio-plan-badge text-xs uppercase tracking-[0.2em] text-teal-600 bg-teal-50 px-3 py-1 rounded-full w-fit border border-teal-100">
-            {{ pkg.badge }}
-          </p>
-
-          <h2 class="portfolio-plan-title text-xl font-bold text-slate-900 dark:text-slate-100">
-            {{ pkg.name }}
-          </h2>
-
-          <p class="portfolio-plan-price font-semibold text-teal-700">
-            {{ pkg.price }}
-          </p>
-
-          <ul class="portfolio-plan-list space-y-2 text-sm text-slate-700 dark:text-slate-200">
-            <li v-for="point in pkg.points" :key="point">
-              {{ point }}
-            </li>
-          </ul>
-
-          <button
-            type="button"
-            class="inline-flex items-center justify-center rounded-full bg-teal-500 text-[#F9FAFB] font-semibold px-5 py-2.5 shadow-[0_10px_24px_rgba(20,184,166,0.22)] hover:bg-teal-700 active:scale-95 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-teal-200/70 mt-auto"
-            @click.stop="emit('open-package', pkg.id)"
+        <div v-inview class="grid gap-6 md:grid-cols-3 mt-10">
+          <article
+            v-for="pkg in packages"
+            :key="pkg.id"
+            class="group rounded-sm border border-[#353A42] bg-[#181B20] text-[#F0F0EB] p-5 sm:p-6 flex flex-col justify-between transition hover:border-[#EF4B42] hover:shadow-2xl hover:shadow-[#EF4B42]/5 cursor-pointer"
+            role="button"
+            tabindex="0"
+            @click="emit('open-package', pkg.id)"
+            @keydown.enter.prevent="emit('open-package', pkg.id)"
           >
-            Lihat detail
-          </button>
-        </article>
-      </div>
+            <div class="space-y-4">
+              <div
+                v-if="pkg.image"
+                class="aspect-16/10 w-full rounded-xs overflow-hidden border border-[#353A42]/50 bg-[#0B0D10]"
+              >
+                <img
+                  :src="pkg.image"
+                  :alt="pkg.name"
+                  class="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                  loading="lazy"
+                />
+              </div>
+              <p class="font-mono text-xs uppercase tracking-wider text-[#EF4B42] font-semibold">
+                {{ pkg.badge }}
+              </p>
+
+              <h2 class="text-2xl font-normal text-[#F0F0EB] font-serif leading-snug">
+                {{ pkg.name }}
+              </h2>
+
+              <p class="font-mono text-sm font-bold text-[#F0F0EB] bg-[#0B0D10] px-3 py-1.5 rounded-xs border border-[#353A42]/60 inline-block">
+                {{ pkg.price }}
+              </p>
+
+              <ul class="space-y-2 text-xs text-[#A5ABB4] font-sans border-t border-[#353A42]/50 pt-3">
+                <li v-for="point in pkg.points" :key="point" class="flex items-start gap-2">
+                  <span class="text-[#EF4B42]">›</span>
+                  <span>{{ point }}</span>
+                </li>
+              </ul>
+            </div>
+
+            <button
+              type="button"
+              class="mt-6 inline-flex h-11 items-center justify-center rounded-sm border border-[#353A42] bg-[#0B0D10] px-4 font-mono text-xs font-semibold tracking-wider text-[#F0F0EB] group-hover:border-[#EF4B42] group-hover:text-[#EF4B42] transition"
+              @click.stop="emit('open-package', pkg.id)"
+            >
+              <span>INSPECT DETAILS</span>
+              <span class="ml-1.5">↗</span>
+            </button>
+          </article>
+        </div>
       </div>
     </Transition>
   </section>

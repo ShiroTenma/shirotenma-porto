@@ -1,9 +1,7 @@
 <script setup>
-const props = defineProps({
-  form: {
-    type: Object,
-    required: true,
-  },
+import { reactive } from 'vue'
+
+defineProps({
   isSubmitted: {
     type: Boolean,
     default: false,
@@ -11,55 +9,84 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['submit-form'])
+
+const form = reactive({
+  name: '',
+  email: '',
+  title: '',
+  message: '',
+})
+
+const handleSubmit = () => {
+  emit('submit-form', { ...form })
+  form.name = ''
+  form.email = ''
+  form.title = ''
+  form.message = ''
+}
 </script>
 
 <template>
   <form
     v-inview
-    class="space-y-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-[0_14px_36px_rgba(0,0,0,0.08)] p-5 md:p-6"
-    @submit.prevent="emit('submit-form')"
+    class="space-y-5 bg-[#181B20] rounded-sm border border-[#353A42] p-6 sm:p-8 shadow-2xl"
+    @submit.prevent="handleSubmit"
   >
-    <label class="flex flex-col gap-1 text-sm font-semibold text-slate-800 dark:text-slate-200">
-      <span>Email</span>
+    <div class="space-y-1 pb-2 border-b border-[#353A42]/50">
+      <div class="font-mono text-[10px] uppercase tracking-widest text-[#EF4B42]">DISPATCH FORM</div>
+      <h3 class="text-xl font-normal text-[#F0F0EB] font-serif">Send an Inquiry</h3>
+    </div>
+
+    <label class="flex flex-col gap-1.5 font-mono text-xs text-[#A5ABB4]">
+      <span>IDENTIFIER / NAMA</span>
+      <input
+        v-model="form.name"
+        type="text"
+        required
+        placeholder="Nama atau alias kamu"
+        class="w-full rounded-xs border border-[#353A42] bg-[#0B0D10] px-3.5 py-2.5 text-xs font-sans text-[#F0F0EB] placeholder:text-[#A5ABB4]/40 focus:outline-none focus:border-[#EF4B42] focus:ring-1 focus:ring-[#EF4B42]"
+      />
+    </label>
+
+    <label class="flex flex-col gap-1.5 font-mono text-xs text-[#A5ABB4]">
+      <span>ELECTRONIC MAIL</span>
       <input
         v-model="form.email"
         type="email"
         required
-        placeholder="Please enter your email"
-        class="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 px-3 py-2 text-sm text-slate-800 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-200 focus:border-teal-400"
+        placeholder="yourname@domain.com"
+        class="w-full rounded-xs border border-[#353A42] bg-[#0B0D10] px-3.5 py-2.5 text-xs font-sans text-[#F0F0EB] placeholder:text-[#A5ABB4]/40 focus:outline-none focus:border-[#EF4B42] focus:ring-1 focus:ring-[#EF4B42]"
       />
     </label>
 
-    <label class="flex flex-col gap-1 text-sm font-semibold text-slate-800 dark:text-slate-200">
-      <span>Mobile</span>
+    <label class="flex flex-col gap-1.5 font-mono text-xs text-[#A5ABB4]">
+      <span>SUBJECT / TOPIK</span>
       <input
-        v-model="form.mobile"
-        type="tel"
-        placeholder="Enter mobile"
-        class="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 px-3 py-2 text-sm text-slate-800 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-200 focus:border-teal-400"
+        v-model="form.title"
+        type="text"
+        required
+        placeholder="e.g. YouTube Banner & Overlay Commission"
+        class="w-full rounded-xs border border-[#353A42] bg-[#0B0D10] px-3.5 py-2.5 text-xs font-sans text-[#F0F0EB] placeholder:text-[#A5ABB4]/40 focus:outline-none focus:border-[#EF4B42] focus:ring-1 focus:ring-[#EF4B42]"
       />
     </label>
 
-    <label class="flex flex-col gap-1 text-sm font-semibold text-slate-800 dark:text-slate-200">
-      <span>Message</span>
+    <label class="flex flex-col gap-1.5 font-mono text-xs text-[#A5ABB4]">
+      <span>PROJECT SPECIFICATIONS</span>
       <textarea
         v-model="form.message"
         rows="4"
         required
-        placeholder="Enter your message"
-        class="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 px-3 py-2 text-sm text-slate-800 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-200 focus:border-teal-400 resize-none"
+        placeholder="Ceritakan deliverable yang diinginkan, mood visual, dan deadline..."
+        class="w-full rounded-xs border border-[#353A42] bg-[#0B0D10] px-3.5 py-2.5 text-xs font-sans text-[#F0F0EB] placeholder:text-[#A5ABB4]/40 focus:outline-none focus:border-[#EF4B42] focus:ring-1 focus:ring-[#EF4B42] resize-none"
       ></textarea>
     </label>
 
     <button
       type="submit"
-      class="w-full inline-flex items-center justify-center rounded-full bg-teal-500 text-[#F9FAFB] font-semibold px-5 py-2.5 shadow-[0_10px_24px_rgba(20,184,166,0.22)] hover:bg-teal-700 active:scale-95 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-teal-200/70"
+      class="w-full inline-flex h-12 items-center justify-center gap-2 rounded-sm bg-[#EF4B42] text-white font-mono text-xs font-bold tracking-wider hover:bg-[#EF4B42]/90 active:scale-95 transition shadow-lg shadow-[#EF4B42]/15"
     >
-      Submit
+      <span>TRANSMIT MESSAGE</span>
+      <span>↗</span>
     </button>
-
-    <p v-if="isSubmitted" class="text-sm text-teal-600 font-medium">
-      Pesan terkirim (simulasi). Kamu bisa kirim detail tambahan kapan saja.
-    </p>
   </form>
 </template>

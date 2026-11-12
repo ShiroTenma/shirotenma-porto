@@ -6,12 +6,12 @@ import AboutExperience from '../components/about/AboutExperience.vue'
 import AboutTools from '../components/about/AboutTools.vue'
 import AboutCTA from '../components/about/AboutCTA.vue'
 
-import graphicsAllBanners from '../assets/images/works/graphics-all-banners.jpg'
-import graphicsOverlay from '../assets/images/works/editing-highlight.jpg'
-import commissionOne from '../assets/images/works/banner-comms.jpg'
-import commissionTwo from '../assets/images/works/editing-motion.png'
-import cosplayPhoto from '../assets/images/works/photo-cosplay1.jpg'
-import commissionThree from '../assets/images/works/cosplay-comms.jpg'
+import graphicsAllBanners from '../assets/images/works/graphics-all-banners.webp'
+import graphicsOverlay from '../assets/images/works/editing-highlight.webp'
+import commissionOne from '../assets/images/works/banner-comms.webp'
+import commissionTwo from '../assets/images/works/editing-motion.webp'
+import cosplayPhoto from '../assets/images/works/photo-cosplay1.webp'
+import commissionThree from '../assets/images/works/cosplay-comms.webp'
 
 const worksShowcase = [
   {
@@ -131,7 +131,7 @@ const ctaBackgroundStyle = {
 </script>
 
 <template>
-  <div class="page bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100">
+  <div class="page bg-[#0B0D10] text-[#F0F0EB]">
     <AboutHero />
     <AboutWorks :works="worksShowcase" />
     <AboutCommission :items="commissionShowcase" />

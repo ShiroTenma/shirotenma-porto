@@ -1,8 +1,8 @@
 <template>
-  <div class="app bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 min-h-screen">
+  <div class="app bg-[#0B0D10] text-[#F0F0EB] min-h-screen selection:bg-[#EF4B42] selection:text-white flex flex-col justify-between">
     <SiteHeader />
 
-    <main class="main">
+    <main class="main flex-1">
       <RouterView />
     </main>
 

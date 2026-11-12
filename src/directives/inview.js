@@ -1,6 +1,10 @@
 export default {
   mounted(el) {
     el.classList.add('inview-base')
+    if (typeof IntersectionObserver === 'undefined') {
+      el.classList.add('inview', 'inview-show')
+      return
+    }
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
